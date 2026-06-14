@@ -1,0 +1,1 @@
+This folder is for submissions required for week 7 of the class.
