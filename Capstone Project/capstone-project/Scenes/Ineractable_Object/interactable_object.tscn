@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dudc5hbjo5078"]
+
+[ext_resource type="Script" uid="uid://b8yvi8pdn8sq8" path="res://Scenes/Ineractable_Object/interactable_object.gd" id="1_w6opg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kymma"]
+radius = 23.194826
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w6opg"]
+
+[node name="InteractableObject" type="Area2D" unique_id=349446142]
+script = ExtResource("1_w6opg")
+
+[node name="InteractionZone" type="Area2D" parent="." unique_id=516141053]
+modulate = Color(0.07058824, 1, 0.40392157, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=246201850]
+shape = SubResource("CircleShape2D_kymma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1563624323]
+shape = SubResource("CircleShape2D_w6opg")
+
+[connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
+[connection signal="body_exited" from="InteractionZone" to="." method="_on_interaction_zone_body_exited"]

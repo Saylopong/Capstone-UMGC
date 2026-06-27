@@ -14,6 +14,11 @@ config/name="Capstone Project"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Game_Manager="*uid://ca0giuxfhrogl"
+Signal_Hub="*uid://cg86gtlnnq0e6"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

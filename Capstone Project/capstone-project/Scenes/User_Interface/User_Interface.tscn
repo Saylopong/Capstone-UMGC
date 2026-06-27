@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://c1gey82wwp6py"]
+
+[sub_resource type="SystemFont" id="SystemFont_nff06"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_73i10"]
+font = SubResource("SystemFont_nff06")
+
+[node name="User_Interface" type="Control" unique_id=888389429]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=879067302]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1157679511]
+layout_mode = 2
+size_flags_vertical = 0
+text = "TEST QUESTION"
+label_settings = SubResource("LabelSettings_73i10")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1396490696]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1422903820]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 250
+
+[node name="A button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2027645133]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "A"
+
+[node name="B button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1123197389]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "B"
+
+[node name="C button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=182473697]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "C"
+
+[node name="D button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=295718570]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "D"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=971562675]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2" unique_id=1712172100]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 150
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1447884499]
+layout_mode = 2
+text = "Test Answer 1"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1061414133]
+layout_mode = 2
+text = "Test Answer 1"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer" unique_id=141927640]
+layout_mode = 2
+text = "Test Answer 1"
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1660450991]
+layout_mode = 2
+text = "Test Answer 1"
