@@ -1,6 +1,29 @@
 [gd_scene format=3 uid="uid://dcjicbbaddqtb"]
 
 [ext_resource type="Script" uid="uid://davs0275e01sw" path="res://Scenes/Home/home.gd" id="1_o3e1b"]
+[ext_resource type="PackedScene" uid="uid://ckwflja0k18oy" path="res://Scenes/Character/Character.tscn" id="2_vgcgf"]
+[ext_resource type="PackedScene" uid="uid://dudc5hbjo5078" path="res://Scenes/Ineractable_Object/interactable_object.tscn" id="3_lpn0j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3e1b"]
+size = Vector2(156, 20)
 
 [node name="Home" type="Node2D" unique_id=1235061317]
 script = ExtResource("1_o3e1b")
+
+[node name="Home>Farm" type="Area2D" parent="." unique_id=201512919]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Home>Farm" unique_id=1175434794]
+modulate = Color(0.8662696, 0, 0, 1)
+position = Vector2(510, 648)
+shape = SubResource("RectangleShape2D_o3e1b")
+debug_color = Color(0.9354843, 0.21140748, 0.37086093, 0.41960785)
+
+[node name="CharacterBody2D" parent="Home>Farm" unique_id=1853285902 instance=ExtResource("2_vgcgf")]
+position = Vector2(509, 373)
+scale = Vector2(3, 3)
+
+[node name="InteractableObject" parent="." unique_id=349446142 instance=ExtResource("3_lpn0j")]
+position = Vector2(274, 370)
+scale = Vector2(4, 4)
+
+[connection signal="body_entered" from="Home>Farm" to="." method="_on_home_farm_body_entered"]

@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://bqiq0c7wjcvnv"]
+
+[ext_resource type="Script" uid="uid://cnyhxpfkdaut1" path="res://Scenes/ASL_UI/asl_ui.gd" id="1_4g32s"]
+[ext_resource type="Texture2D" uid="uid://bdqq72rdiib14" path="res://icon.svg" id="1_vhog3"]
+
+[node name="ASL_UI" type="Control" unique_id=1319852577]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4g32s")
+
+[node name="Texture_0" type="TextureRect" parent="." unique_id=1673160509]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 348.0
+offset_right = 974.0
+offset_bottom = 476.0
+texture = ExtResource("1_vhog3")
+
+[node name="D_Button" type="Button" parent="Texture_0" unique_id=1512804091]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEST_D"
+metadata/_edit_use_anchors_ = true
+
+[node name="Texture_1" type="TextureRect" parent="." unique_id=191762086]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 347.0
+offset_right = 310.0
+offset_bottom = 475.0
+texture = ExtResource("1_vhog3")
+
+[node name="A_Button" type="Button" parent="Texture_1" unique_id=2050067457]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEST_A"
+metadata/_edit_use_anchors_ = true
+
+[node name="Texture_2" type="TextureRect" parent="." unique_id=563741448]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 346.0
+offset_right = 538.0
+offset_bottom = 474.0
+texture = ExtResource("1_vhog3")
+
+[node name="B_Button" type="Button" parent="Texture_2" unique_id=952832523]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEST_B"
+metadata/_edit_use_anchors_ = true
+
+[node name="Texture_3" type="TextureRect" parent="." unique_id=823066961]
+layout_mode = 0
+offset_left = 659.0
+offset_top = 343.0
+offset_right = 787.0
+offset_bottom = 471.0
+texture = ExtResource("1_vhog3")
+
+[node name="C_Button" type="Button" parent="Texture_3" unique_id=97994446]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEST_C"
+metadata/_edit_use_anchors_ = true
+
+[node name="Question" type="Label" parent="." unique_id=1647128128]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="Texture_0/D_Button" to="." method="_on_d_button_pressed"]
+[connection signal="pressed" from="Texture_1/A_Button" to="." method="_on_a_button_pressed"]
+[connection signal="pressed" from="Texture_2/B_Button" to="." method="_on_b_button_pressed"]
+[connection signal="pressed" from="Texture_3/C_Button" to="." method="_on_c_button_pressed"]
