@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c2to7j24leoew"]
+
+[ext_resource type="Script" uid="uid://egr1ntf2u75m" path="res://Scenes/Mail_Box/Mail_Box.gd" id="1_aevji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aevji"]
+
+[node name="MailBox" type="Area2D" unique_id=1760918224]
+script = ExtResource("1_aevji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=607770348]
+shape = SubResource("RectangleShape2D_aevji")

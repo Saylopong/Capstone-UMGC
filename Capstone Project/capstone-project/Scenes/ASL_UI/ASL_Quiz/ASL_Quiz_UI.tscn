@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://bqiq0c7wjcvnv"]
 
+<<<<<<< Updated upstream:Capstone Project/capstone-project/Scenes/ASL_UI/ASL_UI.tscn
 [ext_resource type="Script" uid="uid://cnyhxpfkdaut1" path="res://Scenes/ASL_UI/ASL_UI.gd" id="1_4g32s"]
 <<<<<<< Updated upstream
+=======
+[ext_resource type="Script" uid="uid://cnyhxpfkdaut1" path="res://Scenes/ASL_UI/ASL_Quiz/ASL_Quiz_UI.gd" id="1_4g32s"]
+>>>>>>> Stashed changes:Capstone Project/capstone-project/Scenes/ASL_UI/ASL_Quiz/ASL_Quiz_UI.tscn
 [ext_resource type="Texture2D" uid="uid://bdqq72rdiib14" path="res://Resources/icon.svg" id="1_vhog3"]
 =======
 [ext_resource type="Texture2D" path="res://Resources/icon.svg" id="1_vhog3"]

@@ -1,4 +1,5 @@
 extends Control
+class_name ASL_Quiz_UI
 
 #REQUIRED TO MAKE A MEANING_QUESTION
 #PLAYER IS GIVEN A MEANING AND CLICKS ONE OF 4 CORRESPONDING IMAGES
@@ -38,20 +39,20 @@ var correct_asnwer: int
 #should be reset with every new quiz
 var quiz_index: int = 0
 
-var question_array: Array[ASLQuestion]
+var question_array: Array[ASLGenerator]
 
 #Used to show
-func quiz_image(question: ASLQuestion):
+func quiz_image(question: ASLGenerator):
 	#create a quiz with an image as prompt
 	#assign correct meaning (index 0)
 	pass
 
-func quiz_meaning(question: ASLQuestion):
+func quiz_meaning(question: ASLGenerator):
 	#create a quiz with a meaning as prompt
 	#assign correct image (index 0)
 	pass
 
-func start_quiz(questions: Array[ASLQuestion]):
+func start_quiz(questions: Array[ASLGenerator]):
 	question_array = questions
 	randomize_question_type()
 	

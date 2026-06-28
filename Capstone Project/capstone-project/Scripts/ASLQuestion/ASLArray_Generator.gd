@@ -1,9 +1,13 @@
 extends Resource
-class_name ASLQuestion
+class_name ASLGenerator
+
+#This class generates ASL signs from the ASLDataBase imported into it.
+#It uses these signs to generate different ASLSign Arrays for ASLQuiz
 
 @export var database: ASLDataBase
-var correct_sign: ASLSign
+
 var question_array: Array[ASLSign]
+var learning_array: Array[ASLSign]
 
 #Generates an array of ASL signs
 #Correct sign is always index 0 in question_array
@@ -13,6 +17,7 @@ func generate_question(difficulty: int) -> Array[ASLSign]:
 	return question_array
 
 func generate_correct_sign(difficulty: int) -> ASLSign:
+	var correct_sign: ASLSign
 	#randomly selects an ASLSign from ASLDataBase
 	correct_sign = database.pick_random()
 	
@@ -23,6 +28,10 @@ func generate_correct_sign(difficulty: int) -> ASLSign:
 		correct_sign = database.pick_random()
 	return correct_sign
 
-#may not be neccessary
-func get_correct_sign() -> ASLSign:
-	return correct_sign
+#Returns incorrect sign
+func generate_random(difficulty: int) -> ASLSign:
+	var incorrect_sign: ASLSign
+	#Need to return incorrect_sign that is not the same as correct_sign
+	return incorrect_sign
+	
+	
