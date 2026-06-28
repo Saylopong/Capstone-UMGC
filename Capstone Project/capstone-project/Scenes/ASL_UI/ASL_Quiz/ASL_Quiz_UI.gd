@@ -7,10 +7,12 @@ class_name ASL_Quiz_UI
 #ASL MEANINING
 @onready var image_question: Label = $Image_Question
 #4 DIFFERENT IMAGES CONTAINED W/IN BUTTONS
-@onready var image_a: Button = $"MQ-Images/HBoxContainer2/Image_A"
-@onready var image_b: Button = $"MQ-Images/HBoxContainer2/Image_B"
-@onready var image_c: Button = $"MQ-Images/HBoxContainer2/Image_C"
-@onready var image_d: Button = $"MQ-Images/HBoxContainer2/Image_D"
+@onready var image_buttons: Array[Button] = [
+$"MQ-Images/HBoxContainer2/Image_A",
+$"MQ-Images/HBoxContainer2/Image_B",
+$"MQ-Images/HBoxContainer2/Image_C",
+$"MQ-Images/HBoxContainer2/Image_D"
+]
 
 #REQUIRED TO MAKE A IMAGE_QUESTION
 #PLAYER SEE'S IMAGE AND CLICKS ON ONE OF 4 CORRESPONDING MEANINGS
@@ -18,15 +20,18 @@ class_name ASL_Quiz_UI
 #ASL SIGN IMAGE
 @onready var meaning_question: TextureRect = $MarginContainer/Meaning_Question
 #4 DIFFERENT MEANING AND CORRESPONDING BUTTONS
-@onready var label_a: Label = $"IQ-Meanings/HBoxContainer/ColorRect_A/Label_A"
-@onready var label_b: Label = $"IQ-Meanings/HBoxContainer/ColorRect_B/Label_B"
-@onready var label_c: Label = $"IQ-Meanings/HBoxContainer/ColorRect_C/Label_C"
-@onready var label_d: Label = $"IQ-Meanings/HBoxContainer/ColorRect_D/Label_D"
-@onready var m_button_a: Button = $"IQ-Meanings/HBoxContainer/ColorRect_A/M_Button_A"
-@onready var m_button_b: Button = $"IQ-Meanings/HBoxContainer/ColorRect_B/M_Button_B"
-@onready var m_button_c: Button = $"IQ-Meanings/HBoxContainer/ColorRect_C/M_Button_C"
-@onready var m_button_d: Button = $"IQ-Meanings/HBoxContainer/ColorRect_D/M_Button_D"
-
+@onready var meaning_labels: Array[Label] = [
+$"IQ-Meanings/HBoxContainer/ColorRect_A/Label_A",
+$"IQ-Meanings/HBoxContainer/ColorRect_B/Label_B",
+$"IQ-Meanings/HBoxContainer/ColorRect_C/Label_C",
+$"IQ-Meanings/HBoxContainer/ColorRect_D/Label_D"
+]
+@onready var meaning_buttons: Array[Button] = [
+$"IQ-Meanings/HBoxContainer/ColorRect_A/M_Button_A",
+$"IQ-Meanings/HBoxContainer/ColorRect_B/M_Button_B",
+$"IQ-Meanings/HBoxContainer/ColorRect_C/M_Button_C",
+$"IQ-Meanings/HBoxContainer/ColorRect_D/M_Button_D"
+]
 #assign an int from 0-3 that corresponds to what button the player
 #must choose to get the answer correct.
 #Example:
@@ -52,8 +57,9 @@ func quiz_meaning(question: ASLGenerator):
 	#assign correct image (index 0)
 	pass
 
-func start_quiz(questions: Array[ASLGenerator]):
-	question_array = questions
+func show_quiz(numb_of_questions:int, difficulty: int):
+	#show quiz
+	question_array = ASLQuiz.create_quiz(numb_of_questions,difficulty)
 	randomize_question_type()
 	
 func randomize_question_type():

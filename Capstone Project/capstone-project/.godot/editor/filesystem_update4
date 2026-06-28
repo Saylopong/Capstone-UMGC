@@ -1,2 +1,4 @@
 res://Scenes/Main/main.tscn
+res://Scenes/ASL_UI/ASL_Quiz/ASL_Quiz_UI.gd
+res://Scenes/Tree/tree.gd
 res://Scripts/Game_Manager/game_manager.gd

@@ -16,10 +16,8 @@ func _ready() -> void:
 
 func createQuiz():
 	if(interacted_today == false):
-		interface = ASL_Learning_UI.new()
-		interface.difficulty = difficulty
-		interface.numb_of_signs = number_of_signs
-		interface.show_learning()
+		interface = ASL_Quiz_UI.new()
+	#STILL REQUIRES WORK
 	pass
 
 func grow():
