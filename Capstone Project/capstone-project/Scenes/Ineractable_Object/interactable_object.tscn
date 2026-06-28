@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dudc5hbjo5078"]
 
 [ext_resource type="Script" uid="uid://b8yvi8pdn8sq8" path="res://Scenes/Ineractable_Object/interactable_object.gd" id="1_w6opg"]
+[ext_resource type="Texture2D" uid="uid://bdqq72rdiib14" path="res://Resources/icon.svg" id="2_kymma"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kymma"]
 radius = 23.194826
@@ -18,6 +19,10 @@ shape = SubResource("CircleShape2D_kymma")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1563624323]
 shape = SubResource("CircleShape2D_w6opg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2016368748]
+scale = Vector2(0.203125, 0.2109375)
+texture = ExtResource("2_kymma")
 
 [connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
 [connection signal="body_exited" from="InteractionZone" to="." method="_on_interaction_zone_body_exited"]
