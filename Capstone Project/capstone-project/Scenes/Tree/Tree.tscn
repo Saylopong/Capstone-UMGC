@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://sjnrnc7cs4gp"]
 
 [ext_resource type="Script" uid="uid://b8jrscgdrufvf" path="res://Scenes/Tree/tree.gd" id="1_hllwx"]
-[ext_resource type="Texture2D" uid="uid://c0jrncv38c702" path="res://Resources/FreeEnvironment/FreePack.png" id="2_ot6bb"]
+[ext_resource type="Texture2D" uid="uid://c0jrncv38c702" path="res://Resources/PixelArt/TEST_Pixel_Trees.png" id="2_ot6bb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ibkip"]
 

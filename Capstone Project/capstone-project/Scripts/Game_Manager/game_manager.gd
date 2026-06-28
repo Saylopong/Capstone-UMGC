@@ -1,8 +1,8 @@
 extends Node
 
-const MAIN = preload("uid://c5g8ymxdt2tl0")
-const FARM = preload("uid://cs667hsowc61p")
-const HOME = preload("uid://dcjicbbaddqtb")
+const MAIN: PackedScene = preload("uid://c5g8ymxdt2tl0")
+const FARM: PackedScene = preload("uid://cs667hsowc61p")
+const HOME: PackedScene = preload("uid://dcjicbbaddqtb")
 
 func main_transition() -> void:
 	#transition current scen to MAIN

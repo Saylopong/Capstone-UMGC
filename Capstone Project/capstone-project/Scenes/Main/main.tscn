@@ -1,7 +1,3 @@
 [gd_scene format=3 uid="uid://c5g8ymxdt2tl0"]
 
-[ext_resource type="PackedScene" uid="uid://bqiq0c7wjcvnv" path="res://Scenes/ASL_UI/ASL_UI.tscn" id="1_1r6ip"]
-
-[node name="Main" type="Node" unique_id=1879915770]
-
-[node name="ASL_UI" parent="." unique_id=1319852577 instance=ExtResource("1_1r6ip")]
+[node name="Main" type="Node" unique_id=1638152063]
