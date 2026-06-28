@@ -1,82 +1,91 @@
 extends Control
 
-#Allows use of data base imported into ASL_data_set
-@export var database: Array[ASL_data_set]
+#REQUIRED TO MAKE A MEANING_QUESTION
+#PLAYER IS GIVEN A MEANING AND CLICKS ONE OF 4 CORRESPONDING IMAGES
+#-----------------------------------------------------------
+#ASL MEANINING
+@onready var image_question: Label = $Image_Question
+#4 DIFFERENT IMAGES CONTAINED W/IN BUTTONS
+@onready var image_a: Button = $"MQ-Images/HBoxContainer2/Image_A"
+@onready var image_b: Button = $"MQ-Images/HBoxContainer2/Image_B"
+@onready var image_c: Button = $"MQ-Images/HBoxContainer2/Image_C"
+@onready var image_d: Button = $"MQ-Images/HBoxContainer2/Image_D"
 
-#All 4 TextureRect/buttons in ASL_UI
-#Used to display ASL images
-@onready var texture_0: TextureRect = $Texture_1
-@onready var texture_1: TextureRect = $Texture_2
-@onready var texture_2: TextureRect = $Texture_3
-@onready var texture_3: TextureRect = $Texture_4
-@onready var question: Label = $Question
+#REQUIRED TO MAKE A IMAGE_QUESTION
+#PLAYER SEE'S IMAGE AND CLICKS ON ONE OF 4 CORRESPONDING MEANINGS
+#-----------------------------------------------------------
+#ASL SIGN IMAGE
+@onready var meaning_question: TextureRect = $MarginContainer/Meaning_Question
+#4 DIFFERENT MEANING AND CORRESPONDING BUTTONS
+@onready var label_a: Label = $"IQ-Meanings/HBoxContainer/ColorRect_A/Label_A"
+@onready var label_b: Label = $"IQ-Meanings/HBoxContainer/ColorRect_B/Label_B"
+@onready var label_c: Label = $"IQ-Meanings/HBoxContainer/ColorRect_C/Label_C"
+@onready var label_d: Label = $"IQ-Meanings/HBoxContainer/ColorRect_D/Label_D"
+@onready var m_button_a: Button = $"IQ-Meanings/HBoxContainer/ColorRect_A/M_Button_A"
+@onready var m_button_b: Button = $"IQ-Meanings/HBoxContainer/ColorRect_B/M_Button_B"
+@onready var m_button_c: Button = $"IQ-Meanings/HBoxContainer/ColorRect_C/M_Button_C"
+@onready var m_button_d: Button = $"IQ-Meanings/HBoxContainer/ColorRect_D/M_Button_D"
 
-#Stores number of correct answer
-var correct_answer: int
-#stores meaning/phrase of correct answer
-var meaning: String
+#assign an int from 0-3 that corresponds to what button the player
+#must choose to get the answer correct.
+#Example:
+#Question? Answers: A, B, C, D
+#If correct answer is B - assign 1 to correct_answer
+#If correct answer is D - assign 3 to correct_answer
+var correct_asnwer: int
 
-func generate_image_question() -> void:
-	generate_correct_answer()
-	generate_incorrect_answers()
+#determines what index player is on in the curren quiz
+#should be reset with every new quiz
+var quiz_index: int = 0
 
-func generate_correct_answer() -> void:
-		#randomly selects a image and meaning pair from the ASL_data_set
-	var correct_set: ASL_data_set = database.pick_random()
-	
-	meaning = correct_set.get_meaning()
-	
-	#randomly assigns the image from the correct set to a random texturerect
-	var x: int = randf_range(0,3)
-	if(x < 1):
-		texture_0.texture = correct_set.get_image()
-		correct_answer = 0
-	if((1 <= x) && (x < 2)):
-		texture_1.texture = correct_set.get_image()
-		correct_answer = 1
-	if((2 <= x) && (x < 3)):
-		texture_2.texture = correct_set.get_image()
-		correct_answer = 2
-	if((3 <= x) && (x <4)):
-		texture_3.texture = correct_set.get_image()
-		correct_answer = 3
-		
-#Need a way to ensure that the correct_set image is not used here
-func generate_incorrect_answers() -> void:
-	#generate an image from ASL_data_set to each texture_rect not chosen yet.
-	if (correct_answer == 0):
-		texture_1.texture = database.pick_random()
-		texture_2.texture = database.pick_random()
-		texture_3.texture = database.pick_random()
-	if (correct_answer == 1):
-		texture_0.texture = database.pick_random()
-		texture_2.texture = database.pick_random()
-		texture_3.texture = database.pick_random()
-	if (correct_answer == 2):
-		texture_1.texture = database.pick_random()
-		texture_0.texture = database.pick_random()
-		texture_3.texture = database.pick_random()
-	if (correct_answer == 3):
-		texture_1.texture = database.pick_random()
-		texture_2.texture = database.pick_random()
-		texture_0.texture = database.pick_random()
+var question_array: Array[ASLQuestion]
 
-func _on_a_button_pressed() -> void:
-	pass # Replace with function body.
-
-func _on_b_button_pressed() -> void:
-	pass # Replace with function body.
-
-func _on_c_button_pressed() -> void:
-	pass # Replace with function body.
-
-func _on_d_button_pressed() -> void:
-	pass # Replace with function body.
-
-func incorrect_choice() -> void:
-	#add action for the player making the incorrect choice
+#Used to show
+func quiz_image(question: ASLQuestion):
+	#create a quiz with an image as prompt
+	#assign correct meaning (index 0)
 	pass
 
-func correct_choice() -> void:
-	#add action for the player making the correct choice
+func quiz_meaning(question: ASLQuestion):
+	#create a quiz with a meaning as prompt
+	#assign correct image (index 0)
 	pass
+
+func start_quiz(questions: Array[ASLQuestion]):
+	question_array = questions
+	randomize_question_type()
+	
+func randomize_question_type():
+	#cycles through question_array, randomly picking an image or meaning question.
+	#increases quiz_index by one each time
+	pass
+
+func answer_picked():
+	randomize_question_type()
+	quiz_index += 1
+	pass
+
+func quiz_done():
+	#hides UI upon quiz finishing (quiz_index hits end of questions_array)
+	pass
+
+
+#Image_Buttons used for Meaning Questions
+func _on_image_d_pressed() -> void:
+	pass # Replace with function body.
+func _on_image_c_pressed() -> void:
+	pass # Replace with function body.
+func _on_image_b_pressed() -> void:
+	pass # Replace with function body.
+func _on_image_a_pressed() -> void:
+	pass # Replace with function body.
+
+#Meaning_Buttons used for Image Questions
+func _on_m_button_d_pressed() -> void:
+	pass # Replace with function body.
+func _on_m_button_c_pressed() -> void:
+	pass # Replace with function body.
+func _on_m_button_b_pressed() -> void:
+	pass # Replace with function body.
+func _on_m_button_a_pressed() -> void:
+	pass # Replace with function body.

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://caqxre5nx731j"]
+
+[ext_resource type="FontFile" uid="uid://c6ppxandotwfk" path="res://Resources/Fonts/PasseroOne-Regular.ttf" id="1_thrj7"]
+[ext_resource type="Texture2D" uid="uid://bdqq72rdiib14" path="res://Resources/icon.svg" id="2_jdaww"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m3ko3"]
+font = ExtResource("1_thrj7")
+font_size = 40
+font_color = Color(0.021074016, 0.19511104, 0.5950887, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" unique_id=1124345155]
+custom_minimum_size = Vector2(100, 50)
+anchors_preset = -1
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 90.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 50)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.84456295, 0.49955004, 0.19460067, 1)
+
+[node name="Label" type="Label" parent="." unique_id=341404128]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEST TEST"
+label_settings = SubResource("LabelSettings_m3ko3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASL_Image" type="TextureRect" parent="." unique_id=97363854]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(64, 64)
+mouse_filter = 2
+texture = ExtResource("2_jdaww")
+
+[node name="Button" type="Button" parent="ASL_Image" unique_id=2031671309]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEST_B"
+metadata/_edit_use_anchors_ = true

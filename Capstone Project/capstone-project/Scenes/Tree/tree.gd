@@ -1,0 +1,34 @@
+extends Area2D
+
+@export var question_count: int
+@export var question_difficulty: int
+
+@onready var level_1: Sprite2D = $"Level 1"
+@onready var level_2: Sprite2D = $"Level 2"
+@onready var level_3: Sprite2D = $"Level 3"
+
+var growth_stage: int = 1
+
+func _ready() -> void:
+	show_growth()
+
+func createQuiz():
+	pass
+
+func grow():
+	growth_stage += 1
+	show_growth()
+
+func regress():
+	growth_stage -= 1
+	show_growth()
+
+func show_growth():
+	if(growth_stage == 1):
+		level_1.show()
+	if(growth_stage == 2):
+		level_2.show()
+	if(growth_stage == 3):
+		level_3.show()
+	
+	
