@@ -21,6 +21,7 @@ func createQuiz():
 	pass
 
 func grow():
+	#
 	growth_stage += 1
 	show_growth()
 

@@ -1,11 +1,10 @@
 extends Resource
 class_name ASLQuiz
 
-
 #Create a quiz of request size and difficulty level
 static func create_quiz(size: int, difficulty: int) -> Array[ASLGenerator]:
 	var quiz: Array[ASLGenerator]
-	
+		
 	for i in range(size):
 		quiz.append(ASLGenerator.new().generate_question(difficulty))
 		

@@ -13,13 +13,16 @@ var learning_array: Array[ASLSign]
 #Correct sign is always index 0 in question_array
 func generate_question(difficulty: int) -> Array[ASLSign]:
 	question_array.append(generate_correct_sign(difficulty))
-#Need to generate a randomized ASL sign array
+	#Need to generate a randomized ASL sign array
 	return question_array
 
 func generate_correct_sign(difficulty: int) -> ASLSign:
 	var correct_sign: ASLSign
 	#randomly selects an ASLSign from ASLDataBase
 	correct_sign = database.pick_random()
+	
+	#could compare String's of each sign to make sure.
+	#Could ajust ASLSign here to make the sign unlocked.
 	
 	#ensure the question is of the correct difficulty level
 	while ((correct_sign.difficulty_level != difficulty) || (correct_sign.is_unlocked == false)):
