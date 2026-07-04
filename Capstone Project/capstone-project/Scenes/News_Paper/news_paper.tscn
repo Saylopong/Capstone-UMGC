@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1ibib7r3oypb"]
 
-[ext_resource type="Script" uid="uid://equ2grt8ra60" path="res://Scenes/News_Paper/NewsPaper.gd" id="1_0bh73"]
+[ext_resource type="Script" uid="uid://cotbtrx1ya2c6" path="res://Scenes/News_Paper/news_paper.gd" id="1_0bh73"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6v6e5"]
 
@@ -9,3 +9,6 @@ script = ExtResource("1_0bh73")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1726846352]
 shape = SubResource("RectangleShape2D_6v6e5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

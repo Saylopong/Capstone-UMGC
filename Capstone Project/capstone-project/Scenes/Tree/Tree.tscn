@@ -29,5 +29,8 @@ texture = ExtResource("2_ot6bb")
 region_enabled = true
 region_rect = Rect2(7, 137, 88, 119)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1859222873]
+[node name="Interact_Zone" type="CollisionShape2D" parent="." unique_id=1859222873]
 shape = SubResource("CircleShape2D_ibkip")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

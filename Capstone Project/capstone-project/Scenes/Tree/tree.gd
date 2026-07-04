@@ -1,7 +1,6 @@
-extends Interactable_Object
+extends Area2D
 
-@export var question_count: int
-@export var question_difficulty: int
+@export var obj_name: String
 
 @onready var level_1: Sprite2D = $"Level 1"
 @onready var level_2: Sprite2D = $"Level 2"
@@ -9,19 +8,14 @@ extends Interactable_Object
 
 var interacted_today: bool = false
 var growth_stage: int = 1
-var interface: ASL_Quiz_UI
 
 func _ready() -> void:
+	level_1.hide()
+	level_2.hide()
+	level_3.hide()
 	show_growth()
 
-func createQuiz():
-	if(interacted_today == false):
-		interface = ASL_Quiz_UI.new()
-	#STILL REQUIRES WORK
-	pass
-
 func grow():
-	#
 	growth_stage += 1
 	show_growth()
 
@@ -36,5 +30,13 @@ func show_growth():
 		level_2.show()
 	if(growth_stage == 3):
 		level_3.show()
-	
-	
+
+#detects when player enters Interact_Zone and emits that it has been entered
+func _on_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		SignalHub.emit_player_entered_zone(obj_name)
+
+
+func _on_body_exited(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		SignalHub.emit_player_entered_zone(obj_name)
