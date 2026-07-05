@@ -15,8 +15,7 @@ func _physics_process(delta: float) -> void:
 func get_movement() -> Vector2:
 	#returns character movement vector multiplied by MOVE_SPEED
 	return Vector2(0,0)
-	
-	
+
 func interact() -> void:
 	#Interact with object	
 	pass
@@ -25,4 +24,3 @@ func set_current_interactable(interactable: Interactable_Object) -> void:
 	#used to tell character what it is currently in the interaction zone of an Interactable_Obhect
 	#Is passed null if player leaves an interaction zone of an Interactable_Object
 	current_interactable = interactable
-	

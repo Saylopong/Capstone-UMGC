@@ -1,11 +1,14 @@
 extends Node
 
+signal player_entered_zone(zone: String)
+signal player_left_zone(zone: String)
+signal tree_learned(difficulty: int)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func emit_player_entered_zone(zone: String):
+	player_entered_zone.emit(zone)
 
+func emit_player_left_zone(zone: String):
+	player_left_zone.emit(zone)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func emit_tree_learned(difficulty: int):
+	tree_learned.emit(difficulty)

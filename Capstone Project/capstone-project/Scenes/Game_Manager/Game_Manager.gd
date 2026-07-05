@@ -1,0 +1,75 @@
+extends Node
+
+#Actual in scene instantiation of UI's
+#we will use .show() and .hide() as needed
+@onready var asl_learning_ui: ASL_Learning_UI = $ASL_Learning_UI
+@onready var asl_quiz_ui: ASL_Quiz_UI = $ASL_Quiz_UI
+
+#stores what zones the character is currently in
+var in_zone: Array[String]
+
+#represents question/learning bank for each tree
+@export var database1: ASLDataBase
+@export var database2: ASLDataBase
+@export var database3: ASLDataBase
+
+func _ready() -> void:
+	#connects functions to signals
+	SignalHub.player_entered_zone.connect(player_entered_interactable_zone)
+	SignalHub.player_left_zone.connect(player_left_interactable_zone)
+
+func _unhandled_input(event: InputEvent) -> void:
+	#checks if player pressed "E"
+	if event.is_action_pressed("Interact"):
+		#checks if player has entered any objects interaction zone.
+		if in_zone.size() != 0:
+			Handle_Interact(in_zone.get(0))
+
+#performs correct action based on what object the player first entered the zone of.
+#if the player is in multiple objects zones the others are ignored.
+#since godot automatically resizes arrays in_zone.get(0) if in_zone.size() != 0 is
+#always valid.
+func Handle_Interact(Interactable: String):
+	match Interactable:
+		"TREE1":
+			asl_quiz_ui.start_quiz(CreateASLQuiz.createQuiz(database1))
+			asl_quiz_ui.show()
+		"TREE2":
+			asl_quiz_ui.start_quiz(CreateASLQuiz.createQuiz(database2))
+			asl_quiz_ui.show()
+		"TREE3":
+			asl_quiz_ui.start_quiz(CreateASLQuiz.createQuiz(database3))
+			asl_quiz_ui.show()
+		"NEWSPAPER":
+			show_new_signs()
+		"BED":
+			#Reset Day
+			pass
+
+#updates asl_learning_ui with new ASL signs for the player to learn.
+#should only show questions that the player has not unlocked at the current
+#difficulty level.
+func show_new_signs():
+	if(database1.is_learned == false):
+		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database1))
+		asl_learning_ui.show()
+		database1.is_learned_test()
+	if(database1.is_learned && database2.is_learned == false):
+		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database2))
+		asl_learning_ui.show()
+		database2.is_learned_test()
+	if(database1.is_learned && database2.is_learned && database3.is_learned == false):
+		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database3))
+		asl_learning_ui.show()
+		database3.is_learned_test()
+	if(database1.is_learned && database2.is_learned && database3.is_learned):
+		#Could show text showing all currently implimented ASL signs have been learned
+		pass
+
+#add object to in_zone
+func player_entered_interactable_zone(object: String):
+	in_zone.append(object)
+
+#remove object from in_zone
+func player_left_interactable_zone(object: String):
+	in_zone.erase(object)
