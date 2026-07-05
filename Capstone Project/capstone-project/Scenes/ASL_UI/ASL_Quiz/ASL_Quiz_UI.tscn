@@ -53,14 +53,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_xmi04")
 
-[node name="txt_background" type="ColorRect" parent="MarginContainer/VBoxContainer/Question_Prompts" unique_id=196985754]
+[node name="MP_background" type="ColorRect" parent="MarginContainer/VBoxContainer/Question_Prompts" unique_id=196985754]
 visible = false
 custom_minimum_size = Vector2(600, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 color = Color(0.7810797, 0.26018548, 0.011835737, 1)
 
-[node name="Meaning_Prompt" type="Label" parent="MarginContainer/VBoxContainer/Question_Prompts/txt_background" unique_id=1363659292]
+[node name="Meaning_Prompt" type="Label" parent="MarginContainer/VBoxContainer/Question_Prompts/MP_background" unique_id=1363659292]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 anchors_preset = 15
@@ -97,7 +97,7 @@ offset_bottom = 200.0
 size_flags_horizontal = 4
 color = Color(0.7810797, 0.26018548, 0.011835737, 1)
 
-[node name="Meaning" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_A" unique_id=1629879692]
+[node name="Meaning_A" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_A" unique_id=1629879692]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 anchors_preset = 8
@@ -131,7 +131,7 @@ offset_bottom = 200.0
 size_flags_horizontal = 4
 color = Color(0.7810797, 0.26018548, 0.011835737, 1)
 
-[node name="Meaning2" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_B" unique_id=783148774]
+[node name="Meaning_B" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_B" unique_id=783148774]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 anchors_preset = 8
@@ -165,7 +165,7 @@ offset_bottom = 200.0
 size_flags_horizontal = 4
 color = Color(0.7810797, 0.26018548, 0.011835737, 1)
 
-[node name="Meaning3" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C" unique_id=164161415]
+[node name="Meaning_C" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C" unique_id=164161415]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 anchors_preset = 8
@@ -186,12 +186,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Button_M_C2" type="Button" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer" unique_id=1240275310]
+[node name="Button_M_D" type="Button" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer" unique_id=1240275310]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="txt_background" type="ColorRect" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C2" unique_id=839849921]
+[node name="txt_background" type="ColorRect" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D" unique_id=839849921]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
 offset_right = 200.0
@@ -199,7 +199,7 @@ offset_bottom = 200.0
 size_flags_horizontal = 4
 color = Color(0.7810797, 0.26018548, 0.011835737, 1)
 
-[node name="Meaning4" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C2" unique_id=1340125968]
+[node name="Meaning_D" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D" unique_id=1340125968]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 anchors_preset = 8

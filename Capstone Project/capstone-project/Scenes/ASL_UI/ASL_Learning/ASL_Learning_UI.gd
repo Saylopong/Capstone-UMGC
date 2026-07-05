@@ -2,6 +2,7 @@ extends Control
 class_name ASL_Learning_UI
 
 #IMAGES
+#The image 
 @onready var asl_images: Array[TextureRect] = [
 	$"MarginContainer/VBoxContainer/Image Container/ASL_Image",
 	$"MarginContainer/VBoxContainer/Image Container/ASL_Image2",

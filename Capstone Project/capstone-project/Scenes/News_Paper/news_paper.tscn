@@ -4,11 +4,20 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6v6e5"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0bh73"]
+
 [node name="News_Paper" type="Area2D" unique_id=2007129299]
 script = ExtResource("1_0bh73")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1726846352]
 shape = SubResource("RectangleShape2D_6v6e5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2080265463]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=417541541]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=454639152]
+shape = SubResource("CircleShape2D_0bh73")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
