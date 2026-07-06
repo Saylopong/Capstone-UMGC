@@ -2,12 +2,12 @@ extends Resource
 class_name ASLQuestion
 
 #This class generates ASL signs from the ASLDataBase imported into it.
-#It uses these signs to generate different ASLSign Arrays for ASLQuiz
+#It uses these signs to generate different ASLSign Arrays for Create ASLQuiz
 
 #Generates an array of ASL signs
 #Correct answer sign is always index 0 in question_array
 static func generate_question(database: ASLDataBase) -> Array[ASLSign]:
-	var question_array = Array[ASLSign]
+	var question_array : Array[ASLSign]
 	#Add correct answer to index 0
 	question_array.append(generate_correct_sign(database))
 	#Add random ASLSigns to index 1,2, and 3

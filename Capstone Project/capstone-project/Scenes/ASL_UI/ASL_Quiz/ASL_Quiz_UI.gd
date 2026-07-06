@@ -7,7 +7,7 @@ class_name ASL_Quiz_UI
 #ASL MEANINING
 @onready var meaning_prompt: Label = $MarginContainer/VBoxContainer/Question_Prompts/txt_background/Meaning_Prompt
 #4 DIFFERENT IMAGES CONTAINED W/IN BUTTONS
-@onready var image_buttons: Array[Button] = [
+@onready var button_images: Array[TextureRect] = [
 	$"MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_A/I_A",
 	$"MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_B/I_B",
 	$"MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_C/I_C",
@@ -15,6 +15,8 @@ class_name ASL_Quiz_UI
 ]
 #this var is only used to help hide/show meaning_prompt label as needed
 @onready var mp_background: ColorRect = $MarginContainer/VBoxContainer/Question_Prompts/MP_background
+@onready var meaning_container: HBoxContainer = $"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer"
+@onready var image_container: HBoxContainer = $"MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container"
 
 
 #REQUIRED TO MAKE A IMAGE_QUESTION
@@ -30,61 +32,190 @@ class_name ASL_Quiz_UI
 	$"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D/Meaning_D"
 ]
 
-#assign "A","B","C",or "D" to correct_answer
-#Example:
-#Question? Answers: A, B, C, D
-#If correct answer is B - assign "B" to correct_answer
-#If correct answer is D - assign "D" to correct_answer
-var correct_asnwer: String
+#Is assigned "A","B","C", or "D"
+#determines which multiple choice answer is correct
+#and is assigned in randomize_correct_answer()
+var correct_answer: String
 
 #incremented upon player answering a quiz question correctly.
 #should be reset to 0 upon finishing quiz
 var answered_correctly: int = 0
 
-#Used to show
-func make_IP_question():
-	#create a quiz with an image as prompt
-	#assign correct meaning (index 0)
-	pass
+var quiz_questions: Array[ASLQuestion]
+var quiz_index: int
 
-func make_meaning_question():
-	#create a quiz with a meaning as prompt
-	#assign correct image (index 0)
-	pass
+func _ready() -> void:
+	#used to test code
+	image_prompt.hide()
+	meaning_container.hide()
+	mp_background.show()
+	image_container.show()
+	randomize_correct_answer()
+	print("Randomized CA:",correct_answer)
 
-func start_quiz(quiz_questions: Array[ASLQuestion]):
-	for ASLQuestion in quiz_questions:
-		randomize_question_type(ASLQuestion)
+func start_quiz(questions: Array[ASLQuestion]):
+	#clears previosu quiz_questions array
+	quiz_questions.clear()
 	
-	#need to emit signal here through signal hub that tells game_manager
-	#how many questions were answered correctly
+	#creates stores a shallow copy of questions in quiz_questions
+	quiz_questions = questions.duplicate()
 	
-func randomize_question_type(question: ASLQuestion):
-	#randomly creates an image question or meaning question
-	pass
+	#reset quiz_index
+	quiz_index = 0
+	
+	#resets answered correctly to 0
+	answered_correctly = 0
+	
+	#prompts next_question to start first question of the quiz
+	next_question(quiz_index,quiz_questions)
+	quiz_index += 1
+
+
+func next_question(quiz_index:int, quiz_question: Array[ASLQuestion]):
+	if quiz_index >= quiz_question.size():
+		#emits signal that the quiz has finished along with
+		#the number of correctly answered questions
+		SignalHub.emit_quiz_finished(answered_correctly)
+		return
+	else:
+		randomize_question_type(quiz_question.get(quiz_index))
+
+
+#Used to show an image prompt question
+#ASLQuestion is Array[ASLSign]
+#the correct sign is always index 0 in this array
+#If question.size() exceeds 4 will throw OTB error
+func make_IP_question(question: Array[ASLSign]):
+	#set image prompt to correct answers image
+	image_prompt.texture = question.get(0).image
+	
+	#set meaning labels
+	match correct_answer:
+		"A":
+			#Assign correct answer
+			meaning_labels.get(0).text = question.get(0).meaning
+			#Assign incorrect answers
+			meaning_labels.get(1).text = question.get(1).meaning
+			meaning_labels.get(2).text = question.get(2).meaning
+			meaning_labels.get(3).text = question.get(3).meaning
+		"B":
+			#Assign correct answer
+			meaning_labels.get(1).text = question.get(0).meaning
+			#Assign incorrect answers
+			meaning_labels.get(0).text = question.get(1).meaning
+			meaning_labels.get(2).text = question.get(2).meaning
+			meaning_labels.get(3).text = question.get(3).meaning
+		"C":
+			#Assign correct answer
+			meaning_labels.get(2).text = question.get(0).meaning
+			#Assign incorrect answers
+			meaning_labels.get(1).text = question.get(1).meaning
+			meaning_labels.get(0).text = question.get(2).meaning
+			meaning_labels.get(3).text = question.get(3).meaning
+		"D":
+			#Assign correct answer
+			meaning_labels.get(3).text = question.get(0).meaning
+			#Assign incorrect answers
+			meaning_labels.get(1).text = question.get(1).meaning
+			meaning_labels.get(2).text = question.get(2).meaning
+			meaning_labels.get(0).text = question.get(3).meaning
+	
+	
+#Used to show a meaning prompt question
+#ASLQuestion is Array[ASLSign]
+#the correct sign is always index 0 in this array
+func make_MP_question(question: Array[ASLSign]):
+	#set meaning prompt to correct answers meaning
+	meaning_prompt.text = question.get(0).meaning
+	#set button images
+	match correct_answer:
+		"A":
+			#Assign correct answer
+			button_images.get(0).texture = question.get(0).image
+			#Assign incorrect answers
+			button_images.get(1).texture = question.get(1).image
+			button_images.get(2).texture = question.get(2).image
+			button_images.get(3).texture = question.get(3).image
+		"B":
+			#Assign correct answer
+			button_images.get(1).texture = question.get(0).image
+			#Assign incorrect answers
+			button_images.get(0).texture = question.get(1).image
+			button_images.get(2).texture = question.get(2).image
+			button_images.get(3).texture = question.get(3).image
+		"C":
+			#Assign correct answer
+			button_images.get(2).texture = question.get(0).image
+			#Assign incorrect answers
+			button_images.get(1).texture = question.get(1).image
+			button_images.get(0).texture = question.get(2).image
+			button_images.get(3).texture = question.get(3).image
+		"D":
+			#Assign correct answer
+			button_images.get(3).texture = question.get(0).image
+			#Assign incorrect answers
+			button_images.get(1).texture = question.get(1).image
+			button_images.get(2).texture = question.get(2).image
+			button_images.get(0).texture = question.get(3).image
+
+#randomly selects "A","B","C",or "D"
+#as the correct answer
+func randomize_correct_answer():
+	var rand: float = randf()
+	print("Rand:",rand)
+	if rand <= .25:
+		correct_answer = "A"
+	if rand >.25 && rand <= .5:
+		correct_answer = "B"
+	if rand > .5 && rand <= .75:
+		correct_answer = "C"
+	if rand > .75 && rand <= 1:
+		correct_answer = "D"
+
+#used to randomly select whether the question is
+#Meaning prompt (MP) or Image prompt (IP
+func randomize_question_type(question: Array[ASLSign]):
+	
+	var rand: float = randf()
+	
+	if rand < .5:
+		mp_background.hide()
+		image_container.hide()
+		image_prompt.show()
+		meaning_container.show()
+		make_IP_question(question)
+	if rand >= .5:
+		image_prompt.hide()
+		meaning_container.hide()
+		mp_background.show()
+		image_container.show()
+		make_MP_question(question)
 
 func answer_picked(selected_answer: String):
-	#should compare selected answer to correct and should increment
+	#compares selected answer to correct and increments
 	#answered_correctly by 1
-	pass
-
+	if selected_answer == correct_answer:
+		answered_correctly += 1
+		print(correct_answer)
+	next_question(quiz_index,quiz_questions)
 
 #Image_Buttons used for Meaning Questions
-func _on_image_d_pressed() -> void:
-	answer_picked("D")
-func _on_image_c_pressed() -> void:
-	answer_picked("C")
-func _on_image_b_pressed() -> void:
-	answer_picked("B")
-func _on_image_a_pressed() -> void:
+func _on_button_i_a_pressed() -> void:
 	answer_picked("A")
+func _on_button_i_b_pressed() -> void:
+	answer_picked("B")
+func _on_button_i_c_pressed() -> void:
+	answer_picked("C")
+func _on_button_i_d_pressed() -> void:
+	answer_picked("D")
 
-#Meaning_Buttons used for Image Questions
-func _on_m_button_d_pressed() -> void:
-	answer_picked("D")
-func _on_m_button_c_pressed() -> void:
-	answer_picked("C")
-func _on_m_button_b_pressed() -> void:
-	answer_picked("B")
-func _on_m_button_a_pressed() -> void:
+
+#Meaning buttons used for image questions
+func _on_button_m_a_pressed() -> void:
 	answer_picked("A")
+func _on_button_m_b_pressed() -> void:
+	answer_picked("B")
+func _on_button_m_c_pressed() -> void:
+	answer_picked("C")
+func _on_button_m_d_pressed() -> void:
+	answer_picked("D")
