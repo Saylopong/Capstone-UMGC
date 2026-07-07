@@ -2,8 +2,8 @@ extends Resource
 class_name CreateASLLearning
 const AMT_OF_SIGNS: int = 4
 
-#Create a quiz of request size and difficulty level
-static func createLearning(database: ASLDataBase) -> Array[ASLSign]:
+#Create a learning
+static func createLearning(database: Array[ASLSign]) -> Array[ASLSign]:
 	var learning: Array[ASLSign]
 	
 	for i in AMT_OF_SIGNS:
