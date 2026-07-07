@@ -5,7 +5,7 @@ class_name ASL_Quiz_UI
 #PLAYER IS GIVEN A MEANING AND CLICKS ONE OF 4 CORRESPONDING IMAGES
 #-----------------------------------------------------------
 #ASL MEANINING
-@onready var meaning_prompt: Label = $MarginContainer/VBoxContainer/Question_Prompts/txt_background/Meaning_Prompt
+@onready var meaning_prompt: Label = $MarginContainer/VBoxContainer/Question_Prompts/MP_background/Meaning_Prompt
 #4 DIFFERENT IMAGES CONTAINED W/IN BUTTONS
 @onready var button_images: Array[TextureRect] = [
 	$"MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_A/I_A",
@@ -56,19 +56,15 @@ func _ready() -> void:
 func start_quiz(questions: Array[ASLQuestion]):
 	#clears previosu quiz_questions array
 	quiz_questions.clear()
-	
 	#creates stores a shallow copy of questions in quiz_questions
 	quiz_questions = questions.duplicate()
-	
 	#reset quiz_index
 	quiz_index = 0
-	
 	#resets answered correctly to 0
 	answered_correctly = 0
-	
 	#prompts next_question to start first question of the quiz
 	next_question(quiz_index,quiz_questions)
-	quiz_index += 1
+	
 
 
 func next_question(quiz_index:int, quiz_question: Array[ASLQuestion]):
@@ -78,7 +74,8 @@ func next_question(quiz_index:int, quiz_question: Array[ASLQuestion]):
 		SignalHub.emit_quiz_finished(answered_correctly)
 		return
 	else:
-		randomize_question_type(quiz_question.get(quiz_index))
+		randomize_question_type(quiz_question.get(quiz_index).question)
+
 
 
 #Used to show an image prompt question
@@ -162,7 +159,6 @@ func make_MP_question(question: Array[ASLSign]):
 #as the correct answer
 func randomize_correct_answer():
 	var rand: float = randf()
-	print("Rand:",rand)
 	if rand <= .25:
 		correct_answer = "A"
 	if rand >.25 && rand <= .5:
@@ -196,7 +192,8 @@ func answer_picked(selected_answer: String):
 	#answered_correctly by 1
 	if selected_answer == correct_answer:
 		answered_correctly += 1
-		print(correct_answer)
+	quiz_index += 1
+	randomize_correct_answer()
 	next_question(quiz_index,quiz_questions)
 
 #Image_Buttons used for Meaning Questions

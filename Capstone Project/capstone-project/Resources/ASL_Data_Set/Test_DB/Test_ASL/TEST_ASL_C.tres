@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://b54vrs4ceq3m3"]
+
+[ext_resource type="Texture2D" uid="uid://dih7r10l5ihmg" path="res://Resources/ASL_Data_Set/Test_DB/Test_ASL/TEST_ASL_Images/C.jpg" id="1_ybfvl"]
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="2_ufcpd"]
+
+[resource]
+script = ExtResource("2_ufcpd")
+meaning = "C"
+image = ExtResource("1_ybfvl")
+is_unlocked = true
+metadata/_custom_type_script = "uid://4qu5sso38pu"
