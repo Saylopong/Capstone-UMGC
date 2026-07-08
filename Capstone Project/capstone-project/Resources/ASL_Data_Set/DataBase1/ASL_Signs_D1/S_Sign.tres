@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://dfidud3kxxxvv"]
+
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_in3si"]
+[ext_resource type="Texture2D" uid="uid://bpdbour5wgpg" path="res://Resources/ASL_Data_Set/DataBase1/ASL_Signs_D1/ASL_Images_D1/S.png" id="1_inyqe"]
+
+[resource]
+script = ExtResource("1_in3si")
+meaning = "S"
+image = ExtResource("1_inyqe")
+metadata/_custom_type_script = "uid://4qu5sso38pu"
