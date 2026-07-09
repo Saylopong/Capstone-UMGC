@@ -13,9 +13,11 @@ database2 = ExtResource("2_20xgo")
 database3 = ExtResource("2_20xgo")
 
 [node name="ASL_Learning_UI" parent="." unique_id=603574902 instance=ExtResource("3_kfri6")]
+mouse_filter = 1
 
 [node name="ASL_Quiz_UI" parent="." unique_id=676744762 instance=ExtResource("4_2eqbm")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1758404837]
 
 [node name="Pause_UI" parent="CanvasLayer" unique_id=888389429 instance=ExtResource("5_eqiw4")]
+visible = false
