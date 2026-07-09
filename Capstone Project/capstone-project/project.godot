@@ -19,6 +19,15 @@ config/icon="res://Resources/icon.svg"
 
 SignalHub="*uid://cg86gtlnnq0e6"
 
+[file_customization]
+
+folder_colors={
+"res://Resources/ASL_Data_Set/": "pink",
+"res://Resources/PixelArt/": "pink",
+"res://Scenes/Farm/": "pink",
+"res://Scenes/Tree/": "pink"
+}
+
 [input]
 
 Interact={
