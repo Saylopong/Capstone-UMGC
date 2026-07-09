@@ -20,6 +20,7 @@ func _ready() -> void:
 	SignalHub.quiz_finished.connect(end_quiz)
 	#SignalHub.home_to_farm.connect(farm_scene)
 	#SignalHub.farm_to_home.connect(home_scene)
+	#SignalHub.quit_game.connect(quit)
 
 func _unhandled_input(event: InputEvent) -> void:
 	#checks if player pressed "E"
@@ -88,11 +89,14 @@ func show_new_signs():
 		#Could show text showing all currently implimented ASL signs have been learned
 		pass
 
+#Called when ASL_Quiz_UI emits quiz_finished signal and hides the quiz UI
 func end_quiz(correclty_answered: int):
-	#correclty_answered represents how many questions the player answered
-	#correctly during the quiz.
 	asl_quiz_ui.hide()
 	print("QUIZ FINISHED, correct:",correclty_answered)
+
+func quit():
+	#IF SAVE STATE IS IMPLIMENTED THIS NEEDS TO SAVE THE GAME STATE BEFORE QUITING.
+	get_tree().quit()
 
 #add object to in_zone
 func player_entered_interactable_zone(object: String):
