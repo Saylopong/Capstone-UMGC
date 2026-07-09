@@ -18,6 +18,8 @@ func _ready() -> void:
 	SignalHub.player_entered_zone.connect(player_entered_interactable_zone)
 	SignalHub.player_left_zone.connect(player_left_interactable_zone)
 	SignalHub.quiz_finished.connect(end_quiz)
+	#SignalHub.home_to_farm.connect(farm_scene)
+	#SignalHub.farm_to_home.connect(home_scene)
 
 func _unhandled_input(event: InputEvent) -> void:
 	#checks if player pressed "E"
@@ -57,6 +59,14 @@ func Handle_Interact(Interactable: String):
 		"BED":
 			#Reset Day
 			pass
+
+#Needs to Connect to transition signal to home
+func home_scene():
+	SceneTransitioner.home_transition()
+
+#Needs to connect to transition signal to farm
+func farm_scene():
+	SceneTransitioner.farm_transition()
 
 #updates asl_learning_ui with new ASL signs for the player to learn.
 #should only show questions that the player has not unlocked at the current
