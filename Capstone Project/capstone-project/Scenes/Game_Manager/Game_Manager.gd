@@ -4,6 +4,7 @@ extends Node
 #we will use .show() and .hide() as needed
 @onready var asl_learning_ui: ASL_Learning_UI = $ASL_Learning_UI
 @onready var asl_quiz_ui: ASL_Quiz_UI = $ASL_Quiz_UI
+@onready var pause_ui: Control = $Pause_UI
 
 #stores what zones the character is currently in
 var in_zone: Array[String]
@@ -28,6 +29,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		#checks if player has entered any objects interaction zone.
 		if in_zone.size() != 0:
 			Handle_Interact(in_zone.get(0))
+	if event.is_action_pressed("Pause"):
+		pass
 	#TEST_ACTION is Shift+T
 	if event.is_action_pressed("TEST_ACTION"):
 		print("TEST_ACTION PRESSED")
