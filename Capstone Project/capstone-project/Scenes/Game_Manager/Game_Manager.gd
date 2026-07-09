@@ -23,14 +23,16 @@ func _ready() -> void:
 	#SignalHub.farm_to_home.connect(home_scene)
 	#SignalHub.quit_game.connect(quit)
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	#checks if player pressed "E"
 	if event.is_action_pressed("Interact"):
 		#checks if player has entered any objects interaction zone.
 		if in_zone.size() != 0:
 			Handle_Interact(in_zone.get(0))
+	#calls function to pause game and display pause UI when escape is pressed
 	if event.is_action_pressed("Pause"):
-		pass
+		pause_game()
 	#TEST_ACTION is Shift+T
 	if event.is_action_pressed("TEST_ACTION"):
 		print("TEST_ACTION PRESSED")
@@ -63,6 +65,19 @@ func Handle_Interact(Interactable: String):
 		"BED":
 			#Reset Day
 			pass
+
+func pause_game():
+	#pauses game if game is not currently paused
+	#shows pause_ui
+	if(!get_tree().paused):
+		get_tree().paused = true
+		pause_ui.show()
+	#unpauses game if game is currently paused
+	#hides pause_ui
+	if(get_tree().paused):
+		get_tree().paused = false
+		pause_ui.hide()
+
 
 #Needs to Connect to transition signal to home
 func home_scene():
