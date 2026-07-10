@@ -55,7 +55,7 @@ func Handle_Interact(Interactable: String):
 			asl_learning_ui.show()
 			show_new_signs()
 		"BED":
-			#Reset Day
+			#Reset Day - to be implemented
 			pass
 
 #updates asl_learning_ui with new ASL signs for the player to learn.
