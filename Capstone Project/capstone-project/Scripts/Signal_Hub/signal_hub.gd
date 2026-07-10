@@ -3,6 +3,7 @@ extends Node
 signal player_entered_zone(zone: String)
 signal player_left_zone(zone: String)
 signal tree_learned(difficulty: int)
+signal quiz_finished(correctly_answered: int)
 
 #emitted by Pause_UI, listened to by main/Game_Manager
 signal pause_game
@@ -33,3 +34,6 @@ func emit_quit_game():
 
 func emit_door_entered(destination: String):
 	door_entered.emit(destination)
+  
+func emit_quiz_finished(correct: int):
+	quiz_finished.emit(correct)

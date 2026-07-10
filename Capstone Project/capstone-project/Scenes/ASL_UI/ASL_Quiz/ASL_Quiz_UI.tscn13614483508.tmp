@@ -23,7 +23,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 script = ExtResource("1_8v608")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2071396090]
@@ -95,7 +94,6 @@ layout_mode = 0
 offset_right = 200.0
 offset_bottom = 200.0
 size_flags_horizontal = 4
-mouse_filter = 1
 color = Color(0.7810797, 0.26018548, 0.011835737, 1)
 
 [node name="Meaning_A" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_A" unique_id=1629879692]
@@ -113,7 +111,6 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-mouse_filter = 1
 text = "TEST TEST"
 label_settings = SubResource("LabelSettings_w47pl")
 horizontal_alignment = 1
@@ -131,7 +128,6 @@ layout_mode = 0
 offset_right = 200.0
 offset_bottom = 200.0
 size_flags_horizontal = 4
-mouse_filter = 1
 color = Color(0.7810797, 0.26018548, 0.011835737, 1)
 
 [node name="Meaning_B" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_B" unique_id=783148774]
@@ -149,7 +145,6 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-mouse_filter = 1
 text = "TEST TEST"
 label_settings = SubResource("LabelSettings_w47pl")
 horizontal_alignment = 1
@@ -167,7 +162,6 @@ layout_mode = 0
 offset_right = 200.0
 offset_bottom = 200.0
 size_flags_horizontal = 4
-mouse_filter = 1
 color = Color(0.7810797, 0.26018548, 0.011835737, 1)
 
 [node name="Meaning_C" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C" unique_id=164161415]
@@ -185,7 +179,6 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-mouse_filter = 1
 text = "TEST TEST"
 label_settings = SubResource("LabelSettings_w47pl")
 horizontal_alignment = 1
@@ -203,7 +196,6 @@ layout_mode = 0
 offset_right = 200.0
 offset_bottom = 200.0
 size_flags_horizontal = 4
-mouse_filter = 1
 color = Color(0.7810797, 0.26018548, 0.011835737, 1)
 
 [node name="Meaning_D" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D" unique_id=1340125968]
@@ -221,7 +213,6 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-mouse_filter = 1
 text = "TEST TEST"
 label_settings = SubResource("LabelSettings_w47pl")
 horizontal_alignment = 1
@@ -292,12 +283,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_xmi04")
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_A" to="." method="_on_button_m_a_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_B" to="." method="_on_button_m_b_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C" to="." method="_on_button_m_c_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D" to="." method="_on_button_m_d_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_A" to="." method="_on_button_i_a_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_B" to="." method="_on_button_i_b_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_C" to="." method="_on_button_i_c_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_D" to="." method="_on_button_i_d_pressed"]
