@@ -9,15 +9,13 @@ class_name ASL_Learning_UI
 	$"MarginContainer/VBoxContainer/Image Container/ASL_Image3",
 	$"MarginContainer/VBoxContainer/Image Container/ASL_Image4"
 ]
-
 #MEANINGS
 @onready var meanings: Array[Label] = [
-$"MarginContainer/VBoxContainer/Meaining Container/ColorRect/Meaning",
-$"MarginContainer/VBoxContainer/Meaining Container/ColorRect2/Meaning2",
-$"MarginContainer/VBoxContainer/Meaining Container/ColorRect3/Meaning3",
-$"MarginContainer/VBoxContainer/Meaining Container/ColorRect4/Meaning4"
+	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect/Meaning",
+	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect2/Meaning2",
+	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect3/Meaning3",
+	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect4/Meaning4"
 ]
-
 
 func start_learning(new_signs: Array[ASLSign]):
 	

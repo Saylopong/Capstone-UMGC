@@ -17,6 +17,7 @@ func _ready() -> void:
 	#connects functions to signals
 	SignalHub.player_entered_zone.connect(player_entered_interactable_zone)
 	SignalHub.player_left_zone.connect(player_left_interactable_zone)
+	SignalHub.quiz_finished.connect(end_quiz)
 
 func _unhandled_input(event: InputEvent) -> void:
 	#checks if player pressed "E"
@@ -24,6 +25,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		#checks if player has entered any objects interaction zone.
 		if in_zone.size() != 0:
 			Handle_Interact(in_zone.get(0))
+	#TEST_ACTION is Shift+T
+	if event.is_action_pressed("TEST_ACTION"):
+		print("TEST_ACTION PRESSED")
+		Handle_Interact("TREE1")
 
 #performs correct action based on what object the player first entered the zone of.
 #if the player is in multiple objects zones the others are ignored.
@@ -32,18 +37,25 @@ func _unhandled_input(event: InputEvent) -> void:
 func Handle_Interact(Interactable: String):
 	match Interactable:
 		"TREE1":
-			asl_quiz_ui.start_quiz(CreateASLQuiz.createQuiz(database1))
+			print("Quiz Started")
+			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database1.get_all_questions()))
+			asl_learning_ui.hide()
 			asl_quiz_ui.show()
 		"TREE2":
-			asl_quiz_ui.start_quiz(CreateASLQuiz.createQuiz(database2))
+			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database2.get_all_questions()))
+			asl_learning_ui.hide()
 			asl_quiz_ui.show()
 		"TREE3":
-			asl_quiz_ui.start_quiz(CreateASLQuiz.createQuiz(database3))
+			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database3.get_all_questions()))
+			asl_learning_ui.hide()
 			asl_quiz_ui.show()
 		"NEWSPAPER":
+			print("Learning Started")
+			asl_quiz_ui.hide()
+			asl_learning_ui.show()
 			show_new_signs()
 		"BED":
-			#Reset Day
+			#Reset Day - to be implemented
 			pass
 
 #updates asl_learning_ui with new ASL signs for the player to learn.
@@ -51,20 +63,26 @@ func Handle_Interact(Interactable: String):
 #difficulty level.
 func show_new_signs():
 	if(database1.is_learned == false):
-		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database1))
+		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database1.get_all_questions()))
 		asl_learning_ui.show()
 		database1.is_learned_test()
 	if(database1.is_learned && database2.is_learned == false):
-		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database2))
+		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database2.get_all_questions()))
 		asl_learning_ui.show()
 		database2.is_learned_test()
 	if(database1.is_learned && database2.is_learned && database3.is_learned == false):
-		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database3))
+		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database3.get_all_questions()))
 		asl_learning_ui.show()
 		database3.is_learned_test()
 	if(database1.is_learned && database2.is_learned && database3.is_learned):
 		#Could show text showing all currently implimented ASL signs have been learned
 		pass
+
+func end_quiz(correclty_answered: int):
+	#correclty_answered represents how many questions the player answered
+	#correctly during the quiz.
+	asl_quiz_ui.hide()
+	print("QUIZ FINISHED, correct:",correclty_answered)
 
 #add object to in_zone
 func player_entered_interactable_zone(object: String):
