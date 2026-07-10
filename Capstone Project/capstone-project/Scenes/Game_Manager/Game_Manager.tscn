@@ -4,7 +4,10 @@
 [ext_resource type="Resource" uid="uid://tj43csdkjjrm" path="res://Resources/ASL_Data_Set/Test_DB/Test_DB.tres" id="2_20xgo"]
 [ext_resource type="PackedScene" uid="uid://1rf4n5ajaipo" path="res://Scenes/ASL_UI/ASL_Learning/asl_learning_ui.tscn" id="3_kfri6"]
 [ext_resource type="PackedScene" uid="uid://cxkpsebnd05at" path="res://Scenes/ASL_UI/ASL_Quiz/ASL_Quiz_UI.tscn" id="4_2eqbm"]
-[ext_resource type="PackedScene" uid="uid://c1gey82wwp6py" path="res://Scenes/Pause_UI/Pause_UI.tscn" id="5_eqiw4"]
+[ext_resource type="PackedScene" uid="uid://c1gey82wwp6py" path="res://Scenes/Pause_UI/Pause_UI.tscn" id="5_pause"]
+
+[sub_resource type="Resource" id="Resource_5xhnw"]
+metadata/__load_path__ = "res://Resources/ASL_Data_Set/DataBase1/ASL_D1.tres"
 
 [node name="Game_Manager" type="Node" unique_id=1638152063]
 script = ExtResource("1_sbmqd")
@@ -21,3 +24,4 @@ mouse_filter = 1
 
 [node name="Pause_UI" parent="CanvasLayer" unique_id=888389429 instance=ExtResource("5_eqiw4")]
 visible = false
+[node name="Pause_UI" parent="." instance=ExtResource("5_pause")]

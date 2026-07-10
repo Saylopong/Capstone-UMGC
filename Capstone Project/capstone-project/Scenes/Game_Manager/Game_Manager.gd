@@ -63,7 +63,7 @@ func Handle_Interact(Interactable: String):
 			asl_learning_ui.show()
 			show_new_signs()
 		"BED":
-			#Reset Day
+			#Reset Day - to be implemented
 			pass
 
 func pause_game():

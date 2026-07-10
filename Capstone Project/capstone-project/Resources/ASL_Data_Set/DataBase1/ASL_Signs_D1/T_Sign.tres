@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://d2qpp7ifed2tf"]
+
+[ext_resource type="Texture2D" uid="uid://c43xxoh2qd82u" path="res://Resources/ASL_Data_Set/DataBase1/ASL_Signs_D1/ASL_Images_D1/T.png" id="1_2rlb8"]
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_kfwus"]
+
+[resource]
+script = ExtResource("1_kfwus")
+meaning = "T"
+image = ExtResource("1_2rlb8")
+metadata/_custom_type_script = "uid://4qu5sso38pu"

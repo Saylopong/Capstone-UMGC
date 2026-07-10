@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://d1ibib7r3oypb"]
 
 [ext_resource type="Script" uid="uid://cotbtrx1ya2c6" path="res://Scenes/News_Paper/news_paper.gd" id="1_0bh73"]
-[ext_resource type="Texture2D" uid="uid://bdqq72rdiib14" path="res://Resources/icon.svg" id="2_6v6e5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6v6e5"]
 
@@ -14,8 +13,6 @@ script = ExtResource("1_0bh73")
 shape = SubResource("RectangleShape2D_6v6e5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2080265463]
-scale = Vector2(0.3359375, 0.3828125)
-texture = ExtResource("2_6v6e5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=417541541]
 
