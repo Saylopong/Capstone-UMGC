@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://dkkgy03e5hfpv"]
+
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_3wb26"]
+[ext_resource type="Texture2D" uid="uid://cdlqm0ouocmv" path="res://Resources/ASL_Data_Set/DataBase1/ASL_Signs_D1/ASL_Images_D1/U.png" id="1_aldb3"]
+
+[resource]
+script = ExtResource("1_3wb26")
+meaning = "U"
+image = ExtResource("1_aldb3")
+metadata/_custom_type_script = "uid://4qu5sso38pu"
