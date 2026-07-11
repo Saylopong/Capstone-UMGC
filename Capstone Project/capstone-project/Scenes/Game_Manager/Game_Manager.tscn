@@ -4,7 +4,6 @@
 [ext_resource type="Resource" uid="uid://tj43csdkjjrm" path="res://Resources/ASL_Data_Set/Test_DB/Test_DB.tres" id="2_20xgo"]
 [ext_resource type="PackedScene" uid="uid://1rf4n5ajaipo" path="res://Scenes/ASL_UI/ASL_Learning/asl_learning_ui.tscn" id="3_kfri6"]
 [ext_resource type="PackedScene" uid="uid://cxkpsebnd05at" path="res://Scenes/ASL_UI/ASL_Quiz/ASL_Quiz_UI.tscn" id="4_2eqbm"]
-[ext_resource type="PackedScene" uid="uid://c1gey82wwp6py" path="res://Scenes/Pause_UI/Pause_UI.tscn" id="5_pause"]
 
 [sub_resource type="Resource" id="Resource_5xhnw"]
 metadata/__load_path__ = "res://Resources/ASL_Data_Set/DataBase1/ASL_D1.tres"
@@ -18,5 +17,3 @@ database3 = ExtResource("2_20xgo")
 [node name="ASL_Learning_UI" parent="." unique_id=603574902 instance=ExtResource("3_kfri6")]
 
 [node name="ASL_Quiz_UI" parent="." unique_id=676744762 instance=ExtResource("4_2eqbm")]
-
-[node name="Pause_UI" parent="." instance=ExtResource("5_pause")]

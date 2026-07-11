@@ -5,6 +5,7 @@ class_name ASLDataBase
 #this is where we are going to put our data base of ASL questions
 @export var all_qestions: Array[ASLSign]
 @export var difficulty_level: int
+
 var is_learned: bool = false
 
 #tests if the data base has all questions unlocked
