@@ -28,8 +28,8 @@ static func generate_correct_sign(database: Array[ASLSign]) -> ASLSign:
 #Returns incorrect sign
 func generate_random(database: Array[ASLSign], correct_sign: ASLSign) -> ASLSign:
 	var incorrect_sign: ASLSign = database.pick_random()
-
-	while (question.has(incorrect_sign)):
+	
+	while (incorrect_sign.meaning == correct_sign.meaning):
 		incorrect_sign = database.pick_random()
 
 	return incorrect_sign
