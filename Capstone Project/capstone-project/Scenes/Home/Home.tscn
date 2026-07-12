@@ -1,6 +1,52 @@
 [gd_scene format=3 uid="uid://dcjicbbaddqtb"]
 
 [ext_resource type="Script" uid="uid://davs0275e01sw" path="res://Scenes/Home/home.gd" id="1_o3e1b"]
+[ext_resource type="PackedScene" uid="uid://d1ibib7r3oypb" path="res://Scenes/News_Paper/news_paper.tscn" id="2_vgcgf"]
+[ext_resource type="PackedScene" uid="uid://ctdao1oqqfl7s" path="res://Scenes/Bed/Bed.tscn" id="3_lpn0j"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ejmsa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6cob"]
 
 [node name="Home" type="Node2D" unique_id=1235061317]
 script = ExtResource("1_o3e1b")
+
+[node name="TOP_WALL" type="StaticBody2D" parent="." unique_id=2086374858]
+position = Vector2(576, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TOP_WALL" unique_id=58376588]
+shape = SubResource("WorldBoundaryShape2D_ejmsa")
+
+[node name="BOTTOM_WALL" type="StaticBody2D" parent="." unique_id=1773216200]
+position = Vector2(576, 648)
+rotation = 3.1415927
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOTTOM_WALL" unique_id=687992510]
+shape = SubResource("WorldBoundaryShape2D_ejmsa")
+
+[node name="RIGHT_WALL" type="StaticBody2D" parent="." unique_id=1064001884]
+position = Vector2(1152, 324)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RIGHT_WALL" unique_id=1237102441]
+shape = SubResource("WorldBoundaryShape2D_ejmsa")
+
+[node name="LEFT_WALL" type="StaticBody2D" parent="." unique_id=797062661]
+position = Vector2(0, 324)
+rotation = 4.712389
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LEFT_WALL" unique_id=554030799]
+shape = SubResource("WorldBoundaryShape2D_ejmsa")
+
+[node name="DOOR" type="Area2D" parent="." unique_id=1640190028]
+position = Vector2(1152, 324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DOOR" unique_id=484626395]
+scale = Vector2(2, 6)
+shape = SubResource("RectangleShape2D_y6cob")
+
+[node name="News_Paper" parent="." unique_id=2007129299 instance=ExtResource("2_vgcgf")]
+position = Vector2(707, 150)
+
+[node name="Bed" parent="." unique_id=1206283599 instance=ExtResource("3_lpn0j")]
+position = Vector2(161, 122)

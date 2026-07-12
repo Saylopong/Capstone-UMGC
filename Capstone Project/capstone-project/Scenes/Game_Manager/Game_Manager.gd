@@ -18,6 +18,7 @@ func _ready() -> void:
 	SignalHub.player_entered_zone.connect(player_entered_interactable_zone)
 	SignalHub.player_left_zone.connect(player_left_interactable_zone)
 	SignalHub.quiz_finished.connect(end_quiz)
+	SignalHub.quit_game.connect(quit_game)
 
 func _unhandled_input(event: InputEvent) -> void:
 	#checks if player pressed "E"
@@ -83,6 +84,9 @@ func end_quiz(correclty_answered: int):
 	#correctly during the quiz.
 	asl_quiz_ui.hide()
 	print("QUIZ FINISHED, correct:",correclty_answered)
+
+func quit_game():
+	get_tree().quit()
 
 #add object to in_zone
 func player_entered_interactable_zone(object: String):
