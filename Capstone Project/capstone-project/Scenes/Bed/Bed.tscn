@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ctdao1oqqfl7s"]
+
+[ext_resource type="Script" uid="uid://b8uhlgo46tnc6" path="res://Scenes/Bed/bed.gd" id="1_dx0qx"]
+[ext_resource type="Texture2D" uid="uid://bdqq72rdiib14" path="res://Resources/icon.svg" id="2_qqko0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejmsa"]
+size = Vector2(240.5, 221)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6cob"]
+
+[node name="Bed" type="Area2D" unique_id=1206283599]
+script = ExtResource("1_dx0qx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=557965512]
+texture = ExtResource("2_qqko0")
+
+[node name="Interact_Zone" type="CollisionShape2D" parent="." unique_id=250077305]
+shape = SubResource("RectangleShape2D_ejmsa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1186731053]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1357507198]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_y6cob")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

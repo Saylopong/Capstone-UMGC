@@ -1,18 +1,53 @@
-[gd_scene format=3 uid="uid://c1gey82wwp6py"]
+[gd_scene format=3 uid="uid://uj05kj8dd14x"]
+
+[ext_resource type="Script" uid="uid://kk416b4txjsm" path="res://Scenes/Pause_UI/Pause_UI.gd" id="1_s6rpk"]
+[ext_resource type="FontFile" uid="uid://c6ppxandotwfk" path="res://Resources/Fonts/PasseroOne-Regular.ttf" id="2_wvx8k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ejmsa"]
+font = ExtResource("2_wvx8k")
+font_size = 40
 
 [node name="Pause_UI" type="Control" unique_id=888389429]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s6rpk")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=445300231]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1549897554]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer" unique_id=656558184]
+layout_mode = 2
+color = Color(0, 0.2509804, 0.40392157, 0.5019608)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=318650369]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="Paused_Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=586443881]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PAUSED
+Press ESC to unpause"
+label_settings = SubResource("LabelSettings_ejmsa")
+horizontal_alignment = 1
+
+[node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=817693547]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Quit"
