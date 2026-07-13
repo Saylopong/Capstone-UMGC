@@ -14,7 +14,6 @@ z_index = 2
 script = ExtResource("1_hllwx")
 
 [node name="Level 1" type="Sprite2D" parent="." unique_id=1241639308]
-visible = false
 position = Vector2(0, -20)
 scale = Vector2(0.5, 0.513)
 texture = ExtResource("2_ot6bb")
@@ -22,7 +21,6 @@ region_enabled = true
 region_rect = Rect2(7, 137, 88, 119)
 
 [node name="Level 2" type="Sprite2D" parent="." unique_id=1571588725]
-visible = false
 position = Vector2(0, -50)
 scale = Vector2(1, 1.025)
 texture = ExtResource("2_ot6bb")
