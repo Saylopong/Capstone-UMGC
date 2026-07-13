@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://1rf4n5ajaipo" path="res://Scenes/ASL_UI/ASL_Learning/asl_learning_ui.tscn" id="3_kfri6"]
 [ext_resource type="PackedScene" uid="uid://cxkpsebnd05at" path="res://Scenes/ASL_UI/ASL_Quiz/ASL_Quiz_UI.tscn" id="4_2eqbm"]
 [ext_resource type="PackedScene" uid="uid://uj05kj8dd14x" path="res://Scenes/Pause_UI/Pause_UI.tscn" id="5_eqiw4"]
+[ext_resource type="PackedScene" uid="uid://cs667hsowc61p" path="res://Scenes/Farm/farm.tscn" id="6_y87pn"]
 
 [node name="Game_Manager" type="Node" unique_id=1638152063]
 process_mode = 3
@@ -14,7 +15,12 @@ database2 = ExtResource("2_20xgo")
 database3 = ExtResource("2_20xgo")
 
 [node name="ASL_Learning_UI" parent="." unique_id=603574902 instance=ExtResource("3_kfri6")]
+visible = false
 
 [node name="ASL_Quiz_UI" parent="." unique_id=676744762 instance=ExtResource("4_2eqbm")]
+visible = false
 
 [node name="Pause_UI" parent="." unique_id=888389429 instance=ExtResource("5_eqiw4")]
+visible = false
+
+[node name="Farm" parent="." unique_id=1743081988 instance=ExtResource("6_y87pn")]
