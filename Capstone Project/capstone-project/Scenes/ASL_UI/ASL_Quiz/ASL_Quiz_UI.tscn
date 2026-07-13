@@ -17,6 +17,7 @@ outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [node name="ASL_Quiz_UI" type="Control" unique_id=676744762]
+z_index = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,8 +48,8 @@ custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 
 [node name="Image_Prompt" type="TextureRect" parent="MarginContainer/VBoxContainer/Question_Prompts" unique_id=1425815818]
-clip_contents = true
 custom_minimum_size = Vector2(300, 300)
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
