@@ -27,6 +27,15 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8v608")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=137686013]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.2509804, 0.40392157, 0.5019608)
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2071396090]
 layout_mode = 1
 anchors_preset = 15
