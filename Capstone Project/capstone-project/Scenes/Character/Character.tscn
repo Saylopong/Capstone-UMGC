@@ -148,10 +148,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejmsa"]
-size = Vector2(8, 13)
+size = Vector2(8, 8.666667)
 
 [node name="Character" type="CharacterBody2D" unique_id=1486054298]
-scale = Vector2(5, 5)
+scale = Vector2(6, 6)
 script = ExtResource("1_h5fps")
 
 [node name="Walk Forward" type="AnimatedSprite2D" parent="." unique_id=1231280658]
@@ -167,5 +167,5 @@ sprite_frames = SubResource("SpriteFrames_p5rh2")
 sprite_frames = SubResource("SpriteFrames_2xsui")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1728310233]
-position = Vector2(0, 0.5)
+position = Vector2(0, 2.6666665)
 shape = SubResource("RectangleShape2D_ejmsa")

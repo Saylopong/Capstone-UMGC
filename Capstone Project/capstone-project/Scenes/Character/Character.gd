@@ -1,62 +1,103 @@
 extends CharacterBody2D
 
+@onready var walk_forward: AnimatedSprite2D = $"Walk Forward"
+@onready var walk_backward: AnimatedSprite2D = $"Walk Backward"
+@onready var walk_left: AnimatedSprite2D = $"Walk Left"
+@onready var walk_right: AnimatedSprite2D = $"Walk Right"
 
+#sets move speed
+const MOVE_SPEED: int = 200
 
-const MOVE_SPEED: int = 12500
 var move_direction: Vector2 = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	walk_backward.hide()
+	walk_left.hide()
+	walk_right.hide()
+	walk_forward.show()
 
-func _unhandled_input(event: InputEvent) -> void:
-	#checks whether player is currently moving in the y direction
-	#if the player is not changes move_direction Y vector to -1
-	if event.is_action_pressed("Up") && velocity.y == 0:
-		move_direction.y = -1
-		print("UP")
-	#checks whether player is currently moving in the -y direction
-	#if so when the UP is released changes move_direction y vector to 0
-	if event.is_action_released("Up") && velocity.y < 0:
-		move_direction.y = 0
-		print("UP_r")
-	#checks whether player is currently moving in the y direction
-	#if the player is not changes move_direction Y vector to 1
-	if event.is_action_pressed("Down") && velocity.y == 0 : 
-		move_direction.y = 1
-		print("DOWN")
-	#checks whether player is currently moving in the +y direction
-	#if so when the Down is released changes move_direction Y vector to 0
-	if event.is_action_released("Down") && velocity.y > 0: 
-		move_direction.y = 0
-		print("DOWN_r")
-	#checks whether player is currently moving in the x direction
-	#if the player is not changes move_direction X vector to -1
-	if event.is_action_pressed("Left") && velocity.x == 0:
-		move_direction.x = -1
-		print("LEFT")
-	#checks whether player is currently moving in the -x direction
-	#if so when the Left is released changes move_direction X vector to 0
-	if event.is_action_released("Left") && velocity.x < 0:
-		move_direction.x = 0
-		print("LEFT_r")
-	#checks whether player is currently moving in the X direction
-	#if the player is not changes move_direction X vector to 1
-	if event.is_action_pressed("Right") && velocity.x == 0:
-		move_direction.x = 1
-		print("RIGHT")
-	#checks whether player is currently moving in the +x direction
-	#if so when the Right is released changes move_direction X vector to 0
-	if event.is_action_released("Right") && velocity.x > 0:
-		move_direction.x = 0
-		print("RIGHT_r")
+#plays correct animation based on move_diretion
+#and stops all other animations
+func play_animation():
+	#play walk_forward animation and stop all others
+	if (move_direction.y > 0):
+		#Stop and hide all other animations
+		walk_backward.stop()
+		walk_backward.hide()
+		walk_left.stop()
+		walk_left.hide()
+		walk_right.stop()
+		walk_right.hide()
+		#Play and show correct animation
+		walk_forward.show()
+		walk_forward.play()
+	#play walk_backward animation and stop all others
+	if (move_direction.y < 0):
+		#Stop and hide all other animations
+		walk_forward.stop()
+		walk_forward.hide()
+		walk_left.stop()
+		walk_left.hide()
+		walk_right.stop()
+		walk_right.hide()
+		#Play and show correct animation
+		walk_backward.show()
+		walk_backward.play()
+	#play walk_left animation and stop all others
+	if (move_direction.x < 0 && move_direction.y == 0):
+		#Stop and hide all other animations
+		walk_backward.stop()
+		walk_backward.hide()
+		walk_forward.stop()
+		walk_forward.hide()
+		walk_right.stop()
+		walk_right.hide()
+		#Play and show correct animation
+		walk_left.show()
+		walk_left.play()
+	#play walk_right animation and stop all others
+	if (move_direction.x > 0 && move_direction.y == 0):
+		#Stop and hide all other animations
+		walk_backward.stop()
+		walk_backward.hide()
+		walk_left.stop()
+		walk_left.hide()
+		walk_forward.stop()
+		walk_forward.hide()
+		#Play and show correct animation
+		walk_right.show()
+		walk_right.play()
 
+#stops all animation
+func stop_animation():
+	walk_backward.stop()
+	walk_forward.stop()
+	walk_left.stop()
+	walk_right.stop()
 
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 		pass
 
 func _physics_process(delta: float) -> void:
-		velocity = delta*move_direction*MOVE_SPEED
-		move_and_slide()
+
+	move_direction = Vector2.ZERO
+	
+	if Input.is_action_pressed("Up"):
+		move_direction.y -= 1
+	if Input.is_action_pressed("Down"):
+		move_direction.y += 1
+	if Input.is_action_pressed("Left"):
+		move_direction.x -= 1
+	if Input.is_action_pressed("Right"):
+		move_direction.x += 1
+		
+	velocity = move_direction*MOVE_SPEED
+	
+	play_animation()
+
+	if(move_direction == Vector2(0,0)):
+		stop_animation()
+		
+	move_and_slide()
