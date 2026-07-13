@@ -8,6 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hllwx"]
 
 [node name="Tree" type="Area2D" unique_id=626465503]
+z_index = 2
 script = ExtResource("1_hllwx")
 
 [node name="Level 1" type="Sprite2D" parent="." unique_id=1241639308]
