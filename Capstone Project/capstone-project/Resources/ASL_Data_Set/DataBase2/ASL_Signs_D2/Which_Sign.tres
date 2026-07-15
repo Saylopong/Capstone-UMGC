@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://b1nfbahosv0f1"]
+
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_luxu1"]
+[ext_resource type="Texture2D" uid="uid://blx2o85giduxx" path="res://Resources/ASL_Data_Set/DataBase2/ASL_Signs_D2/ASL_Images_D2/Which.png" id="1_vevs0"]
+
+[resource]
+script = ExtResource("1_luxu1")
+meaning = "Which"
+image = ExtResource("1_vevs0")
+metadata/_custom_type_script = "uid://4qu5sso38pu"

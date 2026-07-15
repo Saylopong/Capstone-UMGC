@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://d0gg4j7di5lw2"]
+
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_5v545"]
+[ext_resource type="Texture2D" uid="uid://du7haef74sy0u" path="res://Resources/ASL_Data_Set/DataBase2/ASL_Signs_D2/ASL_Images_D2/Yes.png" id="1_0140s"]
+
+[resource]
+script = ExtResource("1_5v545")
+meaning = "Yes"
+image = ExtResource("1_0140s")
+metadata/_custom_type_script = "uid://4qu5sso38pu"
