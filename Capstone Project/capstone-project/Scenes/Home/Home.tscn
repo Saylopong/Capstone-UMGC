@@ -1,10 +1,11 @@
-[gd_scene format=3 uid="uid://dcjicbbaddqtb"]
+[gd_scene format=3 uid="uid://eehdoi3gr8ig"]
 
 [ext_resource type="Script" uid="uid://davs0275e01sw" path="res://Scenes/Home/home.gd" id="1_o3e1b"]
 [ext_resource type="PackedScene" uid="uid://d1ibib7r3oypb" path="res://Scenes/News_Paper/news_paper.tscn" id="2_vgcgf"]
 [ext_resource type="PackedScene" uid="uid://ctdao1oqqfl7s" path="res://Scenes/Bed/Bed.tscn" id="3_lpn0j"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ejmsa"]
+distance = 17.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6cob"]
 
@@ -12,7 +13,7 @@
 script = ExtResource("1_o3e1b")
 
 [node name="TOP_WALL" type="StaticBody2D" parent="." unique_id=2086374858]
-position = Vector2(576, 0)
+position = Vector2(539, 17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TOP_WALL" unique_id=58376588]
 shape = SubResource("WorldBoundaryShape2D_ejmsa")
