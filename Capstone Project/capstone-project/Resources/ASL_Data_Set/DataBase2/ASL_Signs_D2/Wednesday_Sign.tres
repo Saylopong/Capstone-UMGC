@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://x8d1jmnbwg61"]
+
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_0slmy"]
+[ext_resource type="Texture2D" uid="uid://d007d2i2ogujb" path="res://Resources/ASL_Data_Set/DataBase2/ASL_Signs_D2/ASL_Images_D2/Wednesday.png" id="1_5gpv7"]
+
+[resource]
+script = ExtResource("1_0slmy")
+meaning = "Wednesday"
+image = ExtResource("1_5gpv7")
+metadata/_custom_type_script = "uid://4qu5sso38pu"
