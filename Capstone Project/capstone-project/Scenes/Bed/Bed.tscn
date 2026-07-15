@@ -1,27 +1,41 @@
 [gd_scene format=3 uid="uid://ctdao1oqqfl7s"]
 
 [ext_resource type="Script" uid="uid://b8uhlgo46tnc6" path="res://Scenes/Bed/bed.gd" id="1_dx0qx"]
-[ext_resource type="Texture2D" uid="uid://bdqq72rdiib14" path="res://Resources/icon.svg" id="2_qqko0"]
+[ext_resource type="Texture2D" uid="uid://c2gwkqg473sug" path="res://Resources/Interiors_Tileset/32x32/Singles_32x32/Item_singles_33_32x32.png" id="2_qqko0"]
+[ext_resource type="Texture2D" uid="uid://trroilqbx6uu" path="res://Resources/mp_house_interiors_tileset_pack/mp_house_interiors_tileset_pack/Basic_Furniture.png" id="3_qqko0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejmsa"]
 size = Vector2(240.5, 221)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6cob"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8ft6"]
+atlas = ExtResource("3_qqko0")
+region = Rect2(0, 24, 16, 24)
+
 [node name="Bed" type="Area2D" unique_id=1206283599]
 script = ExtResource("1_dx0qx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=557965512]
+visible = false
 texture = ExtResource("2_qqko0")
 
 [node name="Interact_Zone" type="CollisionShape2D" parent="." unique_id=250077305]
+visible = false
 shape = SubResource("RectangleShape2D_ejmsa")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1186731053]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1357507198]
+visible = false
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_y6cob")
+
+[node name="ItemSingles3348x48" type="Sprite2D" parent="." unique_id=767824844]
+position = Vector2(-7, 1)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AtlasTexture_t8ft6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
