@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://dsxxrusux3k5i"]
+
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_5vuve"]
+[ext_resource type="Texture2D" uid="uid://dqkj7hp6buh2j" path="res://Resources/ASL_Data_Set/DataBase2/ASL_Signs_D2/ASL_Images_D2/Money.png" id="1_mbvow"]
+
+[resource]
+script = ExtResource("1_5vuve")
+meaning = "Money"
+image = ExtResource("1_mbvow")
+metadata/_custom_type_script = "uid://4qu5sso38pu"
