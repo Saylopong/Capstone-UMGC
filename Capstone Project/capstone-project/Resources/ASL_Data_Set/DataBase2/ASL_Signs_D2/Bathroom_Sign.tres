@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://cwg2dc01nmabh"]
+
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_5x1pt"]
+
+[resource]
+script = ExtResource("1_5x1pt")
+metadata/_custom_type_script = "uid://4qu5sso38pu"
