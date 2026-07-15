@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://cs667hsowc61p"]
 
 [ext_resource type="TileSet" uid="uid://xw2juhh588s2" path="res://Scenes/Farm/Tilesets/game_tile_set.tres" id="1_0f0qd"]
-[ext_resource type="PackedScene" uid="uid://dsj42qi62y85u" path="res://Scenes/Farm/test_collision_player.tscn" id="2_mstr7"]
 [ext_resource type="PackedScene" uid="uid://sjnrnc7cs4gp" path="res://Scenes/Tree/Tree.tscn" id="3_3fh50"]
+[ext_resource type="PackedScene" uid="uid://7hudawxston6" path="res://Scenes/Character/Character.tscn" id="3_p01lv"]
 
 [node name="Farm" type="Node2D" unique_id=1743081988]
 
@@ -28,9 +28,6 @@ tile_set = ExtResource("1_0f0qd")
 tile_map_data = PackedByteArray("AAAxABUABAAAAAAAAQA=")
 tile_set = ExtResource("1_0f0qd")
 
-[node name="Player" parent="TileMap" unique_id=1276209678 instance=ExtResource("2_mstr7")]
-position = Vector2(729, 343)
-
 [node name="TREE1" parent="TileMap" unique_id=626465503 instance=ExtResource("3_3fh50")]
 position = Vector2(232, 454)
 obj_name = "TREE1"
@@ -42,3 +39,7 @@ obj_name = "TREE2"
 [node name="TREE3" parent="TileMap" unique_id=124888869 instance=ExtResource("3_3fh50")]
 position = Vector2(578, 457)
 obj_name = "TREE3"
+
+[node name="Character" parent="." unique_id=1486054298 instance=ExtResource("3_p01lv")]
+position = Vector2(251, 157)
+scale = Vector2(3, 3)

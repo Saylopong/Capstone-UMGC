@@ -90,8 +90,10 @@ func quit_game():
 
 #add object to in_zone
 func player_entered_interactable_zone(object: String):
+	print("Character entered:",object)
 	in_zone.append(object)
 
 #remove object from in_zone
 func player_left_interactable_zone(object: String):
+	print("Character left:",object)
 	in_zone.erase(object)

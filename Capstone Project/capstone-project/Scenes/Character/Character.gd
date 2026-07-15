@@ -1,26 +1,103 @@
 extends CharacterBody2D
 
-const MOVE_SPEED: float = 100
+@onready var walk_forward: AnimatedSprite2D = $"Walk Forward"
+@onready var walk_backward: AnimatedSprite2D = $"Walk Backward"
+@onready var walk_left: AnimatedSprite2D = $"Walk Left"
+@onready var walk_right: AnimatedSprite2D = $"Walk Right"
 
-var current_interactable: Interactable_Object = null
+#sets move speed
+const MOVE_SPEED: int = 200
 
-func _unhandled_input(event: InputEvent) -> void:
-	#check for WASD inputs and adjust move flags to reflect character direction
-	pass
+var move_direction: Vector2 = Vector2(0,0)
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	walk_backward.hide()
+	walk_left.hide()
+	walk_right.hide()
+	walk_forward.show()
+
+#plays correct animation based on move_diretion
+#and stops all other animations
+func play_animation():
+	#play walk_forward animation and stop all others
+	if (move_direction.y > 0):
+		#Stop and hide all other animations
+		walk_backward.stop()
+		walk_backward.hide()
+		walk_left.stop()
+		walk_left.hide()
+		walk_right.stop()
+		walk_right.hide()
+		#Play and show correct animation
+		walk_forward.show()
+		walk_forward.play()
+	#play walk_backward animation and stop all others
+	if (move_direction.y < 0):
+		#Stop and hide all other animations
+		walk_forward.stop()
+		walk_forward.hide()
+		walk_left.stop()
+		walk_left.hide()
+		walk_right.stop()
+		walk_right.hide()
+		#Play and show correct animation
+		walk_backward.show()
+		walk_backward.play()
+	#play walk_left animation and stop all others
+	if (move_direction.x < 0 && move_direction.y == 0):
+		#Stop and hide all other animations
+		walk_backward.stop()
+		walk_backward.hide()
+		walk_forward.stop()
+		walk_forward.hide()
+		walk_right.stop()
+		walk_right.hide()
+		#Play and show correct animation
+		walk_left.show()
+		walk_left.play()
+	#play walk_right animation and stop all others
+	if (move_direction.x > 0 && move_direction.y == 0):
+		#Stop and hide all other animations
+		walk_backward.stop()
+		walk_backward.hide()
+		walk_left.stop()
+		walk_left.hide()
+		walk_forward.stop()
+		walk_forward.hide()
+		#Play and show correct animation
+		walk_right.show()
+		walk_right.play()
+
+#stops all animation
+func stop_animation():
+	walk_backward.stop()
+	walk_forward.stop()
+	walk_left.stop()
+	walk_right.stop()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+		pass
 
 func _physics_process(delta: float) -> void:
-	#adjust player velocity to movespeed in the direct when pressed and uses set_vector
-	pass
 
-func get_movement() -> Vector2:
-	#returns character movement vector multiplied by MOVE_SPEED
-	return Vector2(0,0)
+	move_direction = Vector2.ZERO
+	
+	if Input.is_action_pressed("Up"):
+		move_direction.y -= 1
+	if Input.is_action_pressed("Down"):
+		move_direction.y += 1
+	if Input.is_action_pressed("Left"):
+		move_direction.x -= 1
+	if Input.is_action_pressed("Right"):
+		move_direction.x += 1
+		
+	velocity = move_direction*MOVE_SPEED
+	
+	play_animation()
 
-func interact() -> void:
-	#Interact with object	
-	pass
-
-func set_current_interactable(interactable: Interactable_Object) -> void:
-	#used to tell character what it is currently in the interaction zone of an Interactable_Obhect
-	#Is passed null if player leaves an interaction zone of an Interactable_Object
-	current_interactable = interactable
+	if(move_direction == Vector2(0,0)):
+		stop_animation()
+		
+	move_and_slide()
