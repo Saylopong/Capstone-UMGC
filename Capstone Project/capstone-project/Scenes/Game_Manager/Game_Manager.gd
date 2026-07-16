@@ -6,16 +6,20 @@ extends Node
 @onready var asl_quiz_ui: ASL_Quiz_UI = $ASL_Quiz_UI
 @onready var scene_container: MarginContainer = $Scene_Container
 
+#We will need to adjust the preload for the final version
+#of each scene
 const FARM: PackedScene = preload("uid://cs667hsowc61p")
 const HOME: PackedScene = preload("uid://bw02fladr3bc1")
 
-#stores what zones the character is currently in
-var in_zone: Array[String]
+const QUESTIONS_IN_QUIZ: int = 4
 
 #represents question/learning bank for each tree
 @export var database1: ASLDataBase
 @export var database2: ASLDataBase
 @export var database3: ASLDataBase
+
+#stores what zones the character is currently in
+var in_zone: Array[String]
 
 var tree1_total_questions: int = 0
 var tree2_total_questions: int = 0
@@ -23,6 +27,10 @@ var tree3_total_questions: int = 0
 var tree1_correct: int = 0
 var tree2_correct: int = 0
 var tree3_correct: int = 0
+
+var last_quiz_tree: String
+
+
 
 func _ready() -> void:
 	#connects functions to signals
@@ -79,14 +87,20 @@ func Handle_Interact(Interactable: String):
 			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database1.get_all_questions()))
 			asl_learning_ui.hide()
 			asl_quiz_ui.show()
+			tree1_total_questions += QUESTIONS_IN_QUIZ
+			last_quiz_tree = "TREE1"
 		"TREE2":
 			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database2.get_all_questions()))
 			asl_learning_ui.hide()
 			asl_quiz_ui.show()
+			tree2_total_questions += QUESTIONS_IN_QUIZ
+			last_quiz_tree = "TREE2"
 		"TREE3":
 			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database3.get_all_questions()))
 			asl_learning_ui.hide()
 			asl_quiz_ui.show()
+			tree3_total_questions += QUESTIONS_IN_QUIZ
+			last_quiz_tree = "TREE3"
 		"NEWSPAPER":
 			print("Learning Started")
 			asl_quiz_ui.hide()
@@ -117,8 +131,15 @@ func show_new_signs():
 		pass
 
 func end_quiz(correclty_answered: int):
-	#correclty_answered represents how many questions the player answered
-	#correctly during the quiz.
+	#adds the number of correctly answered questions to the correct tree var
+	match last_quiz_tree:
+		"TREE1":
+			tree1_correct += correclty_answered
+		"TREE2":
+			tree2_correct += correclty_answered
+		"TREE3":
+			tree3_correct += correclty_answered
+			
 	asl_quiz_ui.hide()
 	print("QUIZ FINISHED, correct:",correclty_answered)
 

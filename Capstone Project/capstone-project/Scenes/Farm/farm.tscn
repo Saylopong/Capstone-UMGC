@@ -33,26 +33,26 @@ tile_set = ExtResource("1_0f0qd")
 tile_map_data = PackedByteArray("AAAxABUABAAAAAAAAQA=")
 tile_set = ExtResource("1_0f0qd")
 
-[node name="TREE1" parent="TileMap" unique_id=626465503 instance=ExtResource("3_3fh50")]
-position = Vector2(232, 454)
-obj_name = "TREE1"
-
-[node name="TREE2" parent="TileMap" unique_id=1286409855 instance=ExtResource("3_3fh50")]
-position = Vector2(404, 456)
-obj_name = "TREE2"
-
-[node name="TREE3" parent="TileMap" unique_id=124888869 instance=ExtResource("3_3fh50")]
-position = Vector2(578, 457)
-obj_name = "TREE3"
-
 [node name="Character" parent="." unique_id=1486054298 instance=ExtResource("3_p01lv")]
 position = Vector2(251, 157)
 scale = Vector2(3, 3)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=337281787]
+[node name="door_to_home" type="Area2D" parent="." unique_id=337281787]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1486130596]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door_to_home" unique_id=1486130596]
 position = Vector2(887, 347)
 shape = SubResource("RectangleShape2D_ejmsa")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="TREE1" parent="." unique_id=626465503 instance=ExtResource("3_3fh50")]
+position = Vector2(232, 454)
+obj_name = "TREE1"
+
+[node name="TREE3" parent="." unique_id=124888869 instance=ExtResource("3_3fh50")]
+position = Vector2(578, 457)
+obj_name = "TREE3"
+
+[node name="TREE2" parent="." unique_id=1286409855 instance=ExtResource("3_3fh50")]
+position = Vector2(404, 456)
+obj_name = "TREE2"
+
+[connection signal="body_entered" from="door_to_home" to="." method="_on_area_2d_body_entered"]
