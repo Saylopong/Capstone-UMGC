@@ -21,6 +21,15 @@ const QUESTIONS_IN_QUIZ: int = 4
 #stores what zones the character is currently in
 var in_zone: Array[String]
 
+var tree_data: Array[int] = [
+	0,#Tree1 total questions
+	0,#Tree1 total questions answered correctly
+	0,#Tree2 total questions
+	0,#Tree2 total questions answered correctly
+	0,#Tree3 total questions
+	0,#Tree3 total questions answered correctly
+]
+
 var tree1_total_questions: int = 0
 var tree2_total_questions: int = 0
 var tree3_total_questions: int = 0
@@ -52,6 +61,7 @@ func load_farm():
 		scene_container.get_child(0).queue_free()
 	var farm = FARM.instantiate()
 	scene_container.add_child(farm)
+	set_tree_data()
 
 #Checks to see if there is already a child in scene_container
 #removes that child from the scene if there is 1
@@ -114,6 +124,7 @@ func Handle_Interact(Interactable: String):
 #should only show questions that the player has not unlocked at the current
 #difficulty level.
 func show_new_signs():
+	print("showing new signs")
 	if(database1.is_learned == false):
 		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database1.get_all_questions()))
 		asl_learning_ui.show()
@@ -142,6 +153,17 @@ func end_quiz(correclty_answered: int):
 			
 	asl_quiz_ui.hide()
 	print("QUIZ FINISHED, correct:",correclty_answered)
+
+#adds all tree data to tree_data array.
+#emits signal with array of tree data.
+func set_tree_data():
+	tree_data.set(0,tree1_total_questions)
+	tree_data.set(1,tree1_correct)
+	tree_data.set(2,tree2_total_questions)
+	tree_data.set(3,tree2_correct)
+	tree_data.set(4,tree3_total_questions)
+	tree_data.set(5,tree3_correct)
+	SignalHub.emit_tree_data(tree_data)
 
 func quit_game():
 	get_tree().quit()

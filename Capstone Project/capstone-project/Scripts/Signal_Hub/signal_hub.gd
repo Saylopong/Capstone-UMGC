@@ -9,6 +9,7 @@ signal unpause_game
 signal quit_game
 signal player_entered_home
 signal player_left_home
+signal tree_data(data: Array[int])
 
 func emit_player_entered_zone(zone: String):
 	player_entered_zone.emit(zone)
@@ -36,3 +37,7 @@ func emit_player_entered_home():
 
 func emit_player_left_home():
 	player_left_home.emit()
+
+func emit_tree_data(data: Array[int]):
+	tree_data.emit(data)
+		
