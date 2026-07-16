@@ -18,11 +18,16 @@ func _ready() -> void:
 	level_3.hide()
 	show_growth()
 
+func set_tree_data(total_Q: int, total_AC):
+	total_questions = total_Q
+	answered_correctly = total_AC
+	show_growth()
+
 func grow():
 	if total_questions >= 12 && answered_correctly/total_questions >= .75 && growth_stage == 1:
-		growth_stage += 1
+		growth_stage = 2
 	if total_questions >= 20 && answered_correctly/total_questions >= .75 && growth_stage == 2:
-		growth_stage += 1
+		growth_stage = 3
 	if answered_correctly/total_questions <= .5 && growth_stage != 1:
 		regress()
 		

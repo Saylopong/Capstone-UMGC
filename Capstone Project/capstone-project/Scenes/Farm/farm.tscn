@@ -39,20 +39,26 @@ tile_set = ExtResource("1_0f0qd")
 position = Vector2(887, 347)
 shape = SubResource("RectangleShape2D_ejmsa")
 
-[node name="TREE1" parent="." unique_id=626465503 instance=ExtResource("3_3fh50")]
-position = Vector2(232, 454)
-obj_name = "TREE1"
-
-[node name="TREE3" parent="." unique_id=124888869 instance=ExtResource("3_3fh50")]
-position = Vector2(578, 457)
-obj_name = "TREE3"
-
-[node name="TREE2" parent="." unique_id=1286409855 instance=ExtResource("3_3fh50")]
-position = Vector2(404, 456)
-obj_name = "TREE2"
-
 [node name="Character" parent="." unique_id=1486054298 instance=ExtResource("3_p01lv")]
 position = Vector2(251, 157)
 scale = Vector2(3, 3)
+
+[node name="Tree_container" type="Control" parent="." unique_id=1090410974]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TREE2" parent="Tree_container" unique_id=1286409855 instance=ExtResource("3_3fh50")]
+position = Vector2(404, 456)
+obj_name = "TREE2"
+
+[node name="TREE3" parent="Tree_container" unique_id=124888869 instance=ExtResource("3_3fh50")]
+position = Vector2(578, 457)
+obj_name = "TREE3"
+
+[node name="TREE1" parent="Tree_container" unique_id=626465503 instance=ExtResource("3_3fh50")]
+position = Vector2(232, 454)
+obj_name = "TREE1"
 
 [connection signal="body_entered" from="door_to_home" to="." method="_on_area_2d_body_entered"]
