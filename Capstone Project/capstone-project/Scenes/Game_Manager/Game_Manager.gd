@@ -4,6 +4,10 @@ extends Node
 #we will use .show() and .hide() as needed
 @onready var asl_learning_ui: ASL_Learning_UI = $ASL_Learning_UI
 @onready var asl_quiz_ui: ASL_Quiz_UI = $ASL_Quiz_UI
+@onready var scene_container: MarginContainer = $Scene_Container
+
+const FARM: PackedScene = preload("uid://cs667hsowc61p")
+const HOME: PackedScene = preload("uid://bw02fladr3bc1")
 
 #stores what zones the character is currently in
 var in_zone: Array[String]
@@ -19,6 +23,24 @@ func _ready() -> void:
 	SignalHub.player_left_zone.connect(player_left_interactable_zone)
 	SignalHub.quiz_finished.connect(end_quiz)
 	SignalHub.quit_game.connect(quit_game)
+	load_farm()
+	
+
+#Checks to see if there is already a child in scene_container
+#removes that child from the scene if there is 1
+#Instantiates a new farm scene and adds it to scene container
+func load_farm():
+	if(scene_container.get_child_count() == 1):
+		scene_container.get_child(0).queue_free()
+	var farm = FARM.instantiate()
+	scene_container.add_child(farm)
+
+func load_home():
+	if(scene_container.get_child_count() == 1):
+		scene_container.get_child(0).queue_free()
+	var home = HOME.instantiate()
+	scene_container.add_child(home)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	#checks if player pressed "E"
@@ -29,7 +51,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	#TEST_ACTION is Shift+T
 	if event.is_action_pressed("TEST_ACTION"):
 		print("TEST_ACTION PRESSED")
-		Handle_Interact("TREE1")
+		#Handle_Interact("TREE1")
+		load_home()
+			
 
 #performs correct action based on what object the player first entered the zone of.
 #if the player is in multiple objects zones the others are ignored.
