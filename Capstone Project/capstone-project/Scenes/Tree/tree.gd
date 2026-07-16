@@ -9,6 +9,9 @@ extends Area2D
 var interacted_today: bool = false
 var growth_stage: int = 1
 
+var total_questions: int
+var answered_correctly: int
+
 func _ready() -> void:
 	level_1.hide()
 	level_2.hide()
@@ -16,12 +19,18 @@ func _ready() -> void:
 	show_growth()
 
 func grow():
-	growth_stage += 1
+	if total_questions >= 12 && answered_correctly/total_questions >= .75 && growth_stage == 1:
+		growth_stage += 1
+	if total_questions >= 20 && answered_correctly/total_questions >= .75 && growth_stage == 2:
+		growth_stage += 1
+	if answered_correctly/total_questions <= .5 && growth_stage != 1:
+		regress()
+		
 	show_growth()
 
 func regress():
 	growth_stage -= 1
-	show_growth()
+
 
 func show_growth():
 	if(growth_stage == 1):
