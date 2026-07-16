@@ -126,6 +126,7 @@ func Handle_Interact(Interactable: String):
 func show_new_signs():
 	print("showing new signs")
 	if(database1.is_learned == false):
+		print("DB1-accessed")
 		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database1.get_all_questions()))
 		asl_learning_ui.show()
 		database1.is_learned_test()

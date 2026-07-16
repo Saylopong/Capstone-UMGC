@@ -18,7 +18,8 @@ class_name ASL_Learning_UI
 ]
 
 func start_learning(new_signs: Array[ASLSign]):
-	
+	print("started learning ASL_Learning_UI")
 	for i in range(new_signs.size()):
 		asl_images.get(i).texture = new_signs.get(i).image
 		meanings.get(i).text = new_signs.get(i).meaning
+		print("sign ",i," created")
