@@ -17,13 +17,23 @@ var in_zone: Array[String]
 @export var database2: ASLDataBase
 @export var database3: ASLDataBase
 
+var tree1_total_questions: int = 0
+var tree2_total_questions: int = 0
+var tree3_total_questions: int = 0
+var tree1_correct: int = 0
+var tree2_correct: int = 0
+var tree3_correct: int = 0
+
 func _ready() -> void:
 	#connects functions to signals
 	SignalHub.player_entered_zone.connect(player_entered_interactable_zone)
 	SignalHub.player_left_zone.connect(player_left_interactable_zone)
 	SignalHub.quiz_finished.connect(end_quiz)
 	SignalHub.quit_game.connect(quit_game)
+	SignalHub.player_entered_home.connect(load_home)
+	SignalHub.player_left_home.connect(load_farm)
 	load_farm()
+	
 	
 
 #Checks to see if there is already a child in scene_container
@@ -33,7 +43,6 @@ func load_farm():
 	if(scene_container.get_child_count() == 1):
 		scene_container.get_child(0).queue_free()
 	var farm = FARM.instantiate()
-	farm
 	scene_container.add_child(farm)
 
 #Checks to see if there is already a child in scene_container
