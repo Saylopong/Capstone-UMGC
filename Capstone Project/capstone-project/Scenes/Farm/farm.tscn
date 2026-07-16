@@ -1,10 +1,15 @@
 [gd_scene format=4 uid="uid://cs667hsowc61p"]
 
 [ext_resource type="TileSet" uid="uid://xw2juhh588s2" path="res://Scenes/Farm/Tilesets/game_tile_set.tres" id="1_0f0qd"]
+[ext_resource type="Script" uid="uid://b0ih1ec4ektud" path="res://Scenes/Farm/farm.gd" id="1_p01lv"]
 [ext_resource type="PackedScene" uid="uid://sjnrnc7cs4gp" path="res://Scenes/Tree/Tree.tscn" id="3_3fh50"]
 [ext_resource type="PackedScene" uid="uid://7hudawxston6" path="res://Scenes/Character/Character.tscn" id="3_p01lv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejmsa"]
+size = Vector2(29.5, 17)
+
 [node name="Farm" type="Node2D" unique_id=1743081988]
+script = ExtResource("1_p01lv")
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1896476714]
 
@@ -43,3 +48,11 @@ obj_name = "TREE3"
 [node name="Character" parent="." unique_id=1486054298 instance=ExtResource("3_p01lv")]
 position = Vector2(251, 157)
 scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=337281787]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1486130596]
+position = Vector2(887, 347)
+shape = SubResource("RectangleShape2D_ejmsa")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

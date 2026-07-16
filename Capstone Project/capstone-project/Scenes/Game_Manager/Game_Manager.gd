@@ -33,8 +33,12 @@ func load_farm():
 	if(scene_container.get_child_count() == 1):
 		scene_container.get_child(0).queue_free()
 	var farm = FARM.instantiate()
+	farm
 	scene_container.add_child(farm)
 
+#Checks to see if there is already a child in scene_container
+#removes that child from the scene if there is 1
+#Instantiates a new home scene and adds it to scene container
 func load_home():
 	if(scene_container.get_child_count() == 1):
 		scene_container.get_child(0).queue_free()
@@ -52,7 +56,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("TEST_ACTION"):
 		print("TEST_ACTION PRESSED")
 		#Handle_Interact("TREE1")
-		load_home()
+		#load_home()
 			
 
 #performs correct action based on what object the player first entered the zone of.
