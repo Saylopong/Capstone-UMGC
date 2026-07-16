@@ -7,6 +7,8 @@ signal quiz_finished(correctly_answered: int)
 signal pause_game
 signal unpause_game
 signal quit_game
+signal player_entered_home
+signal player_left_home
 
 func emit_player_entered_zone(zone: String):
 	player_entered_zone.emit(zone)
@@ -28,3 +30,9 @@ func emit_unpause_game():
 
 func emit_quit_game():
 	quit_game.emit()
+
+func emit_player_entered_home():
+	player_entered_home.emit()
+
+func emit_player_left_home():
+	player_left_home.emit()
