@@ -40,7 +40,10 @@ var tree3_correct: int = 0
 
 var last_quiz_tree: String
 
-var game_paused: bool = false
+var tree1_interacted: bool = false
+var tree2_interacted: bool = false
+var tree3_interacted: bool = false
+var newspaper_interacted: bool = false
 
 func _ready() -> void:
 	#connects functions to signals
@@ -99,41 +102,50 @@ func _unhandled_input(event: InputEvent) -> void:
 func Handle_Interact(Interactable: String):
 	match Interactable:
 		"TREE1":
-			#Changes how asl_quiz_ui interacts when the tree is paused.
-			asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
-			get_tree().paused = true
-			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database1.get_all_questions()))
-			asl_learning_ui.hide()
-			asl_quiz_ui.show()
-			tree1_total_questions += QUESTIONS_IN_QUIZ
-			last_quiz_tree = "TREE1"
+			if tree1_interacted == false:
+				#Changes how asl_quiz_ui interacts when the tree is paused.
+				asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+				get_tree().paused = true
+				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database1.get_all_questions()))
+				asl_learning_ui.hide()
+				asl_quiz_ui.show()
+				tree1_total_questions += QUESTIONS_IN_QUIZ
+				last_quiz_tree = "TREE1"
+				tree1_interacted = true
 		"TREE2":
-			#Changes how asl_quiz_ui interacts when the tree is paused.
-			asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
-			get_tree().paused = true
-			
-			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database2.get_all_questions()))
-			asl_learning_ui.hide()
-			asl_quiz_ui.show()
-			tree2_total_questions += QUESTIONS_IN_QUIZ
-			last_quiz_tree = "TREE2"
+			if tree2_interacted == false:
+				#Changes how asl_quiz_ui interacts when the tree is paused.
+				asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+				get_tree().paused = true
+				
+				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database2.get_all_questions()))
+				asl_learning_ui.hide()
+				asl_quiz_ui.show()
+				tree2_total_questions += QUESTIONS_IN_QUIZ
+				last_quiz_tree = "TREE2"
+				tree2_interacted = true
 		"TREE3":
-			#Changes how asl_quiz_ui interacts when the tree is paused.
-			asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
-			get_tree().paused = true
-			
-			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database3.get_all_questions()))
-			asl_learning_ui.hide()
-			asl_quiz_ui.show()
-			tree3_total_questions += QUESTIONS_IN_QUIZ
-			last_quiz_tree = "TREE3"
+			if tree3_interacted == false:
+				#Changes how asl_quiz_ui interacts when the tree is paused.
+				asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+				get_tree().paused = true
+				
+				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database3.get_all_questions()))
+				asl_learning_ui.hide()
+				asl_quiz_ui.show()
+				tree3_total_questions += QUESTIONS_IN_QUIZ
+				last_quiz_tree = "TREE3"
+				
+				tree3_interacted = true
 		"NEWSPAPER":
-			asl_quiz_ui.hide()
-			asl_learning_ui.show()
-			show_new_signs()
+			if newspaper_interacted == false:
+				asl_quiz_ui.hide()
+				asl_learning_ui.show()
+				show_new_signs()
+				newspaper_interacted = true
 		"BED":
-			#Reset Day
-			pass
+			reset_day()
+
 
 #updates asl_learning_ui with new ASL signs for the player to learn.
 #should only show questions that the player has not unlocked at the current
@@ -193,6 +205,12 @@ func set_tree_data():
 
 func quit_game():
 	get_tree().quit()
+
+func reset_day():
+	tree1_interacted = false
+	tree2_interacted = false
+	tree3_interacted = false
+	newspaper_interacted = false
 
 #add object to in_zone
 func player_entered_interactable_zone(object: String):
