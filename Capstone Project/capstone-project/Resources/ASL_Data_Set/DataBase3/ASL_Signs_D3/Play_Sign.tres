@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://bc0sex0f805xw"]
+
+[ext_resource type="Texture2D" uid="uid://dj0dpawlyqxtk" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/ASL_Images_D3/Play.png" id="1_l8a1o"]
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_ntc7d"]
+
+[resource]
+script = ExtResource("1_ntc7d")
+meaning = "Play"
+image = ExtResource("1_l8a1o")
+metadata/_custom_type_script = "uid://4qu5sso38pu"
