@@ -39,7 +39,7 @@ var tree3_correct: int = 0
 
 var last_quiz_tree: String
 
-
+var game_paused: bool = false
 
 func _ready() -> void:
 	#connects functions to signals
@@ -50,11 +50,8 @@ func _ready() -> void:
 	SignalHub.player_entered_home.connect(load_home)
 	SignalHub.player_left_home.connect(load_farm)
 	SignalHub.learning_finished.connect(end_learning)
-	
-	database1.is_learned_test()
-	database2.is_learned_test()
-	database3.is_learned_test()
-	
+	SignalHub.pause_game.connect(pause_game)
+	SignalHub.unpause_game.connect(unpause_game)
 	load_farm()
 	
 	
@@ -101,26 +98,35 @@ func _unhandled_input(event: InputEvent) -> void:
 func Handle_Interact(Interactable: String):
 	match Interactable:
 		"TREE1":
-			print("Quiz Started")
+			#Changes how asl_quiz_ui interacts when the tree is paused.
+			asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+			get_tree().paused = true
 			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database1.get_all_questions()))
 			asl_learning_ui.hide()
 			asl_quiz_ui.show()
 			tree1_total_questions += QUESTIONS_IN_QUIZ
 			last_quiz_tree = "TREE1"
 		"TREE2":
+			#Changes how asl_quiz_ui interacts when the tree is paused.
+			asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+			get_tree().paused = true
+			
 			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database2.get_all_questions()))
 			asl_learning_ui.hide()
 			asl_quiz_ui.show()
 			tree2_total_questions += QUESTIONS_IN_QUIZ
 			last_quiz_tree = "TREE2"
 		"TREE3":
+			#Changes how asl_quiz_ui interacts when the tree is paused.
+			asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+			get_tree().paused = true
+			
 			asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database3.get_all_questions()))
 			asl_learning_ui.hide()
 			asl_quiz_ui.show()
 			tree3_total_questions += QUESTIONS_IN_QUIZ
 			last_quiz_tree = "TREE3"
 		"NEWSPAPER":
-			print("Learning Started")
 			asl_quiz_ui.hide()
 			asl_learning_ui.show()
 			show_new_signs()
@@ -133,8 +139,9 @@ func Handle_Interact(Interactable: String):
 #difficulty level.
 func show_new_signs():
 	var show_one_ui = false
+	asl_learning_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().paused = true
 	if(database1.is_learned == false && show_one_ui == false):
-		print("Displaying")
 		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database1.get_all_questions()))
 		asl_learning_ui.show()
 		database1.is_learned_test()
@@ -164,9 +171,13 @@ func end_quiz(correclty_answered: int):
 			tree3_correct += correclty_answered
 			
 	asl_quiz_ui.hide()
+	asl_quiz_ui.process_mode = Node.PROCESS_MODE_INHERIT
+	get_tree().paused = false
 
 func end_learning():
 	asl_learning_ui.hide()
+	asl_learning_ui.process_mode = Node.PROCESS_MODE_INHERIT
+	get_tree().paused = false
 
 #adds all tree data to tree_data array.
 #emits signal with array of tree data.
@@ -191,3 +202,15 @@ func player_entered_interactable_zone(object: String):
 func player_left_interactable_zone(object: String):
 	print("Character left:",object)
 	in_zone.erase(object)
+
+func pause_game():
+	if(asl_learning_ui.visible == true):
+		asl_learning_ui.process_mode = Node.PROCESS_MODE_INHERIT
+	if(asl_quiz_ui.visible == true):
+		asl_quiz_ui.process_mode = Node.PROCESS_MODE_INHERIT
+	get_tree().paused = true
+
+func unpause_game():
+	if(asl_learning_ui.visible == false && asl_quiz_ui.visible == false):
+		get_tree().paused = false
+	

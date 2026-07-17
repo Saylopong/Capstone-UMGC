@@ -8,5 +8,5 @@ static func createLearning(database: Array[ASLSign]) -> Array[ASLSign]:
 	
 	for i in AMT_OF_SIGNS:
 		learning.append(ASLLearning.generate_new_sign(database))
-	print("CreateASLLearning -> returning new learning")
+
 	return learning

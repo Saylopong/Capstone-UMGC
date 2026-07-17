@@ -10,6 +10,7 @@
 size = Vector2(29.5, 17)
 
 [node name="Farm" type="Node2D" unique_id=1743081988]
+process_mode = 1
 script = ExtResource("1_p01lv")
 
 [node name="TREE1" parent="." unique_id=626465503 instance=ExtResource("3_3fh50")]
