@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmp5resebvcv2"
-path="res://.godot/imported/D.jpg-e7b65326a264d886418b7726837ad661.ctex"
+uid="uid://dec1667vqujv3"
+path="res://.godot/imported/B.jpg-a5b34a4105998c7b69eb4adf0d23f760.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/ASL_Data_Set/Test_DB/Test_ASL/TEST_ASL_Images/D.jpg"
-dest_files=["res://.godot/imported/D.jpg-e7b65326a264d886418b7726837ad661.ctex"]
+source_file="res://Resources/ASL_Data_Set/Test_DB's/Test_ASL/TEST_ASL_Signs/B.jpg"
+dest_files=["res://.godot/imported/B.jpg-a5b34a4105998c7b69eb4adf0d23f760.ctex"]
 
 [params]
 

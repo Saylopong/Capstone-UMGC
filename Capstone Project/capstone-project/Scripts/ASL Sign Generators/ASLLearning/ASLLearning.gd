@@ -13,6 +13,6 @@ static func generate_new_sign(database: Array[ASLSign]) -> ASLSign:
 			
 	#sets new_sign is_unlocked to true
 	new_sign.is_unlocked = true
-	print("ASLLearning -> returning new sign")
+	print("ASLLearning -> returning new sign: ",new_sign.meaning)
 	return new_sign
 	

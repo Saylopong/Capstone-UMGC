@@ -49,6 +49,12 @@ func _ready() -> void:
 	SignalHub.quit_game.connect(quit_game)
 	SignalHub.player_entered_home.connect(load_home)
 	SignalHub.player_left_home.connect(load_farm)
+	SignalHub.learning_finished.connect(end_learning)
+	
+	database1.is_learned_test()
+	database2.is_learned_test()
+	database3.is_learned_test()
+	
 	load_farm()
 	
 	
@@ -80,10 +86,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		if in_zone.size() != 0:
 			Handle_Interact(in_zone.get(0))
 	#TEST_ACTION is Shift+T
-	if event.is_action_pressed("TEST_ACTION"):
+	elif event.is_action_pressed("TEST_ACTION"):
 		print("TEST_ACTION PRESSED")
 		#Handle_Interact("TREE1")
 		#load_home()
+	else:
+		pass
 			
 
 #performs correct action based on what object the player first entered the zone of.
@@ -124,20 +132,23 @@ func Handle_Interact(Interactable: String):
 #should only show questions that the player has not unlocked at the current
 #difficulty level.
 func show_new_signs():
-	print("showing new signs")
-	if(database1.is_learned == false):
-		print("DB1-accessed")
+	var show_one_ui = false
+	if(database1.is_learned == false && show_one_ui == false):
+		print("Displaying")
 		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database1.get_all_questions()))
 		asl_learning_ui.show()
 		database1.is_learned_test()
-	if(database1.is_learned && database2.is_learned == false):
+		show_one_ui = true
+	if(database1.is_learned && database2.is_learned == false && show_one_ui == false):
 		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database2.get_all_questions()))
 		asl_learning_ui.show()
 		database2.is_learned_test()
-	if(database1.is_learned && database2.is_learned && database3.is_learned == false):
+		show_one_ui = true
+	if(database1.is_learned && database2.is_learned && database3.is_learned == false && show_one_ui == false):
 		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database3.get_all_questions()))
 		asl_learning_ui.show()
 		database3.is_learned_test()
+		show_one_ui = true
 	if(database1.is_learned && database2.is_learned && database3.is_learned):
 		#Could show text showing all currently implimented ASL signs have been learned
 		pass
@@ -153,7 +164,9 @@ func end_quiz(correclty_answered: int):
 			tree3_correct += correclty_answered
 			
 	asl_quiz_ui.hide()
-	print("QUIZ FINISHED, correct:",correclty_answered)
+
+func end_learning():
+	asl_learning_ui.hide()
 
 #adds all tree data to tree_data array.
 #emits signal with array of tree data.

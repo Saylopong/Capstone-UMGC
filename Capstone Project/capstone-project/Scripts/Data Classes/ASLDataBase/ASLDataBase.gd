@@ -10,10 +10,11 @@ var is_learned: bool = false
 
 #tests if the data base has all questions unlocked
 func is_learned_test():
+	is_learned = true
 	for ASLSign in all_qestions:
 		if(ASLSign.is_unlocked == false):
+			is_learned = false
 			break
-	is_learned = true
 
 func get_all_questions() -> Array[ASLSign]:
 	return all_qestions

@@ -23,3 +23,7 @@ func start_learning(new_signs: Array[ASLSign]):
 		asl_images.get(i).texture = new_signs.get(i).image
 		meanings.get(i).text = new_signs.get(i).meaning
 		print("sign ",i," created")
+
+
+func _on_button_pressed() -> void:
+	SignalHub.emit_learning_finished()

@@ -4,6 +4,7 @@ signal player_entered_zone(zone: String)
 signal player_left_zone(zone: String)
 signal tree_learned(difficulty: int)
 signal quiz_finished(correctly_answered: int)
+signal learning_finished
 signal pause_game
 signal unpause_game
 signal quit_game
@@ -22,6 +23,9 @@ func emit_tree_learned(difficulty: int):
 
 func emit_quiz_finished(correct: int):
 	quiz_finished.emit(correct)
+
+func emit_learning_finished():
+	learning_finished.emit()
 
 func emit_pause_game():
 	pause_game.emit()

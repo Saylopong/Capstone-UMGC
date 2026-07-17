@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://cyywd4r7ke2wk"]
+
+[ext_resource type="Texture2D" uid="uid://ce6w3wfjcefxq" path="res://Resources/ASL_Data_Set/Test_DB's/Test_ASL/TEST_ASL_Signs/A.jpg" id="1_rm74r"]
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="2_wshea"]
+
+[resource]
+script = ExtResource("2_wshea")
+meaning = "A"
+image = ExtResource("1_rm74r")
+metadata/_custom_type_script = "uid://4qu5sso38pu"
