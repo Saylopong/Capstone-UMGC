@@ -4,6 +4,7 @@ extends Node
 #we will use .show() and .hide() as needed
 @onready var asl_learning_ui: ASL_Learning_UI = $ASL_Learning_UI
 @onready var asl_quiz_ui: ASL_Quiz_UI = $ASL_Quiz_UI
+@onready var pause_ui: Control = $Pause_UI
 @onready var scene_container: MarginContainer = $Scene_Container
 
 #We will need to adjust the preload for the final version
@@ -203,14 +204,20 @@ func player_left_interactable_zone(object: String):
 	print("Character left:",object)
 	in_zone.erase(object)
 
+#sets either learning_ui and quiz_ui to inherit pause effect.
 func pause_game():
-	if(asl_learning_ui.visible == true):
+	if(get_tree().paused == true):
 		asl_learning_ui.process_mode = Node.PROCESS_MODE_INHERIT
-	if(asl_quiz_ui.visible == true):
 		asl_quiz_ui.process_mode = Node.PROCESS_MODE_INHERIT
-	get_tree().paused = true
+
 
 func unpause_game():
-	if(asl_learning_ui.visible == false && asl_quiz_ui.visible == false):
+	if asl_learning_ui.visible == true || asl_quiz_ui.visible == true:
+		get_tree().paused = true
+		#asl_learning_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+		#asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+	else:
 		get_tree().paused = false
+
+
 	
