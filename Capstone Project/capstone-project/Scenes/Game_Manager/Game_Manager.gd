@@ -204,20 +204,21 @@ func player_left_interactable_zone(object: String):
 	print("Character left:",object)
 	in_zone.erase(object)
 
-#sets either learning_ui and quiz_ui to inherit pause effect.
+#i'm not quite sure how this works.
+#my guess is that bsome part of the ui is not propogating clicks
+#that would be the only reason why the DONE button in learning ui
+#and the quiz buttons in quiz ui dont continue working though the game
+#is paused.
+#-------With that said, this does work, but may require further review.
 func pause_game():
 	if(get_tree().paused == true):
-		asl_learning_ui.process_mode = Node.PROCESS_MODE_INHERIT
-		asl_quiz_ui.process_mode = Node.PROCESS_MODE_INHERIT
-
+		asl_learning_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+		asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func unpause_game():
 	if asl_learning_ui.visible == true || asl_quiz_ui.visible == true:
 		get_tree().paused = true
-		#asl_learning_ui.process_mode = Node.PROCESS_MODE_ALWAYS
-		#asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
-	else:
-		get_tree().paused = false
+
 
 
 	
