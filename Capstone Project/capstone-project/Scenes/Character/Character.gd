@@ -76,11 +76,7 @@ func stop_animation():
 	walk_left.stop()
 	walk_right.stop()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-		pass
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 
 	move_direction = Vector2.ZERO
 	

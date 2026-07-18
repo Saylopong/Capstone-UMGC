@@ -66,14 +66,14 @@ func start_quiz(questions: Array[ASLQuestion]):
 	
 
 
-func next_question(quiz_index:int, quiz_question: Array[ASLQuestion]):
+func next_question(index:int, quiz_question: Array[ASLQuestion]):
 	if quiz_index >= quiz_question.size():
 		#emits signal that the quiz has finished along with
 		#the number of correctly answered questions
 		SignalHub.emit_quiz_finished(answered_correctly)
 		return
 	else:
-		randomize_question_type(quiz_question.get(quiz_index).question)
+		randomize_question_type(quiz_question.get(index).question)
 
 
 

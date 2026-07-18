@@ -39,11 +39,11 @@ func set_tree_data(tree_data: Array[int]):
 
 func grow():
 	if total_questions != 0:
-		if total_questions >= 12 && answered_correctly/total_questions >= .75 && growth_stage == 1:
+		if total_questions >= 12 && answered_correctly as float/total_questions as float >= .75 && growth_stage == 1:
 			growth_stage = 2
-		if total_questions >= 20 && answered_correctly/total_questions >= .75 && growth_stage == 2:
+		if total_questions >= 20 && answered_correctly as float/total_questions as float >= .75 && growth_stage == 2:
 			growth_stage = 3
-		if answered_correctly/total_questions <= .5 && growth_stage != 1:
+		if answered_correctly as float/total_questions as float <= .5 && growth_stage != 1:
 			regress()
 	#print(obj_name," : ",growth_stage)
 	#print(obj_name," : ",total_questions)

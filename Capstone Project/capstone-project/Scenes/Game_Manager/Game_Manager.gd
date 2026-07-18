@@ -57,8 +57,8 @@ func _ready() -> void:
 	SignalHub.player_entered_home.connect(load_home)
 	SignalHub.player_left_home.connect(load_farm)
 	SignalHub.learning_finished.connect(end_learning)
-	SignalHub.pause_game.connect(pause_game)
-	SignalHub.unpause_game.connect(unpause_game)
+	SignalHub.pause_game.connect(pause_scene)
+	SignalHub.unpause_game.connect(unpause_scene)
 	load_home()
 	
 	
@@ -71,7 +71,7 @@ func load_farm():
 		if(scene_container.get_child_count() == 1):
 			scene_container.get_child(0).queue_free()
 		var farm = FARM.instantiate()
-		scene_container.add_child(farm)
+		scene_container.add_child.call_deferred(farm)
 		set_tree_data()
 
 #Checks to see if there is already a child in scene_container
@@ -82,7 +82,7 @@ func load_home():
 		if(scene_container.get_child_count() == 1):
 			scene_container.get_child(0).queue_free()
 		var home = HOME.instantiate()
-		scene_container.add_child(home)
+		scene_container.add_child.call_deferred(home)
 
 func _unhandled_input(event: InputEvent) -> void:
 	#checks if player pressed "E"
@@ -107,9 +107,7 @@ func Handle_Interact(Interactable: String):
 	match Interactable:
 		"TREE1":
 			if tree1_interacted == false:
-				#Changes how asl_quiz_ui interacts when the tree is paused.
-				asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
-				get_tree().paused = true
+				pause_scene()
 				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database1.get_all_questions()))
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
@@ -118,10 +116,7 @@ func Handle_Interact(Interactable: String):
 				tree1_interacted = true
 		"TREE2":
 			if tree2_interacted == false && database1.is_learned == true:
-				#Changes how asl_quiz_ui interacts when the tree is paused.
-				asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
-				get_tree().paused = true
-				
+				pause_scene()
 				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database2.get_all_questions()))
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
@@ -130,16 +125,12 @@ func Handle_Interact(Interactable: String):
 				tree2_interacted = true
 		"TREE3":
 			if tree3_interacted == false && database1.is_learned == true && database2.is_learned == true:
-				#Changes how asl_quiz_ui interacts when the tree is paused.
-				asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
-				get_tree().paused = true
-				
+				pause_scene()
 				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database3.get_all_questions()))
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
 				tree3_total_questions += QUESTIONS_IN_QUIZ
 				last_quiz_tree = "TREE3"
-				
 				tree3_interacted = true
 		"NEWSPAPER":
 			if newspaper_interacted == false:
@@ -148,9 +139,11 @@ func Handle_Interact(Interactable: String):
 				show_new_signs()
 				newspaper_interacted = true
 		"BED":
-			fade_rect.show()
-			scene_container.process_mode = Node.PROCESS_MODE_DISABLED
-			fade_reset_day.play("Fade")
+			#stops player from going to bed if no trees have been interacted with
+			if tree1_interacted != false && tree2_interacted != false && tree3_interacted != false:
+				fade_rect.show()
+				scene_container.process_mode = Node.PROCESS_MODE_DISABLED
+				fade_reset_day.play("Fade")
 
 
 #updates asl_learning_ui with new ASL signs for the player to learn.
@@ -158,8 +151,7 @@ func Handle_Interact(Interactable: String):
 #difficulty level.
 func show_new_signs():
 	var show_one_ui = false
-	asl_learning_ui.process_mode = Node.PROCESS_MODE_ALWAYS
-	get_tree().paused = true
+	pause_scene()
 	if(database1.is_learned == false && show_one_ui == false):
 		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database1.get_all_questions()))
 		asl_learning_ui.show()
@@ -193,14 +185,12 @@ func end_quiz(correclty_answered: int):
 			print("Correct :",tree3_correct," Total Questions:", tree3_total_questions)
 			
 	asl_quiz_ui.hide()
-	asl_quiz_ui.process_mode = Node.PROCESS_MODE_INHERIT
-	get_tree().paused = false
+	unpause_scene()
 	
 
 func end_learning():
 	asl_learning_ui.hide()
-	asl_learning_ui.process_mode = Node.PROCESS_MODE_INHERIT
-	get_tree().paused = false
+	unpause_scene()
 
 #adds all tree data to tree_data array.
 #emits signal with array of tree data.
@@ -235,16 +225,15 @@ func player_left_interactable_zone(object: String):
 #and the quiz buttons in quiz ui dont continue working though the game
 #is paused.
 #-------With that said, this does work, but may require further review.
-func pause_game():
-	if(get_tree().paused == true):
-		asl_learning_ui.process_mode = Node.PROCESS_MODE_ALWAYS
-		asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
-
-func unpause_game():
+func pause_scene():
 	if asl_learning_ui.visible == true || asl_quiz_ui.visible == true:
-		get_tree().paused = true
+		scene_container.process_mode = Node.PROCESS_MODE_DISABLED
 
-func _on_fade_reset_day_animation_finished(anim_name: StringName) -> void:
+func unpause_scene():
+	if asl_learning_ui.visible == false && asl_quiz_ui.visible == false:
+		scene_container.process_mode = Node.PROCESS_MODE_INHERIT
+
+func _on_fade_reset_day_animation_finished(_anim_name: StringName) -> void:
 	tree1_interacted = false
 	tree2_interacted = false
 	tree3_interacted = false
