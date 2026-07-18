@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://b0ih1ec4ektud" path="res://Scenes/Farm/farm.gd" id="1_p01lv"]
 [ext_resource type="PackedScene" uid="uid://sjnrnc7cs4gp" path="res://Scenes/Tree/Tree.tscn" id="3_3fh50"]
 [ext_resource type="PackedScene" uid="uid://7hudawxston6" path="res://Scenes/Character/Character.tscn" id="3_p01lv"]
-[ext_resource type="PackedScene" uid="uid://d1ibib7r3oypb" path="res://Scenes/News_Paper/news_paper.tscn" id="4_xvaxp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejmsa"]
 size = Vector2(29.5, 17)
@@ -50,16 +49,11 @@ tile_set = ExtResource("1_0f0qd")
 [node name="door_to_home" type="Area2D" parent="." unique_id=337281787]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_to_home" unique_id=1486130596]
-position = Vector2(887, 347)
+position = Vector2(901, 347)
 shape = SubResource("RectangleShape2D_ejmsa")
 
 [node name="Character" parent="." unique_id=1486054298 instance=ExtResource("3_p01lv")]
-position = Vector2(251, 157)
+position = Vector2(900, 391)
 scale = Vector2(3, 3)
-
-[node name="News_Paper" parent="." unique_id=2007129299 instance=ExtResource("4_xvaxp")]
-position = Vector2(344, 164)
-scale = Vector2(2, 2)
-obj_name = "NEWSPAPER"
 
 [connection signal="body_entered" from="door_to_home" to="." method="_on_area_2d_body_entered"]

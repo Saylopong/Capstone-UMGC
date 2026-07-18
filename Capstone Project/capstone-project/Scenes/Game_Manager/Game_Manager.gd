@@ -10,7 +10,7 @@ extends Node
 #We will need to adjust the preload for the final version
 #of each scene
 const FARM: PackedScene = preload("uid://cs667hsowc61p")
-const HOME: PackedScene = preload("uid://bw02fladr3bc1")
+const HOME: PackedScene = preload("uid://uxjg36nseyn0")
 
 const QUESTIONS_IN_QUIZ: int = 4
 
