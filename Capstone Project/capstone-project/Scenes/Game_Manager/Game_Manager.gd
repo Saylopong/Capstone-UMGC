@@ -5,16 +5,18 @@ extends Node
 @onready var asl_learning_ui: ASL_Learning_UI = $ASL_Learning_UI
 @onready var asl_quiz_ui: ASL_Quiz_UI = $ASL_Quiz_UI
 @onready var pause_ui: Control = $Pause_UI
+
+#
 @onready var scene_container: MarginContainer = $Scene_Container
 @onready var fade_reset_day: AnimationPlayer = $Fade_reset_day
 @onready var fade_rect: ColorRect = $fade_rect
 
 
-#We will need to adjust the preload for the final version
-#of each scene
+#preloads of farm and home scene for quick instantiation
 const FARM: PackedScene = preload("uid://cs667hsowc61p")
 const HOME: PackedScene = preload("uid://uxjg36nseyn0")
 
+#amount of questions quizzes contain
 const QUESTIONS_IN_QUIZ: int = 4
 
 #represents question/learning bank for each tree
@@ -25,13 +27,15 @@ const QUESTIONS_IN_QUIZ: int = 4
 #stores what zones the character is currently in
 var in_zone: Array[String]
 
+#used to transfer data to Tree1,Tree2,andTree3 in farm scene when
+#instantiated. Transferred via Signal
 var tree_data: Array[int] = [
 	0,#Tree1 total questions
 	0,#Tree1 total questions answered correctly
 	0,#Tree2 total questions
 	0,#Tree2 total questions answered correctly
 	0,#Tree3 total questions
-	0,#Tree3 total questions answered correctly
+	0,#Tree3 total questions answered c orrectly
 ]
 
 var tree1_total_questions: int = 0
@@ -59,7 +63,6 @@ func _ready() -> void:
 	SignalHub.learning_finished.connect(end_learning)
 	SignalHub.pause_game.connect(pause_scene)
 	SignalHub.unpause_game.connect(unpause_scene)
-	pause_scene()
 	load_home()
 	
 	
@@ -90,21 +93,19 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interact"):
 		#checks if player has entered any objects interaction zone.
 		if in_zone.size() != 0:
-			Handle_Interact(in_zone.get(0))
+			handle_interact(in_zone.get(0))
 	#TEST_ACTION is Shift+T
 	elif event.is_action_pressed("TEST_ACTION"):
 		print("TEST_ACTION PRESSED")
 		#Handle_Interact("TREE1")
 		#load_home()
-	else:
-		pass
-			
+
 
 #performs correct action based on what object the player first entered the zone of.
 #if the player is in multiple objects zones the others are ignored.
 #since godot automatically resizes arrays in_zone.get(0) if in_zone.size() != 0 is
 #always valid.
-func Handle_Interact(Interactable: String):
+func handle_interact(Interactable: String):
 	match Interactable:
 		"TREE1":
 			if tree1_interacted == false:
@@ -217,16 +218,11 @@ func player_left_interactable_zone(object: String):
 	print("Character left:",object)
 	in_zone.erase(object)
 
-#i'm not quite sure how this works.
-#my guess is that bsome part of the ui is not propogating clicks
-#that would be the only reason why the DONE button in learning ui
-#and the quiz buttons in quiz ui dont continue working though the game
-#is paused.
-#-------With that said, this does work, but may require further review.
+#pauses the scene container when pause_scene is called
 func pause_scene():
 	if asl_learning_ui.visible == true || asl_quiz_ui.visible == true:
 		scene_container.process_mode = Node.PROCESS_MODE_DISABLED
-
+#unpauses the cene container when unause_scene is called
 func unpause_scene():
 	if asl_learning_ui.visible == false && asl_quiz_ui.visible == false:
 		scene_container.process_mode = Node.PROCESS_MODE_INHERIT
