@@ -589,8 +589,6 @@ use_texture_padding = false
 2:27/0 = 0
 1:27/0 = 0
 13:23/0 = 0
-14:23/0 = 0
-15:23/0 = 0
 
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_pqbio")
