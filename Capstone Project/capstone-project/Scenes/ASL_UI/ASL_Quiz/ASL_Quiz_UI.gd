@@ -51,7 +51,6 @@ func _ready() -> void:
 	mp_background.show()
 	image_container.show()
 	randomize_correct_answer()
-	print("Randomized CA:",correct_answer)
 
 func start_quiz(questions: Array[ASLQuestion]):
 	#clears previosu quiz_questions array
