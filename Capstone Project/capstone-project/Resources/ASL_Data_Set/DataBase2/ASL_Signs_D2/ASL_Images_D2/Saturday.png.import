@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vljkrepa047t"
-path="res://.godot/imported/Saturday.png-b86c8ddef35f47567d6e1429391f6f64.ctex"
+path="res://.godot/imported/Saturday.png-6c688f5cd41103078d3b2437fe399e6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/ASL_Images_D2/Saturday.png"
-dest_files=["res://.godot/imported/Saturday.png-b86c8ddef35f47567d6e1429391f6f64.ctex"]
+source_file="res://Resources/ASL_Data_Set/DataBase2/ASL_Signs_D2/ASL_Images_D2/Saturday.png"
+dest_files=["res://.godot/imported/Saturday.png-6c688f5cd41103078d3b2437fe399e6c.ctex"]
 
 [params]
 

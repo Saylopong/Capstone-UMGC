@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://depdixou4ydcc"
-path="res://.godot/imported/Where.png-5638a351b0c787f795f9d24132e75368.ctex"
+path="res://.godot/imported/Where.png-039cf94ff207fb98ae2a6c11c6135365.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/ASL_Images_D2/Where.png"
-dest_files=["res://.godot/imported/Where.png-5638a351b0c787f795f9d24132e75368.ctex"]
+source_file="res://Resources/ASL_Data_Set/DataBase2/ASL_Signs_D2/ASL_Images_D2/Where.png"
+dest_files=["res://.godot/imported/Where.png-039cf94ff207fb98ae2a6c11c6135365.ctex"]
 
 [params]
 
