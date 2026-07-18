@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://dfuk1au3frm75"]
+
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_3t4au"]
+[ext_resource type="Texture2D" uid="uid://bwlgr0xqumap7" path="res://Resources/ASL_Data_Set/DataBase2/ASL_Signs_D2/ASL_Images_D2/Tuesday.png" id="1_arfgy"]
+
+[resource]
+script = ExtResource("1_3t4au")
+meaning = "Tuesday"
+image = ExtResource("1_arfgy")
+metadata/_custom_type_script = "uid://4qu5sso38pu"

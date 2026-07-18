@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://bqyr341e10h70"]
+
+[ext_resource type="Texture2D" uid="uid://c7vrrdj5ji8xx" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/ASL_Images_D3/House.png" id="1_diae2"]
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_y14js"]
+
+[resource]
+script = ExtResource("1_y14js")
+meaning = "House"
+image = ExtResource("1_diae2")
+metadata/_custom_type_script = "uid://4qu5sso38pu"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ASLSign" format=3 uid="uid://bxtsww8b85iw8"]
+
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_gag4r"]
+[ext_resource type="Texture2D" uid="uid://b4l7writ1tay2" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/ASL_Images_D3/Rain.png" id="1_plcij"]
+
+[resource]
+script = ExtResource("1_gag4r")
+meaning = "Rain"
+image = ExtResource("1_plcij")
+metadata/_custom_type_script = "uid://4qu5sso38pu"
