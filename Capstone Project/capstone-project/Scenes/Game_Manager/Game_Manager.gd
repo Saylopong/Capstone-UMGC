@@ -6,6 +6,9 @@ extends Node
 @onready var asl_quiz_ui: ASL_Quiz_UI = $ASL_Quiz_UI
 @onready var pause_ui: Control = $Pause_UI
 @onready var scene_container: MarginContainer = $Scene_Container
+@onready var fade_reset_day: AnimationPlayer = $Fade_reset_day
+@onready var fade_rect: ColorRect = $fade_rect
+
 
 #We will need to adjust the preload for the final version
 #of each scene
@@ -56,7 +59,7 @@ func _ready() -> void:
 	SignalHub.learning_finished.connect(end_learning)
 	SignalHub.pause_game.connect(pause_game)
 	SignalHub.unpause_game.connect(unpause_game)
-	load_farm()
+	load_home()
 	
 	
 
@@ -64,21 +67,22 @@ func _ready() -> void:
 #removes that child from the scene if there is 1
 #Instantiates a new farm scene and adds it to scene container
 func load_farm():
-	if(scene_container.get_child_count() == 1):
-		scene_container.get_child(0).queue_free()
-	var farm = FARM.instantiate()
-	scene_container.add_child(farm)
-	set_tree_data()
+	if newspaper_interacted:
+		if(scene_container.get_child_count() == 1):
+			scene_container.get_child(0).queue_free()
+		var farm = FARM.instantiate()
+		scene_container.add_child(farm)
+		set_tree_data()
 
 #Checks to see if there is already a child in scene_container
 #removes that child from the scene if there is 1
 #Instantiates a new home scene and adds it to scene container
 func load_home():
-	if(scene_container.get_child_count() == 1):
-		scene_container.get_child(0).queue_free()
-	var home = HOME.instantiate()
-	scene_container.add_child(home)
-
+	
+		if(scene_container.get_child_count() == 1):
+			scene_container.get_child(0).queue_free()
+		var home = HOME.instantiate()
+		scene_container.add_child(home)
 
 func _unhandled_input(event: InputEvent) -> void:
 	#checks if player pressed "E"
@@ -113,7 +117,7 @@ func Handle_Interact(Interactable: String):
 				last_quiz_tree = "TREE1"
 				tree1_interacted = true
 		"TREE2":
-			if tree2_interacted == false:
+			if tree2_interacted == false && database1.is_learned == true:
 				#Changes how asl_quiz_ui interacts when the tree is paused.
 				asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
 				get_tree().paused = true
@@ -125,7 +129,7 @@ func Handle_Interact(Interactable: String):
 				last_quiz_tree = "TREE2"
 				tree2_interacted = true
 		"TREE3":
-			if tree3_interacted == false:
+			if tree3_interacted == false && database1.is_learned == true && database2.is_learned == true:
 				#Changes how asl_quiz_ui interacts when the tree is paused.
 				asl_quiz_ui.process_mode = Node.PROCESS_MODE_ALWAYS
 				get_tree().paused = true
@@ -144,7 +148,9 @@ func Handle_Interact(Interactable: String):
 				show_new_signs()
 				newspaper_interacted = true
 		"BED":
-			reset_day()
+			fade_rect.show()
+			scene_container.process_mode = Node.PROCESS_MODE_DISABLED
+			fade_reset_day.play("Fade")
 
 
 #updates asl_learning_ui with new ASL signs for the player to learn.
@@ -178,14 +184,18 @@ func end_quiz(correclty_answered: int):
 	match last_quiz_tree:
 		"TREE1":
 			tree1_correct += correclty_answered
+			print("Correct :",tree1_correct," Total Questions:", tree1_total_questions)
 		"TREE2":
 			tree2_correct += correclty_answered
+			print("Correct :",tree2_correct," Total Questions:", tree2_total_questions)
 		"TREE3":
 			tree3_correct += correclty_answered
+			print("Correct :",tree3_correct," Total Questions:", tree3_total_questions)
 			
 	asl_quiz_ui.hide()
 	asl_quiz_ui.process_mode = Node.PROCESS_MODE_INHERIT
 	get_tree().paused = false
+	
 
 func end_learning():
 	asl_learning_ui.hide()
@@ -206,11 +216,8 @@ func set_tree_data():
 func quit_game():
 	get_tree().quit()
 
-func reset_day():
-	tree1_interacted = false
-	tree2_interacted = false
-	tree3_interacted = false
-	newspaper_interacted = false
+
+
 
 #add object to in_zone
 func player_entered_interactable_zone(object: String):
@@ -237,6 +244,9 @@ func unpause_game():
 	if asl_learning_ui.visible == true || asl_quiz_ui.visible == true:
 		get_tree().paused = true
 
-
-
-	
+func _on_fade_reset_day_animation_finished(anim_name: StringName) -> void:
+	tree1_interacted = false
+	tree2_interacted = false
+	tree3_interacted = false
+	newspaper_interacted = false
+	scene_container.process_mode = Node.PROCESS_MODE_INHERIT

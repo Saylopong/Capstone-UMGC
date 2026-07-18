@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://sjnrnc7cs4gp"]
 
 [ext_resource type="Script" uid="uid://b8jrscgdrufvf" path="res://Scenes/Tree/tree.gd" id="1_hllwx"]
-[ext_resource type="Texture2D" uid="uid://c0jrncv38c702" path="res://Resources/PixelArt/TEST_Pixel_Trees.png" id="2_ot6bb"]
+[ext_resource type="Texture2D" uid="uid://bx021wce1l651" path="res://Resources/Textures/Tree Set/Premium_TreesUpdated_No_Outline.png" id="3_wro15"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ibkip"]
 radius = 31.016125
@@ -12,35 +12,90 @@ radius = 15.033297
 [node name="Tree" type="Area2D" unique_id=626465503]
 z_index = 2
 script = ExtResource("1_hllwx")
-
-[node name="Level 1" type="Sprite2D" parent="." unique_id=1241639308]
-position = Vector2(0, -20)
-scale = Vector2(0.5, 0.513)
-texture = ExtResource("2_ot6bb")
-region_enabled = true
-region_rect = Rect2(7, 137, 88, 119)
-
-[node name="Level 2" type="Sprite2D" parent="." unique_id=1571588725]
-position = Vector2(0, -50)
-scale = Vector2(1, 1.025)
-texture = ExtResource("2_ot6bb")
-region_enabled = true
-region_rect = Rect2(7, 137, 88, 119)
-
-[node name="Level 3" type="Sprite2D" parent="." unique_id=915585307]
-position = Vector2(0, -80)
-scale = Vector2(1.5, 1.537)
-texture = ExtResource("2_ot6bb")
-region_enabled = true
-region_rect = Rect2(7, 137, 88, 119)
+metadata/_edit_lock_ = true
 
 [node name="Interact_Zone" type="CollisionShape2D" parent="." unique_id=1859222873]
 shape = SubResource("CircleShape2D_ibkip")
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1057188089]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=665942265]
 shape = SubResource("CircleShape2D_hllwx")
+metadata/_edit_lock_ = true
+
+[node name="D1_T1" type="Sprite2D" parent="." unique_id=800601058]
+visible = false
+position = Vector2(-1, -22)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wro15")
+region_enabled = true
+region_rect = Rect2(354, 174, 27.299377, 37)
+
+[node name="D1_T2" type="Sprite2D" parent="." unique_id=87677169]
+visible = false
+position = Vector2(0, -56)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wro15")
+region_enabled = true
+region_rect = Rect2(393, 144, 46, 64)
+
+[node name="D1_T3" type="Sprite2D" parent="." unique_id=706683003]
+visible = false
+position = Vector2(-1, -77)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wro15")
+region_enabled = true
+region_rect = Rect2(456, 120, 47, 89)
+
+[node name="D2_T1" type="Sprite2D" parent="." unique_id=157343386]
+visible = false
+position = Vector2(-1, -25)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wro15")
+region_enabled = true
+region_rect = Rect2(354, 61, 27.299377, 37)
+
+[node name="D2_T2" type="Sprite2D" parent="." unique_id=1843308538]
+visible = false
+position = Vector2(-1, -59)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wro15")
+region_enabled = true
+region_rect = Rect2(391, 26, 49, 72)
+
+[node name="D2_T3" type="Sprite2D" parent="." unique_id=216961733]
+visible = false
+position = Vector2(-1, -74)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wro15")
+region_enabled = true
+region_rect = Rect2(455, 11, 49, 87)
+
+[node name="D3_T1" type="Sprite2D" parent="." unique_id=1888634790]
+visible = false
+position = Vector2(-1, -22)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wro15")
+region_enabled = true
+region_rect = Rect2(98, 174, 27.299377, 37)
+
+[node name="D3_T2" type="Sprite2D" parent="." unique_id=63162655]
+visible = false
+position = Vector2(-1, -54)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wro15")
+region_enabled = true
+region_rect = Rect2(132, 138, 55, 76)
+
+[node name="D3_T3" type="Sprite2D" parent="." unique_id=1604626188]
+visible = false
+position = Vector2(-4, -74)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wro15")
+region_enabled = true
+region_rect = Rect2(191, 120, 62, 92)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

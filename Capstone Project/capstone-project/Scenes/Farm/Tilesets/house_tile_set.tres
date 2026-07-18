@@ -68,6 +68,22 @@ texture = ExtResource("2_cajot")
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.057598, -8, -3.057598, -1.2590103, -8, -1.6187286)
 5:0/0 = 0
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:4/0 = 0
+4:3/0 = 0
+3:2/0 = 0
+3:4/0 = 0
+3:3/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+6:3/0 = 0
+6:4/0 = 0
+5:4/0 = 0
+5:3/0 = 0
+4:1/0 = 0
+4:0/0 = 0
+3:0/0 = 0
+3:1/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qoggw"]
 scenes/1/scene = ExtResource("3_hmyho")

@@ -2,9 +2,15 @@ extends Area2D
 
 @export var obj_name: String
 
-@onready var level_1: Sprite2D = $"Level 1"
-@onready var level_2: Sprite2D = $"Level 2"
-@onready var level_3: Sprite2D = $"Level 3"
+@onready var d_1_t_1: Sprite2D = $D1_T1
+@onready var d_1_t_2: Sprite2D = $D1_T2
+@onready var d_1_t_3: Sprite2D = $D1_T3
+@onready var d_2_t_1: Sprite2D = $D2_T1
+@onready var d_2_t_2: Sprite2D = $D2_T2
+@onready var d_2_t_3: Sprite2D = $D2_T3
+@onready var d_3_t_1: Sprite2D = $D3_T1
+@onready var d_3_t_2: Sprite2D = $D3_T2
+@onready var d_3_t_3: Sprite2D = $D3_T3
 
 var interacted_today: bool = false
 var growth_stage: int = 1
@@ -14,9 +20,6 @@ var answered_correctly: int
 
 func _ready() -> void:
 	SignalHub.tree_data.connect(set_tree_data)
-	level_1.hide()
-	level_2.hide()
-	level_3.hide()
 	show_growth()
 
 #sets tree data based on data contained w/in game manager
@@ -53,11 +56,44 @@ func regress():
 
 func show_growth():
 	if(growth_stage == 1):
-		level_1.show()
+		if(obj_name == "TREE1"):
+			d_1_t_1.show()
+			d_1_t_2.hide()
+			d_1_t_3.hide()
+		if(obj_name == "TREE2"):
+			d_2_t_1.show()
+			d_2_t_2.hide()
+			d_2_t_3.hide()
+		if(obj_name == "TREE3"):
+			d_3_t_1.show()
+			d_3_t_2.hide()
+			d_3_t_3.hide()
 	if(growth_stage == 2):
-		level_2.show()
+		if(obj_name == "TREE1"):
+			d_1_t_1.hide()
+			d_1_t_2.show()
+			d_1_t_3.hide()
+		if(obj_name == "TREE2"):
+			d_2_t_1.hide()
+			d_2_t_2.show()
+			d_2_t_3.hide()
+		if(obj_name == "TREE3"):
+			d_3_t_1.hide()
+			d_3_t_2.show()
+			d_3_t_3.hide()
 	if(growth_stage == 3):
-		level_3.show()
+		if(obj_name == "TREE1"):
+			d_1_t_1.hide()
+			d_1_t_2.hide()
+			d_1_t_3.show()
+		if(obj_name == "TREE2"):
+			d_2_t_1.hide()
+			d_2_t_2.hide()
+			d_2_t_3.show()
+		if(obj_name == "TREE3"):
+			d_3_t_1.hide()
+			d_3_t_2.hide()
+			d_3_t_3.show()
 
 #detects when player enters Interact_Zone and emits that it has been entered
 func _on_body_entered(body: Node2D) -> void:
