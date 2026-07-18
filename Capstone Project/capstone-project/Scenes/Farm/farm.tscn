@@ -59,6 +59,7 @@ scale = Vector2(3, 3)
 
 [node name="News_Paper" parent="." unique_id=2007129299 instance=ExtResource("4_xvaxp")]
 position = Vector2(344, 164)
+scale = Vector2(2, 2)
 obj_name = "NEWSPAPER"
 
 [connection signal="body_entered" from="door_to_home" to="." method="_on_area_2d_body_entered"]
