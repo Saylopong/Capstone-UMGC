@@ -9,13 +9,14 @@ size = Vector2(38, 44)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0bh73"]
 
 [node name="News_Paper" type="Area2D" unique_id=2007129299]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_0bh73")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1726846352]
 shape = SubResource("RectangleShape2D_6v6e5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2080265463]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_6v6e5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=417541541]

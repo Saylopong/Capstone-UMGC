@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dn2vetfi8m86y" path="res://Resources/PixelArt/grass.png" id="2_flmj6"]
 [ext_resource type="Texture2D" uid="uid://dut5p4uc4jfee" path="res://Resources/PixelArt/tilled_dirt_wide.png" id="3_p3yvd"]
 [ext_resource type="Texture2D" uid="uid://bqjvyr6l3l1ir" path="res://Resources/PixelArt/basic_grass_biom_things.png" id="4_esndi"]
-[ext_resource type="PackedScene" uid="uid://bw02fladr3bc1" path="res://Scenes/Home/placeholder_home.tscn" id="5_g8843"]
+[ext_resource type="PackedScene" uid="uid://bw02fladr3bc1" path="res://Scenes/Farm/placeholder_home.tscn" id="5_g8843"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_flmj6"]
 texture = ExtResource("1_usknd")
