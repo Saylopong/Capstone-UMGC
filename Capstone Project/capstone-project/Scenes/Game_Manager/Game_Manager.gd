@@ -59,6 +59,7 @@ func _ready() -> void:
 	SignalHub.learning_finished.connect(end_learning)
 	SignalHub.pause_game.connect(pause_scene)
 	SignalHub.unpause_game.connect(unpause_scene)
+	pause_scene()
 	load_home()
 	
 	
@@ -107,31 +108,31 @@ func Handle_Interact(Interactable: String):
 	match Interactable:
 		"TREE1":
 			if tree1_interacted == false:
-				pause_scene()
+				tree1_interacted = true
+				last_quiz_tree = "TREE1"
 				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database1.get_all_questions()))
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
+				pause_scene()
 				tree1_total_questions += QUESTIONS_IN_QUIZ
-				last_quiz_tree = "TREE1"
-				tree1_interacted = true
 		"TREE2":
 			if tree2_interacted == false && database1.is_learned == true:
-				pause_scene()
+				last_quiz_tree = "TREE2"
+				tree2_interacted = true
 				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database2.get_all_questions()))
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
+				pause_scene()
 				tree2_total_questions += QUESTIONS_IN_QUIZ
-				last_quiz_tree = "TREE2"
-				tree2_interacted = true
 		"TREE3":
 			if tree3_interacted == false && database1.is_learned == true && database2.is_learned == true:
-				pause_scene()
+				last_quiz_tree = "TREE3"
+				tree3_interacted = true
 				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database3.get_all_questions()))
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
+				pause_scene()
 				tree3_total_questions += QUESTIONS_IN_QUIZ
-				last_quiz_tree = "TREE3"
-				tree3_interacted = true
 		"NEWSPAPER":
 			if newspaper_interacted == false:
 				asl_quiz_ui.hide()
@@ -205,9 +206,6 @@ func set_tree_data():
 
 func quit_game():
 	get_tree().quit()
-
-
-
 
 #add object to in_zone
 func player_entered_interactable_zone(object: String):
