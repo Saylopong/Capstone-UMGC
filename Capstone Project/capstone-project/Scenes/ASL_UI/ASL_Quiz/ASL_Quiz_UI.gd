@@ -31,25 +31,17 @@ class_name ASL_Quiz_UI
 	$"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C/Meaning_C",
 	$"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D/Meaning_D"
 ]
-
 #Is assigned "A","B","C", or "D"
 #determines which multiple choice answer is correct
 #and is assigned in randomize_correct_answer()
 var correct_answer: String
-
 #incremented upon player answering a quiz question correctly.
 #should be reset to 0 upon finishing quiz
 var answered_correctly: int = 0
-
 var quiz_questions: Array[ASLQuestion]
 var quiz_index: int
 
 func _ready() -> void:
-	#used to test code
-	image_prompt.hide()
-	meaning_container.hide()
-	mp_background.show()
-	image_container.show()
 	randomize_correct_answer()
 
 func start_quiz(questions: Array[ASLQuestion]):
@@ -63,8 +55,6 @@ func start_quiz(questions: Array[ASLQuestion]):
 	answered_correctly = 0
 	#prompts next_question to start first question of the quiz
 	next_question(quiz_index,quiz_questions)
-	
-
 
 func next_question(index:int, quiz_question: Array[ASLQuestion]):
 	if quiz_index >= quiz_question.size():
@@ -74,8 +64,6 @@ func next_question(index:int, quiz_question: Array[ASLQuestion]):
 		return
 	else:
 		randomize_question_type(quiz_question.get(index).question)
-
-
 
 #Used to show an image prompt question
 #ASLQuestion is Array[ASLSign]
@@ -115,7 +103,6 @@ func make_IP_question(question: Array[ASLSign]):
 			meaning_labels.get(1).text = question.get(1).meaning
 			meaning_labels.get(2).text = question.get(2).meaning
 			meaning_labels.get(0).text = question.get(3).meaning
-	
 	
 #Used to show a meaning prompt question
 #ASLQuestion is Array[ASLSign]
@@ -204,7 +191,6 @@ func _on_button_i_c_pressed() -> void:
 	answer_picked("C")
 func _on_button_i_d_pressed() -> void:
 	answer_picked("D")
-
 
 #Meaning buttons used for image questions
 func _on_button_m_a_pressed() -> void:

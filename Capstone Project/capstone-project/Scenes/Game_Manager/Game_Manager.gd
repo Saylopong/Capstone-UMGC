@@ -111,7 +111,7 @@ func handle_interact(Interactable: String):
 			if tree1_interacted == false:
 				tree1_interacted = true
 				last_quiz_tree = "TREE1"
-				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database1.get_all_questions()))
+				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database1.all_qestions))
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
 				pause_scene()
@@ -142,33 +142,32 @@ func handle_interact(Interactable: String):
 				newspaper_interacted = true
 		"BED":
 			#stops player from going to bed if no trees have been interacted with
-			if tree1_interacted != false && tree2_interacted != false && tree3_interacted != false:
+			if tree1_interacted == true || tree2_interacted == true || tree3_interacted == true:
 				fade_rect.show()
 				scene_container.process_mode = Node.PROCESS_MODE_DISABLED
 				fade_reset_day.play("Fade")
 
 
 #updates asl_learning_ui with new ASL signs for the player to learn.
-#should only show questions that the player has not unlocked at the current
-#difficulty level.
+#should only show questions that the player has not unlocked from only 1 data base.
 func show_new_signs():
-	var show_one_ui = false
+	var one_db_used = false
 	pause_scene()
-	if(database1.is_learned == false && show_one_ui == false):
-		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database1.get_all_questions()))
+	if(database1.is_learned == false && one_db_used == false):
+		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database1.all_qestions))
 		asl_learning_ui.show()
 		database1.is_learned_test()
-		show_one_ui = true
-	if(database1.is_learned && database2.is_learned == false && show_one_ui == false):
-		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database2.get_all_questions()))
+		one_db_used = true
+	if(database1.is_learned && database2.is_learned == false && one_db_used == false):
+		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database2.all_qestions))
 		asl_learning_ui.show()
 		database2.is_learned_test()
-		show_one_ui = true
-	if(database1.is_learned && database2.is_learned && database3.is_learned == false && show_one_ui == false):
-		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database3.get_all_questions()))
+		one_db_used = true
+	if(database1.is_learned && database2.is_learned && database3.is_learned == false && one_db_used == false):
+		asl_learning_ui.start_learning(CreateASLLearning.createLearning(database3.all_qestions))
 		asl_learning_ui.show()
 		database3.is_learned_test()
-		show_one_ui = true
+		one_db_used = true
 	if(database1.is_learned && database2.is_learned && database3.is_learned):
 		#Could show text showing all currently implimented ASL signs have been learned
 		pass
@@ -178,13 +177,10 @@ func end_quiz(correclty_answered: int):
 	match last_quiz_tree:
 		"TREE1":
 			tree1_correct += correclty_answered
-			print("Correct :",tree1_correct," Total Questions:", tree1_total_questions)
 		"TREE2":
 			tree2_correct += correclty_answered
-			print("Correct :",tree2_correct," Total Questions:", tree2_total_questions)
 		"TREE3":
 			tree3_correct += correclty_answered
-			print("Correct :",tree3_correct," Total Questions:", tree3_total_questions)
 			
 	asl_quiz_ui.hide()
 	unpause_scene()
@@ -232,4 +228,4 @@ func _on_fade_reset_day_animation_finished(_anim_name: StringName) -> void:
 	tree2_interacted = false
 	tree3_interacted = false
 	newspaper_interacted = false
-	scene_container.process_mode = Node.PROCESS_MODE_INHERIT
+	unpause_scene()

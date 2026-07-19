@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+#walking animation references
 @onready var walk_forward: AnimatedSprite2D = $"Walk Forward"
 @onready var walk_backward: AnimatedSprite2D = $"Walk Backward"
 @onready var walk_left: AnimatedSprite2D = $"Walk Left"
@@ -7,10 +8,9 @@ extends CharacterBody2D
 
 #sets move speed
 const MOVE_SPEED: int = 200
-
+#sets direction
 var move_direction: Vector2 = Vector2(0,0)
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	walk_backward.hide()
 	walk_left.hide()
@@ -77,9 +77,7 @@ func stop_animation():
 	walk_right.stop()
 
 func _physics_process(_delta: float) -> void:
-
 	move_direction = Vector2.ZERO
-	
 	if Input.is_action_pressed("Up"):
 		move_direction.y -= 1
 	if Input.is_action_pressed("Down"):
@@ -88,11 +86,8 @@ func _physics_process(_delta: float) -> void:
 		move_direction.x -= 1
 	if Input.is_action_pressed("Right"):
 		move_direction.x += 1
-		
 	velocity = move_direction*MOVE_SPEED
-	
 	play_animation()
-
 	if(move_direction == Vector2(0,0)):
 		stop_animation()
 		

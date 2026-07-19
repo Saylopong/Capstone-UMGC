@@ -12,7 +12,6 @@ extends Area2D
 @onready var d_3_t_2: Sprite2D = $D3_T2
 @onready var d_3_t_3: Sprite2D = $D3_T3
 
-var interacted_today: bool = false
 var growth_stage: int = 1
 
 var total_questions: int
@@ -44,20 +43,13 @@ func grow():
 		if total_questions >= 20 && answered_correctly as float/total_questions as float >= .75 && growth_stage == 2:
 			growth_stage = 3
 		if answered_correctly as float/total_questions as float <= .5 && growth_stage != 1:
-			regress()
-	#print(obj_name," : ",growth_stage)
-	#print(obj_name," : ",total_questions)
-	#print(obj_name," : ",answered_correctly)
+			growth_stage -= 1
 	show_growth()
-
-func regress():
-	growth_stage -= 1
-
 
 func show_growth():
 	if(growth_stage == 1):
 		if(obj_name == "TREE1"):
-			d_1_t_1.show()
+			d_1_t_1.show()		
 			d_1_t_2.hide()
 			d_1_t_3.hide()
 		if(obj_name == "TREE2"):
@@ -95,7 +87,7 @@ func show_growth():
 			d_3_t_2.hide()
 			d_3_t_3.show()
 
-#detects when player enters Interact_Zone and emits that it has been entered
+#detects when character enters Interact_Zone and emits that it has been entered
 func _on_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		SignalHub.emit_player_entered_zone(obj_name)

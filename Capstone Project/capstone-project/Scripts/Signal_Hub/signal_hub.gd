@@ -44,4 +44,5 @@ func emit_player_left_home():
 
 func emit_tree_data(data: Array[int]):
 	tree_data.emit(data)
-		
+	
+	
