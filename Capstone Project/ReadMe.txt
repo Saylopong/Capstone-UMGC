@@ -1,1 +1,0 @@
-This file location is meant to house code and sources for the capstone project. - JAKOB WAS HERE

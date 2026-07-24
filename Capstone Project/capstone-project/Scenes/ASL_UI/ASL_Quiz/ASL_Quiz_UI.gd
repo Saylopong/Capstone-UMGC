@@ -18,6 +18,21 @@ class_name ASL_Quiz_UI
 @onready var meaning_container: HBoxContainer = $"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer"
 @onready var image_container: HBoxContainer = $"MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container"
 
+#the 4 clickable meaning buttons, used for IP (image prompt) questions
+@onready var meaning_buttons: Array[Button] = [
+	$"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_A",
+	$"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_B",
+	$"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C",
+	$"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D"
+]
+#the 4 clickable image buttons, used for MP (meaning prompt) questions
+@onready var image_buttons: Array[Button] = [
+	$"MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_A",
+	$"MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_B",
+	$"MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_C",
+	$"MarginContainer/VBoxContainer/Answer_Buttons/Image Button Container/Button_I_D"
+]
+
 
 #REQUIRED TO MAKE A IMAGE_QUESTION
 #PLAYER SEE'S IMAGE AND CLICKS ON ONE OF 4 CORRESPONDING MEANINGS
@@ -43,6 +58,15 @@ var answered_correctly: int = 0
 
 var quiz_questions: Array[ASLQuestion]
 var quiz_index: int
+
+#colors used to flash the answer buttons after a pick is made
+const CORRECT_FLASH_COLOR: Color = Color(0.3, 1.0, 0.3, 1.0)
+const INCORRECT_FLASH_COLOR: Color = Color(1.0, 0.3, 0.3, 1.0)
+const NORMAL_COLOR: Color = Color(1.0, 1.0, 1.0, 1.0)
+const FLASH_DURATION: float = 0.6
+
+#prevents extra clicks from registering while the flash/feedback is showing
+var input_locked: bool = false
 
 func _ready() -> void:
 	#used to test code
@@ -186,14 +210,49 @@ func randomize_question_type(question: Array[ASLSign]):
 		image_container.show()
 		make_MP_question(question)
 
+#returns whichever button array is currently being used to answer the question
+func get_active_buttons() -> Array[Button]:
+	if meaning_container.visible:
+		return meaning_buttons
+	else:
+		return image_buttons
+
 func answer_picked(selected_answer: String):
+	#ignore extra clicks while the flash feedback is playing
+	if input_locked:
+		return
+	input_locked = true
+
+	var answer_letters: Array[String] = ["A","B","C","D"]
+	var buttons: Array[Button] = get_active_buttons()
+	var selected_index: int = answer_letters.find(selected_answer)
+	var correct_index: int = answer_letters.find(correct_answer)
+
 	#compares selected answer to correct and increments
 	#answered_correctly by 1
-	if selected_answer == correct_answer:
+	var is_correct: bool = selected_answer == correct_answer
+	if is_correct:
 		answered_correctly += 1
+		buttons[selected_index].modulate = CORRECT_FLASH_COLOR
+	else:
+		buttons[selected_index].modulate = INCORRECT_FLASH_COLOR
+		#also highlight which answer was actually correct
+		buttons[correct_index].modulate = CORRECT_FLASH_COLOR
+
+	#disable buttons briefly so the flash color can be seen before advancing
+	for button in buttons:
+		button.disabled = true
+
+	await get_tree().create_timer(FLASH_DURATION).timeout
+
+	for button in buttons:
+		button.modulate = NORMAL_COLOR
+		button.disabled = false
+
 	quiz_index += 1
 	randomize_correct_answer()
 	next_question(quiz_index,quiz_questions)
+	input_locked = false
 
 #Image_Buttons used for Meaning Questions
 func _on_button_i_a_pressed() -> void:
