@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ks4naebwkjhy" path="res://Scenes/Game_Manager/Game_Manager.gd" id="1_sbmqd"]
 [ext_resource type="Resource" uid="uid://drtj5oug2qd1u" path="res://Resources/ASL_Data_Set/DataBase1/DB_1.tres" id="2_y87pn"]
+[ext_resource type="Resource" uid="uid://bca7q66w0hmaj" path="res://Resources/ASL_Data_Set/Database2/DB_2.tres" id="3_jt2a1"]
 [ext_resource type="PackedScene" uid="uid://1rf4n5ajaipo" path="res://Scenes/ASL_UI/ASL_Learning/asl_learning_ui.tscn" id="3_kfri6"]
-[ext_resource type="Resource" uid="uid://srxmjs05hjoh" path="res://Resources/ASL_Data_Set/Test_DB's/Test_DB_NOT_UNLOCKED.tres" id="3_y87pn"]
 [ext_resource type="PackedScene" uid="uid://cxkpsebnd05at" path="res://Scenes/ASL_UI/ASL_Quiz/ASL_Quiz_UI.tscn" id="4_2eqbm"]
+[ext_resource type="Resource" uid="uid://05t2ycw2ur2m" path="res://Resources/ASL_Data_Set/DataBase3/DB_3.tres" id="4_447cj"]
 [ext_resource type="PackedScene" uid="uid://uj05kj8dd14x" path="res://Scenes/Pause_UI/Pause_UI.tscn" id="5_eqiw4"]
 
 [sub_resource type="Animation" id="Animation_y87pn"]
@@ -59,8 +60,8 @@ _data = {
 process_mode = 3
 script = ExtResource("1_sbmqd")
 database1 = ExtResource("2_y87pn")
-database2 = ExtResource("3_y87pn")
-database3 = ExtResource("3_y87pn")
+database2 = ExtResource("3_jt2a1")
+database3 = ExtResource("4_447cj")
 
 [node name="Fade_reset_day" type="AnimationPlayer" parent="." unique_id=619621363]
 libraries/ = SubResource("AnimationLibrary_447cj")

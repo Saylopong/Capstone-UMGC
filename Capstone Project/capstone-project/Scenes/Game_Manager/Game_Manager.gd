@@ -16,9 +16,6 @@ extends Node
 const FARM: PackedScene = preload("uid://cs667hsowc61p")
 const HOME: PackedScene = preload("uid://uxjg36nseyn0")
 
-#amount of questions quizzes contain
-const QUESTIONS_IN_QUIZ: int = 4
-
 #represents question/learning bank for each tree
 @export var database1: ASLDataBase
 @export var database2: ASLDataBase
@@ -45,29 +42,31 @@ func _ready() -> void:
 	SignalHub.learning_finished.connect(end_learning)
 	SignalHub.pause_game.connect(pause_scene)
 	SignalHub.unpause_game.connect(unpause_scene)
+	
 	load_home()
 	
-	
+	TestScript.unlock_all_but_2(database1)
 
-#Checks to see if there is already a child in scene_container
-#removes that child from the scene if there is 1
+
 #Instantiates a new farm scene and adds it to scene container
 func load_farm():
 	if ProgressManager.newspaper_interacted == true:
-		if(scene_container.get_child_count() == 1):
-			scene_container.get_child(0).queue_free()
-		@warning_ignore("shadowed_global_identifier")
-		var farm = FARM.instantiate()
-		scene_container.add_child.call_deferred(farm)
+		clear_scene()
+		var farmscene = FARM.instantiate()
+		scene_container.add_child.call_deferred(farmscene)
 
-#Checks to see if there is already a child in scene_container
-#removes that child from the scene if there is 1
+
 #Instantiates a new home scene and adds it to scene container
 func load_home():
-		if(scene_container.get_child_count() == 1):
-			scene_container.get_child(0).queue_free()
-		var home = HOME.instantiate()
-		scene_container.add_child.call_deferred(home)
+	clear_scene()
+	var homescene = HOME.instantiate()
+	scene_container.add_child.call_deferred(homescene)
+
+#Deques whatever scene is currently being displayed
+#in scene container
+func clear_scene():
+	if(scene_container.get_child_count() == 1):
+		scene_container.get_child(0).queue_free()
 
 func _unhandled_input(event: InputEvent) -> void:
 	#checks if player pressed "E"
@@ -80,7 +79,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		print("TEST_ACTION PRESSED")
 		#Handle_Interact("TREE1")
 		#load_home()
-
 
 #performs correct action based on what object the player first entered the zone of.
 #if the player is in multiple objects zones the others are ignored.
@@ -149,7 +147,6 @@ func show_new_signs():
 func end_quiz(_total_q:int, _correclty_answered: int, _tree:int):
 	asl_quiz_ui.hide()
 	unpause_scene()
-	
 
 func end_learning():
 	asl_learning_ui.hide()
