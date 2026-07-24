@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ASLDataBase" format=3 uid="uid://bca7q66w0hmaj"]
+
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_stbe3"]
+[ext_resource type="Resource" uid="uid://cwg2dc01nmabh" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Bathroom_Sign.tres" id="2_5clbx"]
+[ext_resource type="Resource" uid="uid://ccssdvovvlc3l" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Friday_Sign.tres" id="3_nnqis"]
+[ext_resource type="Resource" uid="uid://desfln3p8v5ke" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Help_Sign.tres" id="4_nqhdy"]
+[ext_resource type="Resource" uid="uid://csxni6udac2k8" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Left_Sign.tres" id="5_8pwi1"]
+[ext_resource type="Resource" uid="uid://25hbbfp8wqcr" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Monday_Sign.tres" id="6_p5sbp"]
+[ext_resource type="Resource" uid="uid://dsxxrusux3k5i" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Money_Sign.tres" id="7_k1rda"]
+[ext_resource type="Resource" uid="uid://6ntl1slis5l7" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/More_Sign.tres" id="8_v011h"]
+[ext_resource type="Resource" uid="uid://delphqss0ay4i" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Now_Sign.tres" id="9_eni3c"]
+[ext_resource type="Resource" uid="uid://n55nxulj7fus" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/No_Sign.tres" id="10_fj8se"]
+[ext_resource type="Resource" uid="uid://dvoin7chxqxxe" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Right_Sign.tres" id="11_7238b"]
+[ext_resource type="Resource" uid="uid://da314sltmewwt" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Saturday_Sign.tres" id="12_0v8vr"]
+[ext_resource type="Resource" uid="uid://bt3xlhy4x3qh4" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Stop_Sign.tres" id="13_o3t52"]
+[ext_resource type="Resource" uid="uid://c6yjxrrc3joo3" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Sunday_Sign.tres" id="14_txgip"]
+[ext_resource type="Resource" uid="uid://br1gygtodjblo" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Thursday_Sign.tres" id="15_yswvh"]
+[ext_resource type="Resource" uid="uid://cire1ha3wcgb7" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Today_Sign.tres" id="16_odrfw"]
+[ext_resource type="Resource" uid="uid://dfuk1au3frm75" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Tuesday_Sign.tres" id="17_1hd0k"]
+[ext_resource type="Resource" uid="uid://x8d1jmnbwg61" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Wednesday_Sign.tres" id="18_2yiku"]
+[ext_resource type="Resource" uid="uid://b0nfyh2dyga2n" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Where_Sign.tres" id="19_s4736"]
+[ext_resource type="Resource" uid="uid://b1nfbahosv0f1" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Which_Sign.tres" id="20_njoef"]
+[ext_resource type="Resource" uid="uid://d0gg4j7di5lw2" path="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/Yes_Sign.tres" id="21_g2kml"]
+[ext_resource type="Script" uid="uid://fsgmrsjdqu8d" path="res://Scripts/Data Classes/ASLDataBase/ASLDataBase.gd" id="22_1jhe4"]
+
+[resource]
+script = ExtResource("22_1jhe4")
+all_qestions = Array[ExtResource("1_stbe3")]([ExtResource("2_5clbx"), ExtResource("3_nnqis"), ExtResource("4_nqhdy"), ExtResource("5_8pwi1"), ExtResource("6_p5sbp"), ExtResource("7_k1rda"), ExtResource("8_v011h"), ExtResource("9_eni3c"), ExtResource("10_fj8se"), ExtResource("11_7238b"), ExtResource("12_0v8vr"), ExtResource("13_o3t52"), ExtResource("14_txgip"), ExtResource("15_yswvh"), ExtResource("16_odrfw"), ExtResource("17_1hd0k"), ExtResource("18_2yiku"), ExtResource("19_s4736"), ExtResource("20_njoef"), ExtResource("21_g2kml")])
+metadata/_custom_type_script = "uid://fsgmrsjdqu8d"

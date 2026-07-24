@@ -21,6 +21,10 @@ SignalHub="*uid://cg86gtlnnq0e6"
 SceneTransitioner="uid://ca0giuxfhrogl"
 ProgressManager="*uid://d1fyq4vtia442"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [file_customization]
 
 folder_colors={

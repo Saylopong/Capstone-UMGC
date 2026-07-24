@@ -56,6 +56,7 @@ func load_farm():
 	if ProgressManager.newspaper_interacted == true:
 		if(scene_container.get_child_count() == 1):
 			scene_container.get_child(0).queue_free()
+		@warning_ignore("shadowed_global_identifier")
 		var farm = FARM.instantiate()
 		scene_container.add_child.call_deferred(farm)
 

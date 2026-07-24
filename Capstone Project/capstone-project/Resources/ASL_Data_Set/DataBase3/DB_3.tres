@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ASLDataBase" format=3 uid="uid://05t2ycw2ur2m"]
+
+[ext_resource type="Script" uid="uid://4qu5sso38pu" path="res://Scripts/Data Classes/ASLSign/ASLSign.gd" id="1_cuht2"]
+[ext_resource type="Script" uid="uid://fsgmrsjdqu8d" path="res://Scripts/Data Classes/ASLDataBase/ASLDataBase.gd" id="2_prfmx"]
+[ext_resource type="Resource" uid="uid://wq6dt6qi1put" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Congratulations_Sign.tres" id="2_sfwhf"]
+[ext_resource type="Resource" uid="uid://ddbuha3suue7n" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Eat_Sign.tres" id="3_4qdx8"]
+[ext_resource type="Resource" uid="uid://cjsi8q1kbvrfr" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Father_Sign.tres" id="4_71x15"]
+[ext_resource type="Resource" uid="uid://mrmnwpvn30re" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Find_Sign.tres" id="5_eqf2u"]
+[ext_resource type="Resource" uid="uid://dddq4njaxcak1" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Hospital_Sign.tres" id="6_0yjqg"]
+[ext_resource type="Resource" uid="uid://bqyr341e10h70" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/House_Sign.tres" id="7_cjum0"]
+[ext_resource type="Resource" uid="uid://dbj5domiqb5d5" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Hurry_Sign.tres" id="8_s0sqh"]
+[ext_resource type="Resource" uid="uid://bv41rv26vbayt" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Hurt_Sign.tres" id="9_gj8xq"]
+[ext_resource type="Resource" uid="uid://vheh60ph2m07" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Learn_Sign.tres" id="10_u2r8i"]
+[ext_resource type="Resource" uid="uid://ngehnt7yil8g" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Mom_Sign.tres" id="11_jn5yn"]
+[ext_resource type="Resource" uid="uid://c0u4nmrr5qw7" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Morning_Sign.tres" id="12_vkvfi"]
+[ext_resource type="Resource" uid="uid://cirvnnrxe3ek0" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Night_Sign.tres" id="13_amkuy"]
+[ext_resource type="Resource" uid="uid://bc0sex0f805xw" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Play_Sign.tres" id="14_tjdp4"]
+[ext_resource type="Resource" uid="uid://bxtsww8b85iw8" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Rain_Sign.tres" id="15_mm41s"]
+[ext_resource type="Resource" uid="uid://c0tlke67xr8um" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Sleep_Sign.tres" id="16_yddfu"]
+[ext_resource type="Resource" uid="uid://cfcueekxbl2fs" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Sunshine_Sign.tres" id="17_u6gao"]
+[ext_resource type="Resource" uid="uid://dc4kmry68rn2n" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Tree_Sign.tres" id="18_2drw1"]
+[ext_resource type="Resource" uid="uid://brn3opc3ftb2h" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Water_Sign.tres" id="19_rehjv"]
+[ext_resource type="Resource" uid="uid://dxfi8yu3dfnsl" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Weather_Sign.tres" id="20_a8aaw"]
+[ext_resource type="Resource" uid="uid://ci4fywvawii62" path="res://Resources/ASL_Data_Set/DataBase3/ASL_Signs_D3/Work_Sign.tres" id="21_tb03e"]
+
+[resource]
+script = ExtResource("2_prfmx")
+all_qestions = Array[ExtResource("1_cuht2")]([ExtResource("2_sfwhf"), ExtResource("3_4qdx8"), ExtResource("4_71x15"), ExtResource("5_eqf2u"), ExtResource("6_0yjqg"), ExtResource("7_cjum0"), ExtResource("8_s0sqh"), ExtResource("9_gj8xq"), ExtResource("10_u2r8i"), ExtResource("11_jn5yn"), ExtResource("12_vkvfi"), ExtResource("13_amkuy"), ExtResource("14_tjdp4"), ExtResource("15_mm41s"), ExtResource("16_yddfu"), ExtResource("17_u6gao"), ExtResource("18_2drw1"), ExtResource("19_rehjv"), ExtResource("20_a8aaw"), ExtResource("21_tb03e")])
+metadata/_custom_type_script = "uid://fsgmrsjdqu8d"
