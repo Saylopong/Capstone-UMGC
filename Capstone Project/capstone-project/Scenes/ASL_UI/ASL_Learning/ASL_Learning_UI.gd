@@ -22,6 +22,7 @@ class_name ASL_Learning_UI
 	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect3",
 	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect4"
 ]
+
 func start_learning(new_signs: Array[ASLSign]):
 	hide_all()
 	for i in range(new_signs.size()):

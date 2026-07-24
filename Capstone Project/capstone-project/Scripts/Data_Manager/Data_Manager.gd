@@ -1,14 +1,14 @@
 extends Node
 
 #represents question/learning bank for each tree
-const DB_1:ASLDataBase = preload("uid://drtj5oug2qd1u")
-const DB_2:ASLDataBase = preload("uid://bca7q66w0hmaj")
-const DB_3:ASLDataBase = preload("uid://05t2ycw2ur2m")
+var DB_1:ASLDataBase = preload("uid://drtj5oug2qd1u")
+var DB_2:ASLDataBase = preload("uid://bca7q66w0hmaj")
+var DB_3:ASLDataBase = preload("uid://05t2ycw2ur2m")
 
 
 #Game_Data
-var tree_1_total_questions: int = 30
-var tree_1_total_correct: int = 30
+var tree_1_total_questions: int = 0
+var tree_1_total_correct: int = 0
 var tree_1_interacted: bool = false
 var tree_2_total_questions: int = 0 
 var tree_2_total_correct: int = 0 
@@ -20,7 +20,7 @@ var newspaper_interacted: bool = false
 
 func _ready() -> void:
 	SignalHub.quiz_finished.connect(quiz_finished)
-
+	
 func quiz_finished(total_questions:int, total_correct:int,tree:int):
 	if(tree == 1):
 		tree_1_total_questions += total_questions

@@ -33,12 +33,10 @@ func _ready() -> void:
 	SignalHub.unpause_game.connect(unpause_scene)
 	
 	load_home()
-	
-
-	TestScript.test_tree2()
-	TestScript.print_signs(DataManager.DB_2)
 	TestScript.print_db_status()
- 
+	TestScript.test_tree3()
+	TestScript.print_db_status()
+	
 #Instantiates a new farm scene and adds it to scene container
 func load_farm():
 	if (DataManager.newspaper_interacted):
@@ -87,14 +85,14 @@ func handle_interact(Interactable: String):
 		"TREE2":
 			if (DataManager.tree_2_interacted == false) && (DataManager.DB_1.is_learned == true):
 				DataManager.tree_2_interacted = true
-				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(DataManager.DB_2.get_all_questions()),2)
+				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(DataManager.DB_2.all_questions),2)
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
 				pause_scene()
 		"TREE3":
 			if (DataManager.tree_3_interacted == false) && (DataManager.DB_1.is_learned == true) && (DataManager.DB_2.is_learned == true):
 				DataManager.tree_3_interacted = true
-				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(DataManager.DB_3.get_all_questions()),3)
+				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(DataManager.DB_3.all_questions),3)
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
 				pause_scene()

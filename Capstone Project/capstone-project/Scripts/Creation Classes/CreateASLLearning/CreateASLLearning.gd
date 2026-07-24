@@ -26,13 +26,13 @@ static func get_amt_of_signs(database:int) -> int:
 		else:
 			return 4
 	if database == 2:
-		signs_to_learn = DataManager.DB_1.all_questions.size() - DataManager.DB_1.signs_unlocked()
+		signs_to_learn = DataManager.DB_2.all_questions.size() - DataManager.DB_2.signs_unlocked()
 		if signs_to_learn < 4:
 			return signs_to_learn
 		else:
 			return 4
 	if database == 3:
-		signs_to_learn = DataManager.DB_1.all_questions.size() - DataManager.DB_1.signs_unlocked()
+		signs_to_learn = DataManager.DB_3.all_questions.size() - DataManager.DB_3.signs_unlocked()
 		if signs_to_learn < 4:
 			return signs_to_learn
 		else:

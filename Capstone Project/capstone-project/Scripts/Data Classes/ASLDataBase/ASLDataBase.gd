@@ -6,10 +6,11 @@ class_name ASLDataBase
 @export var all_questions: Array[ASLSign]
 
 
-var is_learned: bool = false
+var is_learned: bool = true
 
 
 func signs_unlocked() -> int:
+	is_learned = false
 	var total_unlocked:int = 0
 	for ASLSign in all_questions:
 		if ASLSign.is_unlocked == true:
