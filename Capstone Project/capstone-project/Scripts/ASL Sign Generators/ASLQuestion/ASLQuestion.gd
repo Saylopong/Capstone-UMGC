@@ -11,27 +11,19 @@ func generate_question(database: Array[ASLSign]):
 	question.append(generate_correct_sign(database))
 	#Add random ASLSigns to index 1,2, and 3
 	for i in range(3):
-		question.append(generate_random(database,question.get(0)))
-
+		question.append(generate_random(database))
 
 #Intended for private use
 static func generate_correct_sign(database: Array[ASLSign]) -> ASLSign:
-	
 	var correct_sign: ASLSign = database.pick_random()
-	
 	while (correct_sign.is_unlocked == false):
 		correct_sign = database.pick_random()
-	
 	return correct_sign
 	
 #Intended for private use
 #Returns incorrect sign
-func generate_random(database: Array[ASLSign], correct_sign: ASLSign) -> ASLSign:
+func generate_random(database: Array[ASLSign]) -> ASLSign:
 	var incorrect_sign: ASLSign = database.pick_random()
-	
 	while (question.has(incorrect_sign)):
 		incorrect_sign = database.pick_random()
-
 	return incorrect_sign
-	
-	

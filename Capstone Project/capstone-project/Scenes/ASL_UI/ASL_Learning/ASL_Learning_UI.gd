@@ -16,14 +16,28 @@ class_name ASL_Learning_UI
 	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect3/Meaning3",
 	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect4/Meaning4"
 ]
+@onready var meaning_backgrounds: Array[ColorRect] = [
+	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect",
+	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect2",
+	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect3",
+	$"MarginContainer/VBoxContainer/Meaining Container/ColorRect4"
+]
 
 func start_learning(new_signs: Array[ASLSign]):
-
+	hide_all()
 	for i in range(new_signs.size()):
 		asl_images.get(i).texture = new_signs.get(i).image
+		asl_images.get(i).show()
 		meanings.get(i).text = new_signs.get(i).meaning
+		meaning_backgrounds.get(i).show()
+
+#hide all labels and images
+func hide_all():
+		for i in 4:
+			asl_images.get(i).hide()
+			meaning_backgrounds.get(i).hide()
 
 
-
+#when pressed game_manager should hide this UI
 func _on_button_pressed() -> void:
 	SignalHub.emit_learning_finished()

@@ -46,18 +46,16 @@ class_name ASL_Quiz_UI
 	$"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C/Meaning_C",
 	$"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D/Meaning_D"
 ]
-
 #Is assigned "A","B","C", or "D"
 #determines which multiple choice answer is correct
 #and is assigned in randomize_correct_answer()
 var correct_answer: String
-
 #incremented upon player answering a quiz question correctly.
 #should be reset to 0 upon finishing quiz
 var answered_correctly: int = 0
-
 var quiz_questions: Array[ASLQuestion]
 var quiz_index: int
+var current_tree: int
 
 #colors used to flash the answer buttons after a pick is made
 const CORRECT_FLASH_COLOR: Color = Color(0.3, 1.0, 0.3, 1.0)
@@ -69,14 +67,11 @@ const FLASH_DURATION: float = 0.6
 var input_locked: bool = false
 
 func _ready() -> void:
-	#used to test code
-	image_prompt.hide()
-	meaning_container.hide()
-	mp_background.show()
-	image_container.show()
 	randomize_correct_answer()
 
-func start_quiz(questions: Array[ASLQuestion]):
+func start_quiz(questions: Array[ASLQuestion],tree_num:int):
+	#Sets the current tree this quiz is for
+	current_tree = tree_num
 	#clears previosu quiz_questions array
 	quiz_questions.clear()
 	#creates stores a shallow copy of questions in quiz_questions
@@ -87,19 +82,15 @@ func start_quiz(questions: Array[ASLQuestion]):
 	answered_correctly = 0
 	#prompts next_question to start first question of the quiz
 	next_question(quiz_index,quiz_questions)
-	
 
-
-func next_question(quiz_index:int, quiz_question: Array[ASLQuestion]):
+func next_question(index:int, quiz_question: Array[ASLQuestion]):
 	if quiz_index >= quiz_question.size():
 		#emits signal that the quiz has finished along with
 		#the number of correctly answered questions
-		SignalHub.emit_quiz_finished(answered_correctly)
+		SignalHub.emit_quiz_finished((quiz_index),answered_correctly,current_tree)
 		return
 	else:
-		randomize_question_type(quiz_question.get(quiz_index).question)
-
-
+		randomize_question_type(quiz_question.get(index).question)
 
 #Used to show an image prompt question
 #ASLQuestion is Array[ASLSign]
@@ -139,7 +130,6 @@ func make_IP_question(question: Array[ASLSign]):
 			meaning_labels.get(1).text = question.get(1).meaning
 			meaning_labels.get(2).text = question.get(2).meaning
 			meaning_labels.get(0).text = question.get(3).meaning
-	
 	
 #Used to show a meaning prompt question
 #ASLQuestion is Array[ASLSign]
@@ -263,7 +253,6 @@ func _on_button_i_c_pressed() -> void:
 	answer_picked("C")
 func _on_button_i_d_pressed() -> void:
 	answer_picked("D")
-
 
 #Meaning buttons used for image questions
 func _on_button_m_a_pressed() -> void:
