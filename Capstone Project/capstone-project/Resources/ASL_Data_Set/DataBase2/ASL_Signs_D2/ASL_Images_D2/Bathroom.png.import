@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://2dsscsb63k8p"
-path="res://.godot/imported/Bathroom.png-95df1783fe5a1db53f948c3dee54931c.ctex"
+path="res://.godot/imported/Bathroom.png-bebd7e2e4b2e7a82f056c675b1fe417a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/ASL_Data_Set/DataBase2/ASL_Signs_D2/ASL_Images_D2/Bathroom.png"
-dest_files=["res://.godot/imported/Bathroom.png-95df1783fe5a1db53f948c3dee54931c.ctex"]
+source_file="res://Resources/ASL_Data_Set/Database2/ASL_Signs_D2/ASL_Images_D2/Bathroom.png"
+dest_files=["res://.godot/imported/Bathroom.png-bebd7e2e4b2e7a82f056c675b1fe417a.ctex"]
 
 [params]
 
