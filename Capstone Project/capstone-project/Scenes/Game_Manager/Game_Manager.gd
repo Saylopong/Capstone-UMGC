@@ -6,7 +6,6 @@ extends Node
 @onready var asl_quiz_ui: ASL_Quiz_UI = $ASL_Quiz_UI
 @onready var pause_ui: Control = $Pause_UI
 
-#
 @onready var scene_container: MarginContainer = $Scene_Container
 @onready var fade_reset_day: AnimationPlayer = $Fade_reset_day
 @onready var fade_rect: ColorRect = $fade_rect
@@ -40,7 +39,6 @@ func _ready() -> void:
 	TestScript.print_signs(DataManager.DB_2)
 	TestScript.print_db_status()
  
-
 #Instantiates a new farm scene and adds it to scene container
 func load_farm():
 	if (DataManager.newspaper_interacted):

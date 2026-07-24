@@ -91,3 +91,4 @@ E"
 label_settings = SubResource("LabelSettings_ejmsa")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
