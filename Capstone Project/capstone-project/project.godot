@@ -19,7 +19,7 @@ config/icon="res://Resources/icon.svg"
 
 SignalHub="*uid://cg86gtlnnq0e6"
 SceneTransitioner="uid://ca0giuxfhrogl"
-ProgressManager="*uid://d1fyq4vtia442"
+DataManager="*uid://d1fyq4vtia442"
 TestScript="*uid://2j3qblaloux"
 
 [display]

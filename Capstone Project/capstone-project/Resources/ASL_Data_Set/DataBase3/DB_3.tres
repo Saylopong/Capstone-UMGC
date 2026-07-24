@@ -25,5 +25,5 @@
 
 [resource]
 script = ExtResource("2_prfmx")
-all_qestions = Array[ExtResource("1_cuht2")]([ExtResource("2_sfwhf"), ExtResource("3_4qdx8"), ExtResource("4_71x15"), ExtResource("5_eqf2u"), ExtResource("6_0yjqg"), ExtResource("7_cjum0"), ExtResource("8_s0sqh"), ExtResource("9_gj8xq"), ExtResource("10_u2r8i"), ExtResource("11_jn5yn"), ExtResource("12_vkvfi"), ExtResource("13_amkuy"), ExtResource("14_tjdp4"), ExtResource("15_mm41s"), ExtResource("16_yddfu"), ExtResource("17_u6gao"), ExtResource("18_2drw1"), ExtResource("19_rehjv"), ExtResource("20_a8aaw"), ExtResource("21_tb03e")])
+all_questions = Array[ExtResource("1_cuht2")]([ExtResource("2_sfwhf"), ExtResource("3_4qdx8"), ExtResource("4_71x15"), ExtResource("5_eqf2u"), ExtResource("6_0yjqg"), ExtResource("7_cjum0"), ExtResource("8_s0sqh"), ExtResource("9_gj8xq"), ExtResource("10_u2r8i"), ExtResource("11_jn5yn"), ExtResource("12_vkvfi"), ExtResource("13_amkuy"), ExtResource("14_tjdp4"), ExtResource("15_mm41s"), ExtResource("16_yddfu"), ExtResource("17_u6gao"), ExtResource("18_2drw1"), ExtResource("19_rehjv"), ExtResource("20_a8aaw"), ExtResource("21_tb03e")])
 metadata/_custom_type_script = "uid://fsgmrsjdqu8d"

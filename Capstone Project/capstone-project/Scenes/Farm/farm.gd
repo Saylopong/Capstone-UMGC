@@ -27,14 +27,14 @@ func _ready() -> void:
 	set_tree_data()
 
 func set_tree_data():
-	tree_1.answered_correctly = ProgressManager.tree_1_total_correct
-	tree_1.total_questions = ProgressManager.tree_1_total_questions
+	tree_1.answered_correctly = DataManager.tree_1_total_correct
+	tree_1.total_questions = DataManager.tree_1_total_questions
 	tree_1.grow()
-	tree_2.answered_correctly = ProgressManager.tree_2_total_correct
-	tree_2.total_questions = ProgressManager.tree_2_total_questions
+	tree_2.answered_correctly = DataManager.tree_2_total_correct
+	tree_2.total_questions = DataManager.tree_2_total_questions
 	tree_2.grow()
-	tree_3.answered_correctly = ProgressManager.tree_3_total_correct
-	tree_3.total_questions = ProgressManager.tree_3_total_questions
+	tree_3.answered_correctly = DataManager.tree_3_total_correct
+	tree_3.total_questions = DataManager.tree_3_total_questions
 	tree_3.grow()
 	print(tree_1.total_questions)
 	print(tree_1.answered_correctly)
