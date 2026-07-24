@@ -84,6 +84,7 @@ tile_set = SubResource("TileSet_dqqjj")
 [node name="Bed" parent="Tilemap" unique_id=1206283599 instance=ExtResource("3_og5f0")]
 position = Vector2(21.333324, -138.4)
 scale = Vector2(0.5, 0.5)
+obj_name = "BED"
 
 [node name="News_Paper" parent="Tilemap" unique_id=2007129299 instance=ExtResource("4_yvjqa")]
 position = Vector2(135.46667, -121.86667)
@@ -99,4 +100,4 @@ scale = Vector2(1, 1)
 position = Vector2(576, 621.5625)
 shape = SubResource("RectangleShape2D_ejmsa")
 
-[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
