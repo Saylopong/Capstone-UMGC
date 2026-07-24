@@ -48,6 +48,11 @@ Press ESC to unpause"
 label_settings = SubResource("LabelSettings_ejmsa")
 horizontal_alignment = 1
 
+[node name="Main_Menu_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Main Menu"
+
 [node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=817693547]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
