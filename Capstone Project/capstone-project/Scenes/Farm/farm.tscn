@@ -2,26 +2,14 @@
 
 [ext_resource type="TileSet" uid="uid://xw2juhh588s2" path="res://Scenes/Farm/Tilesets/game_tile_set.tres" id="1_0f0qd"]
 [ext_resource type="Script" uid="uid://b0ih1ec4ektud" path="res://Scenes/Farm/farm.gd" id="1_p01lv"]
-[ext_resource type="PackedScene" uid="uid://sjnrnc7cs4gp" path="res://Scenes/Tree/Tree.tscn" id="3_3fh50"]
 [ext_resource type="PackedScene" uid="uid://7hudawxston6" path="res://Scenes/Character/Character.tscn" id="3_p01lv"]
+[ext_resource type="PackedScene" uid="uid://b6djm547b0ir6" path="res://Scenes/Arrow/Arrow.tscn" id="5_xvaxp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejmsa"]
 size = Vector2(29.5, 17)
 
 [node name="Farm" type="Node2D" unique_id=1743081988]
 script = ExtResource("1_p01lv")
-
-[node name="TREE1" parent="." unique_id=626465503 instance=ExtResource("3_3fh50")]
-position = Vector2(232, 454)
-obj_name = "TREE1"
-
-[node name="TREE2" parent="." unique_id=1286409855 instance=ExtResource("3_3fh50")]
-position = Vector2(404, 456)
-obj_name = "TREE2"
-
-[node name="TREE3" parent="." unique_id=124888869 instance=ExtResource("3_3fh50")]
-position = Vector2(578, 457)
-obj_name = "TREE3"
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1896476714]
 
@@ -54,5 +42,21 @@ shape = SubResource("RectangleShape2D_ejmsa")
 [node name="Character" parent="." unique_id=1486054298 instance=ExtResource("3_p01lv")]
 position = Vector2(900, 391)
 scale = Vector2(3, 3)
+
+[node name="Node2D" parent="." unique_id=1602621629 instance=ExtResource("5_xvaxp")]
+position = Vector2(176, 456)
+scale = Vector2(0.5, 0.5)
+
+[node name="T1" type="Marker2D" parent="." unique_id=1828033443]
+position = Vector2(232, 454)
+metadata/_edit_lock_ = true
+
+[node name="T2" type="Marker2D" parent="." unique_id=1066962077]
+position = Vector2(404, 456)
+metadata/_edit_lock_ = true
+
+[node name="T3" type="Marker2D" parent="." unique_id=1762108925]
+position = Vector2(578, 456)
+metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="door_to_home" to="." method="_on_area_2d_body_entered"]

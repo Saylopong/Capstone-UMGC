@@ -18,7 +18,8 @@ config/icon="res://Resources/icon.svg"
 [autoload]
 
 SignalHub="*uid://cg86gtlnnq0e6"
-SceneTransitioner="*uid://ca0giuxfhrogl"
+SceneTransitioner="uid://ca0giuxfhrogl"
+ProgressManager="*uid://d1fyq4vtia442"
 
 [file_customization]
 

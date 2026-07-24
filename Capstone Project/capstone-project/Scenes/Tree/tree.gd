@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name ASLtree
+
 @export var obj_name: String
 
 @onready var d_1_t_1: Sprite2D = $D1_T1
@@ -18,22 +20,22 @@ var total_questions: int
 var answered_correctly: int
 
 func _ready() -> void:
-	SignalHub.tree_data.connect(set_tree_data)
+	set_tree_data()
 	show_growth()
 
 #sets tree data based on data contained w/in game manager
 #checks to see the name this object has been given in order to assign
 #correct data.
-func set_tree_data(tree_data: Array[int]):
+func set_tree_data():
 	if(obj_name == "TREE1"):
-		total_questions = tree_data.get(0)
-		answered_correctly = tree_data.get(1)
+		total_questions = ProgressManager.tree_1_total_questions
+		answered_correctly = ProgressManager.tree_1_total_questions
 	if(obj_name == "TREE2"):
-		total_questions = tree_data.get(2)
-		answered_correctly = tree_data.get(3)
+		total_questions = ProgressManager.tree_2_total_questions
+		answered_correctly = ProgressManager.tree_2_total_questions
 	if(obj_name == "TREE3"):
-		total_questions = tree_data.get(4)
-		answered_correctly = tree_data.get(5)
+		total_questions = ProgressManager.tree_3_total_questions
+		answered_correctly = ProgressManager.tree_3_total_questions
 	grow()
 
 func grow():
