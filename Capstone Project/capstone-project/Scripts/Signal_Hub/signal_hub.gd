@@ -3,7 +3,7 @@ extends Node
 signal player_entered_zone(zone: String)
 signal player_left_zone(zone: String)
 signal tree_learned(difficulty: int)
-signal quiz_finished(correctly_answered: int)
+signal quiz_finished(total_questions: int,correctly_answered: int,tree_num: int)
 signal learning_finished
 signal pause_game
 signal unpause_game
@@ -21,8 +21,8 @@ func emit_player_left_zone(zone: String):
 func emit_tree_learned(difficulty: int):
 	tree_learned.emit(difficulty)
 
-func emit_quiz_finished(correct: int):
-	quiz_finished.emit(correct)
+func emit_quiz_finished(total_q: int,correct: int,tree: int):
+	quiz_finished.emit(total_q, correct, tree)
 
 func emit_learning_finished():
 	learning_finished.emit()

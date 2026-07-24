@@ -24,9 +24,24 @@ func _ready() -> void:
 	add_child(tree_1)
 	add_child(tree_2)
 	add_child(tree_3)
+	set_tree_data()
 
 func set_tree_data():
-	pass
+	tree_1.answered_correctly = ProgressManager.tree_1_total_correct
+	tree_1.total_questions = ProgressManager.tree_1_total_questions
+	tree_1.grow()
+	tree_2.answered_correctly = ProgressManager.tree_2_total_correct
+	tree_2.total_questions = ProgressManager.tree_2_total_questions
+	tree_2.grow()
+	tree_3.answered_correctly = ProgressManager.tree_3_total_correct
+	tree_3.total_questions = ProgressManager.tree_3_total_questions
+	tree_3.grow()
+	print(tree_1.total_questions)
+	print(tree_1.answered_correctly)
+	print(tree_2.total_questions)
+	print(tree_2.answered_correctly)
+	print(tree_3.total_questions)
+	print(tree_3.answered_correctly)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:

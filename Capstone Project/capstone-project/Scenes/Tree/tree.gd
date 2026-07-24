@@ -15,43 +15,24 @@ class_name ASLtree
 @onready var d_3_t_3: Sprite2D = $D3_T3
 
 var growth_stage: int = 1
-
 var total_questions: int
 var answered_correctly: int
 
-func _ready() -> void:
-	set_tree_data()
-	show_growth()
-
-#sets tree data based on data contained w/in game manager
-#checks to see the name this object has been given in order to assign
-#correct data.
-func set_tree_data():
-	if(obj_name == "TREE1"):
-		total_questions = ProgressManager.tree_1_total_questions
-		answered_correctly = ProgressManager.tree_1_total_questions
-	if(obj_name == "TREE2"):
-		total_questions = ProgressManager.tree_2_total_questions
-		answered_correctly = ProgressManager.tree_2_total_questions
-	if(obj_name == "TREE3"):
-		total_questions = ProgressManager.tree_3_total_questions
-		answered_correctly = ProgressManager.tree_3_total_questions
-	grow()
 
 func grow():
 	if total_questions != 0:
-		if total_questions >= 12 && answered_correctly as float/total_questions as float >= .75 && growth_stage == 1:
+		if (total_questions >= 12) && (answered_correctly as float/total_questions as float >= .75) && (growth_stage == 1):
 			growth_stage = 2
-		if total_questions >= 20 && answered_correctly as float/total_questions as float >= .75 && growth_stage == 2:
+		if (total_questions >= 20) && (answered_correctly as float/total_questions as float >= .75) && (growth_stage == 2):
 			growth_stage = 3
-		if answered_correctly as float/total_questions as float <= .5 && growth_stage != 1:
+		if (answered_correctly as float/total_questions as float <= .5) && (growth_stage != 1):
 			growth_stage -= 1
 	show_growth()
 
 func show_growth():
 	if(growth_stage == 1):
 		if(obj_name == "TREE1"):
-			d_1_t_1.show()		
+			d_1_t_1.show()
 			d_1_t_2.hide()
 			d_1_t_3.hide()
 		if(obj_name == "TREE2"):

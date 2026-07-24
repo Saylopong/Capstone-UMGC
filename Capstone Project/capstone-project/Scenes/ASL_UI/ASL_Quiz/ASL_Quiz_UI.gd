@@ -40,11 +40,13 @@ var correct_answer: String
 var answered_correctly: int = 0
 var quiz_questions: Array[ASLQuestion]
 var quiz_index: int
-
+var current_tree: int
 func _ready() -> void:
 	randomize_correct_answer()
 
-func start_quiz(questions: Array[ASLQuestion]):
+func start_quiz(questions: Array[ASLQuestion],tree_num:int):
+	#Sets the current tree this quiz is for
+	current_tree = tree_num
 	#clears previosu quiz_questions array
 	quiz_questions.clear()
 	#creates stores a shallow copy of questions in quiz_questions
@@ -60,7 +62,7 @@ func next_question(index:int, quiz_question: Array[ASLQuestion]):
 	if quiz_index >= quiz_question.size():
 		#emits signal that the quiz has finished along with
 		#the number of correctly answered questions
-		SignalHub.emit_quiz_finished(answered_correctly)
+		SignalHub.emit_quiz_finished((quiz_index),answered_correctly,current_tree)
 		return
 	else:
 		randomize_question_type(quiz_question.get(index).question)

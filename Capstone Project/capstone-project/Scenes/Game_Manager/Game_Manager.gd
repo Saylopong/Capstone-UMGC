@@ -27,24 +27,6 @@ const QUESTIONS_IN_QUIZ: int = 4
 #stores what zones the character is currently in
 var in_zone: Array[String]
 
-#used to transfer data to Tree1,Tree2,andTree3 in farm scene when
-#instantiated. Transferred via Signal
-var tree_data: Array[int] = [
-	0,#Tree1 total questions
-	0,#Tree1 total questions answered correctly
-	0,#Tree2 total questions
-	0,#Tree2 total questions answered correctly
-	0,#Tree3 total questions
-	0,#Tree3 total questions answered c orrectly
-]
-
-var tree1_total_questions: int = 0
-var tree2_total_questions: int = 0
-var tree3_total_questions: int = 0
-var tree1_correct: int = 0
-var tree2_correct: int = 0
-var tree3_correct: int = 0
-
 var last_quiz_tree: String
 
 var tree1_interacted: bool = false
@@ -71,18 +53,16 @@ func _ready() -> void:
 #removes that child from the scene if there is 1
 #Instantiates a new farm scene and adds it to scene container
 func load_farm():
-	if newspaper_interacted:
+	if ProgressManager.newspaper_interacted == true:
 		if(scene_container.get_child_count() == 1):
 			scene_container.get_child(0).queue_free()
 		var farm = FARM.instantiate()
 		scene_container.add_child.call_deferred(farm)
-		set_tree_data()
 
 #Checks to see if there is already a child in scene_container
 #removes that child from the scene if there is 1
 #Instantiates a new home scene and adds it to scene container
 func load_home():
-	
 		if(scene_container.get_child_count() == 1):
 			scene_container.get_child(0).queue_free()
 		var home = HOME.instantiate()
@@ -108,38 +88,31 @@ func _unhandled_input(event: InputEvent) -> void:
 func handle_interact(Interactable: String):
 	match Interactable:
 		"TREE1":
-			if tree1_interacted == false:
+			if (ProgressManager.tree_1_interacted == false):
 				tree1_interacted = true
 				last_quiz_tree = "TREE1"
-				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database1.all_qestions))
+				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database1.all_qestions),1)
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
 				pause_scene()
-				tree1_total_questions += QUESTIONS_IN_QUIZ
 		"TREE2":
-			if tree2_interacted == false && database1.is_learned == true:
-				last_quiz_tree = "TREE2"
-				tree2_interacted = true
-				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database2.get_all_questions()))
+			if (ProgressManager.tree_2_interacted == false) && (database1.is_learned == true):
+				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database2.get_all_questions()),2)
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
 				pause_scene()
-				tree2_total_questions += QUESTIONS_IN_QUIZ
 		"TREE3":
-			if tree3_interacted == false && database1.is_learned == true && database2.is_learned == true:
-				last_quiz_tree = "TREE3"
-				tree3_interacted = true
-				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database3.get_all_questions()))
+			if (ProgressManager.tree_3_interacted == false) && (database1.is_learned == true) && (database2.is_learned == true):
+				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(database3.get_all_questions()),3)
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
 				pause_scene()
-				tree3_total_questions += QUESTIONS_IN_QUIZ
 		"NEWSPAPER":
-			if newspaper_interacted == false:
+			if (ProgressManager.newspaper_interacted == false):
+				ProgressManager.newspaper_interacted = true
 				asl_quiz_ui.hide()
 				asl_learning_ui.show()
 				show_new_signs()
-				newspaper_interacted = true
 		"BED":
 			#stops player from going to bed if no trees have been interacted with
 			if tree1_interacted == true || tree2_interacted == true || tree3_interacted == true:
@@ -172,16 +145,7 @@ func show_new_signs():
 		#Could show text showing all currently implimented ASL signs have been learned
 		pass
 
-func end_quiz(correclty_answered: int):
-	#adds the number of correctly answered questions to the correct tree var
-	match last_quiz_tree:
-		"TREE1":
-			tree1_correct += correclty_answered
-		"TREE2":
-			tree2_correct += correclty_answered
-		"TREE3":
-			tree3_correct += correclty_answered
-			
+func end_quiz(_total_q:int, _correclty_answered: int, _tree:int):
 	asl_quiz_ui.hide()
 	unpause_scene()
 	
@@ -189,17 +153,6 @@ func end_quiz(correclty_answered: int):
 func end_learning():
 	asl_learning_ui.hide()
 	unpause_scene()
-
-#adds all tree data to tree_data array.
-#emits signal with array of tree data.
-func set_tree_data():
-	tree_data.set(0,tree1_total_questions)
-	tree_data.set(1,tree1_correct)
-	tree_data.set(2,tree2_total_questions)
-	tree_data.set(3,tree2_correct)
-	tree_data.set(4,tree3_total_questions)
-	tree_data.set(5,tree3_correct)
-	SignalHub.emit_tree_data(tree_data)
 
 func quit_game():
 	get_tree().quit()
@@ -224,8 +177,5 @@ func unpause_scene():
 		scene_container.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_fade_reset_day_animation_finished(_anim_name: StringName) -> void:
-	tree1_interacted = false
-	tree2_interacted = false
-	tree3_interacted = false
-	newspaper_interacted = false
+	ProgressManager.reset_day()
 	unpause_scene()
