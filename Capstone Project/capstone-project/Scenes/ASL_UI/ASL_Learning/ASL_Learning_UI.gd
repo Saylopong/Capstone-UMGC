@@ -25,6 +25,7 @@ class_name ASL_Learning_UI
 
 func start_learning(new_signs: Array[ASLSign]):
 	hide_all()
+	print("SIZE: ",new_signs.size())
 	for i in range(new_signs.size()):
 		asl_images.get(i).texture = new_signs.get(i).image
 		asl_images.get(i).show()
@@ -40,4 +41,7 @@ func hide_all():
 
 #when pressed game_manager should hide this UI
 func _on_button_pressed() -> void:
+	if !DataManager.np_tutorial_shown:
+		DataManager.np_tutorial_shown = true
+		SignalHub.emit_tutorial_completed(3)
 	SignalHub.emit_learning_finished()

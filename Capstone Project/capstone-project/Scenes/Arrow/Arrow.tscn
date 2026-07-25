@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://b6djm547b0ir6"]
 
 [ext_resource type="Texture2D" uid="uid://dhmamb5gr43fs" path="res://Resources/Textures/custom sprites/Pointer.png" id="1_2l3kg"]
-[ext_resource type="Script" uid="uid://mtia4fs2cmf6" path="res://Scenes/Arrow/arrow.gd" id="1_hwrk4"]
-[ext_resource type="FontFile" uid="uid://c6ppxandotwfk" path="res://Resources/Fonts/PasseroOne-Regular.ttf" id="3_aaqag"]
 
 [sub_resource type="Animation" id="Animation_hwrk4"]
 resource_name = "Move_Arrow"
@@ -66,12 +64,7 @@ _data = {
 &"RESET": SubResource("Animation_aaqag")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_ejmsa"]
-font = ExtResource("3_aaqag")
-font_size = 40
-
-[node name="Node2D" type="Node2D" unique_id=1602621629]
-script = ExtResource("1_hwrk4")
+[node name="Arrow" type="Node2D" unique_id=1602621629]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1927552631]
 position = Vector2(-3, 0)
@@ -80,15 +73,3 @@ texture = ExtResource("1_2l3kg")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1774141702]
 libraries/ = SubResource("AnimationLibrary_8snpf")
 autoplay = &"Move_Arrow"
-
-[node name="Label" type="Label" parent="." unique_id=1588778024]
-offset_left = -117.0
-offset_top = -59.0
-offset_right = -31.0
-offset_bottom = 42.0
-text = "Press
-E"
-label_settings = SubResource("LabelSettings_ejmsa")
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true

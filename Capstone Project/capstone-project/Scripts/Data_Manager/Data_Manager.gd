@@ -17,6 +17,13 @@ var tree_3_total_questions: int = 0
 var tree_3_total_correct: int = 0
 var tree_3_interacted: bool = false
 var newspaper_interacted: bool = false
+var walk_tutorial_shown: bool = false
+var np_tutorial_shown: bool = false
+var bed_tutorial_shown: bool = false
+var to_farm_tutorial_shown: bool = false
+var tree_tutorial_shown: bool = false
+var to_home_tutorial_shown: bool = false
+var quiz_tutorial_shown: bool = false
 
 func _ready() -> void:
 	SignalHub.quiz_finished.connect(quiz_finished)
@@ -40,3 +47,5 @@ func reset_day():
 	tree_2_interacted = false
 	tree_3_interacted = false
 	newspaper_interacted = false
+	bed_tutorial_shown = true
+	SignalHub.emit_tutorial_completed(7)

@@ -1,0 +1,233 @@
+[gd_scene format=3 uid="uid://c31fww3j308gg"]
+
+[ext_resource type="Script" uid="uid://cfkwmwfi1efer" path="res://quiz_tutorial.gd" id="1_pth14"]
+[ext_resource type="FontFile" uid="uid://c6ppxandotwfk" path="res://Resources/Fonts/PasseroOne-Regular.ttf" id="2_nyeuc"]
+[ext_resource type="LabelSettings" uid="uid://8ex80u6uolxb" path="res://Resources/Fonts/Tutorial_Green.tres" id="4_pth14"]
+[ext_resource type="PackedScene" uid="uid://b6djm547b0ir6" path="res://Scenes/Arrow/Arrow.tscn" id="4_ydyxt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nyeuc"]
+font = ExtResource("2_nyeuc")
+font_size = 50
+font_color = Color(0.3909995, 0.8031253, 0.45550847, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g41iw"]
+font = ExtResource("2_nyeuc")
+font_size = 40
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Quiz_Tutorial" type="Node2D" unique_id=1295022547]
+script = ExtResource("1_pth14")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1175752114]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1319014843]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Question_Prompts" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1799473096]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Question_Prompts" unique_id=1883641262]
+layout_mode = 2
+text = "Answer quiz questions correctly
+to help grow your tree"
+label_settings = SubResource("LabelSettings_nyeuc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Answer_Buttons" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=263321846]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Meaining ButtonContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Answer_Buttons" unique_id=113587422]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 40
+
+[node name="Button_M_A" type="Button" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer" unique_id=746882157]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="txt_background" type="ColorRect" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_A" unique_id=1868032830]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+size_flags_horizontal = 4
+mouse_filter = 1
+color = Color(0.7810797, 0.26018548, 0.011835737, 1)
+
+[node name="Meaning_A" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_A" unique_id=1687735272]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+text = "A"
+label_settings = SubResource("LabelSettings_g41iw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button_M_B" type="Button" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer" unique_id=424070021]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="txt_background" type="ColorRect" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_B" unique_id=1653892104]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+size_flags_horizontal = 4
+mouse_filter = 1
+color = Color(0.7810797, 0.26018548, 0.011835737, 1)
+
+[node name="Meaning_B" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_B" unique_id=1975865552]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+text = "B"
+label_settings = SubResource("LabelSettings_g41iw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button_M_C" type="Button" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer" unique_id=15587134]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="txt_background" type="ColorRect" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C" unique_id=2116205352]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+size_flags_horizontal = 4
+mouse_filter = 1
+color = Color(0.7810797, 0.26018548, 0.011835737, 1)
+
+[node name="Meaning_C" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C" unique_id=1591574894]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+text = "C"
+label_settings = SubResource("LabelSettings_g41iw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button_M_D" type="Button" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer" unique_id=515858953]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="txt_background" type="ColorRect" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D" unique_id=1670032843]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+size_flags_horizontal = 4
+mouse_filter = 1
+color = Color(0.7810797, 0.26018548, 0.011835737, 1)
+
+[node name="Meaning_D" type="Label" parent="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D" unique_id=916059992]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+text = "D"
+label_settings = SubResource("LabelSettings_g41iw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Arrow" parent="." unique_id=1602621629 instance=ExtResource("4_ydyxt")]
+position = Vector2(366, 54)
+rotation = 1.5707964
+scale = Vector2(0.6, 0.6)
+
+[node name="Arrow2" parent="." unique_id=2022458792 instance=ExtResource("4_ydyxt")]
+position = Vector2(119, 54)
+rotation = 1.5707964
+scale = Vector2(0.6, 0.6)
+
+[node name="Arrow3" parent="." unique_id=1930872351 instance=ExtResource("4_ydyxt")]
+position = Vector2(-359, 49)
+rotation = 1.5707964
+scale = Vector2(0.6, 0.6)
+
+[node name="Arrow4" parent="." unique_id=1289456673 instance=ExtResource("4_ydyxt")]
+position = Vector2(-119, 50)
+rotation = 1.5707964
+scale = Vector2(0.6, 0.6)
+
+[node name="Label" type="Label" parent="." unique_id=849358906]
+offset_left = -187.0
+offset_top = -56.0
+offset_right = 167.0
+offset_bottom = -26.0
+text = "Click one of the buttons to continue..."
+label_settings = ExtResource("4_pth14")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_A" to="." method="_on_button_m_a_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_B" to="." method="_on_button_m_b_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C" to="." method="_on_button_m_c_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D" to="." method="_on_button_m_d_pressed"]

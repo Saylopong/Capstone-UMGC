@@ -90,5 +90,7 @@ func _physics_process(_delta: float) -> void:
 	play_animation()
 	if(move_direction == Vector2(0,0)):
 		stop_animation()
-		
+	elif !DataManager.walk_tutorial_shown:
+		DataManager.walk_tutorial_shown = true
+		SignalHub.emit_tutorial_completed(2)
 	move_and_slide()

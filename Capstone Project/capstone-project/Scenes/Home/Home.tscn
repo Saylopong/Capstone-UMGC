@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://7hudawxston6" path="res://Scenes/Character/Character.tscn" id="2_yvjqa"]
 [ext_resource type="PackedScene" uid="uid://ctdao1oqqfl7s" path="res://Scenes/Bed/Bed.tscn" id="3_og5f0"]
 [ext_resource type="PackedScene" uid="uid://d1ibib7r3oypb" path="res://Scenes/News_Paper/news_paper.tscn" id="4_yvjqa"]
+[ext_resource type="PackedScene" uid="uid://sthe1ltiwoyx" path="res://Scenes/Tutorial_Scenes/Dialogue_box.tscn" id="7_21d83"]
+[ext_resource type="PackedScene" uid="uid://b6djm547b0ir6" path="res://Scenes/Arrow/Arrow.tscn" id="8_vh8ty"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_og5f0"]
 texture = ExtResource("2_og5f0")
@@ -99,5 +101,32 @@ scale = Vector2(1, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1236914322]
 position = Vector2(576, 621.5625)
 shape = SubResource("RectangleShape2D_ejmsa")
+
+[node name="News_Paper_Tutorial" parent="." unique_id=792757390 instance=ExtResource("7_21d83")]
+position = Vector2(748, 320)
+metadata/_edit_lock_ = true
+
+[node name="Arrow" parent="News_Paper_Tutorial" unique_id=1602621629 instance=ExtResource("8_vh8ty")]
+position = Vector2(-89, -114)
+
+[node name="To_Farm_Tutorial" parent="." unique_id=2093918141 instance=ExtResource("7_21d83")]
+position = Vector2(576, 383)
+metadata/_edit_lock_ = true
+
+[node name="Arrow" parent="To_Farm_Tutorial" unique_id=1308988840 instance=ExtResource("8_vh8ty")]
+position = Vector2(-2, 139)
+rotation = 1.5707964
+
+[node name="Bed_Tutorial" parent="." unique_id=1204824279 instance=ExtResource("7_21d83")]
+position = Vector2(423, 279)
+metadata/_edit_lock_ = true
+
+[node name="Arrow" parent="Bed_Tutorial" unique_id=849224794 instance=ExtResource("8_vh8ty")]
+position = Vector2(9, -123)
+rotation = 3.1415927
+
+[node name="Walk_Tutorial" parent="." unique_id=2069372687 instance=ExtResource("7_21d83")]
+position = Vector2(572, 357)
+metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

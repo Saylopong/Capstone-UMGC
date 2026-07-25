@@ -46,6 +46,11 @@ class_name ASL_Quiz_UI
 	$"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_C/Meaning_C",
 	$"MarginContainer/VBoxContainer/Answer_Buttons/Meaining ButtonContainer/Button_M_D/Meaning_D"
 ]
+#Quiz tutorial
+@onready var quiz_tutorial: Node2D = $Quiz_Tutorial
+#Margin container for ASL Quiz UI
+@onready var quiz_ui: MarginContainer = $MarginContainer
+
 #Is assigned "A","B","C", or "D"
 #determines which multiple choice answer is correct
 #and is assigned in randomize_correct_answer()
@@ -68,6 +73,17 @@ var input_locked: bool = false
 
 func _ready() -> void:
 	randomize_correct_answer()
+	quiz_tutorial.hide()
+	quiz_ui.hide()
+	SignalHub.tutorial_completed.connect(show_tutorial)
+
+func show_tutorial(step:int):
+	if(!DataManager.quiz_tutorial_shown && step == 5):
+		quiz_ui.hide()
+		quiz_tutorial.show()
+		DataManager.quiz_tutorial_shown = true
+	elif(DataManager.quiz_tutorial_shown):
+		quiz_ui.show()
 
 func start_quiz(questions: Array[ASLQuestion],tree_num:int):
 	#Sets the current tree this quiz is for
@@ -82,12 +98,16 @@ func start_quiz(questions: Array[ASLQuestion],tree_num:int):
 	answered_correctly = 0
 	#prompts next_question to start first question of the quiz
 	next_question(quiz_index,quiz_questions)
+	SignalHub.emit_tutorial_completed(5)
+
+
 
 func next_question(index:int, quiz_question: Array[ASLQuestion]):
 	if quiz_index >= quiz_question.size():
 		#emits signal that the quiz has finished along with
 		#the number of correctly answered questions
 		SignalHub.emit_quiz_finished((quiz_index),answered_correctly,current_tree)
+		SignalHub.emit_tutorial_completed(6)
 		return
 	else:
 		randomize_question_type(quiz_question.get(index).question)

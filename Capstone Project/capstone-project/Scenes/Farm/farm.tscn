@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://xw2juhh588s2" path="res://Scenes/Farm/Tilesets/game_tile_set.tres" id="1_0f0qd"]
 [ext_resource type="Script" uid="uid://b0ih1ec4ektud" path="res://Scenes/Farm/farm.gd" id="1_p01lv"]
 [ext_resource type="PackedScene" uid="uid://7hudawxston6" path="res://Scenes/Character/Character.tscn" id="3_p01lv"]
+[ext_resource type="PackedScene" uid="uid://sthe1ltiwoyx" path="res://Scenes/Tutorial_Scenes/Dialogue_box.tscn" id="4_xvaxp"]
 [ext_resource type="PackedScene" uid="uid://b6djm547b0ir6" path="res://Scenes/Arrow/Arrow.tscn" id="5_xvaxp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejmsa"]
@@ -43,10 +44,6 @@ shape = SubResource("RectangleShape2D_ejmsa")
 position = Vector2(900, 391)
 scale = Vector2(3, 3)
 
-[node name="Node2D" parent="." unique_id=1602621629 instance=ExtResource("5_xvaxp")]
-position = Vector2(176, 456)
-scale = Vector2(0.5, 0.5)
-
 [node name="T1" type="Marker2D" parent="." unique_id=1828033443]
 position = Vector2(232, 454)
 metadata/_edit_lock_ = true
@@ -58,5 +55,20 @@ metadata/_edit_lock_ = true
 [node name="T3" type="Marker2D" parent="." unique_id=1762108925]
 position = Vector2(578, 456)
 metadata/_edit_lock_ = true
+
+[node name="Tree_Tutorial" parent="." unique_id=792757390 instance=ExtResource("4_xvaxp")]
+position = Vector2(268, 205)
+
+[node name="Arrow" parent="Tree_Tutorial" unique_id=1602621629 instance=ExtResource("5_xvaxp")]
+position = Vector2(-32, 120)
+rotation = 1.5707964
+
+[node name="To_Home_Tutorial" parent="." unique_id=554054484 instance=ExtResource("4_xvaxp")]
+position = Vector2(910, 511)
+
+[node name="Arrow" parent="To_Home_Tutorial" unique_id=856163099 instance=ExtResource("5_xvaxp")]
+position = Vector2(-10, -116)
+rotation = 4.712389
+scale = Vector2(0.8, 0.8)
 
 [connection signal="body_entered" from="door_to_home" to="." method="_on_area_2d_body_entered"]

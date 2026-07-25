@@ -11,6 +11,7 @@ signal quit_game
 signal player_entered_home
 signal player_left_home
 signal tree_data(data: Array[int])
+signal tutorial_completed(step:int)
 
 func emit_player_entered_zone(zone: String):
 	player_entered_zone.emit(zone)
@@ -42,7 +43,8 @@ func emit_player_entered_home():
 func emit_player_left_home():
 	player_left_home.emit()
 
-func emit_tree_data(data: Array[int]):
-	tree_data.emit(data)
-	
+func emit_tutorial_completed(step:int):
+	print("Step: ",step)
+	tutorial_completed.emit(step)
+
 	

@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://8ex80u6uolxb"]
+
+[ext_resource type="FontFile" uid="uid://c6ppxandotwfk" path="res://Resources/Fonts/PasseroOne-Regular.ttf" id="1_dywp3"]
+
+[resource]
+font = ExtResource("1_dywp3")
+font_size = 24
+font_color = Color(0.3909995, 0.8031253, 0.45550847, 1)

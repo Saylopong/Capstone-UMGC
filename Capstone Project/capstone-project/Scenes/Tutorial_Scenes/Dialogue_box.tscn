@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://sthe1ltiwoyx"]
+
+[ext_resource type="Script" uid="uid://bpq8v5l64hw28" path="res://Scenes/Tutorial_Scenes/Dialogue_box.gd" id="1_mxi2n"]
+[ext_resource type="LabelSettings" uid="uid://8ex80u6uolxb" path="res://Resources/Fonts/Tutorial_Green.tres" id="2_6ycjw"]
+
+[node name="Dialogue_box" type="Node2D" unique_id=792757390]
+script = ExtResource("1_mxi2n")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1314344155]
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+pivot_offset = Vector2(150, 75)
+color = Color(0, 0.2509804, 0.40392157, 0.5019608)
+metadata/_edit_use_anchors_ = true
+
+[node name="Tutorial_Text" type="Label" parent="ColorRect" unique_id=525997420]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TUTORIAL TEXT"
+label_settings = ExtResource("2_6ycjw")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -11,6 +11,9 @@ extends Node
 @onready var fade_rect: ColorRect = $fade_rect
 
 
+
+
+
 #preloads of farm and home scene for quick instantiation
 const FARM: PackedScene = preload("uid://cs667hsowc61p")
 const HOME: PackedScene = preload("uid://uxjg36nseyn0")
@@ -31,11 +34,7 @@ func _ready() -> void:
 	SignalHub.learning_finished.connect(end_learning)
 	SignalHub.pause_game.connect(pause_scene)
 	SignalHub.unpause_game.connect(unpause_scene)
-	
 	load_home()
-	TestScript.print_db_status()
-	TestScript.test_tree3()
-	TestScript.print_db_status()
 	
 #Instantiates a new farm scene and adds it to scene container
 func load_farm():
@@ -108,6 +107,7 @@ func handle_interact(Interactable: String):
 				fade_rect.show()
 				scene_container.process_mode = Node.PROCESS_MODE_DISABLED
 				fade_reset_day.play("Fade")
+				
 
 
 #updates asl_learning_ui with new ASL signs for the player to learn.
