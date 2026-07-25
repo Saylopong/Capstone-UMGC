@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://jo4232vfyyk8"
+path="res://.godot/imported/Page Turning Sfx.wav-a4cb0b56a8395eac141edbae9f0fce1b.sample"
+
+[deps]
+
+source_file="res://Resources/sounds/Page Turning Sfx.wav"
+dest_files=["res://.godot/imported/Page Turning Sfx.wav-a4cb0b56a8395eac141edbae9f0fce1b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

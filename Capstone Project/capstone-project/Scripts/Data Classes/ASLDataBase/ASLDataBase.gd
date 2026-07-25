@@ -20,7 +20,7 @@ func signs_unlocked() -> int:
 func is_learned_test():
 	if signs_unlocked() == all_questions.size():
 		is_learned = true
-		print("A data base has been learned.")
+
 
 
 	#is_learned = true

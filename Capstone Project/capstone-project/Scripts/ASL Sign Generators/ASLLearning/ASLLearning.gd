@@ -34,6 +34,5 @@ static func generate_new_sign(database:int) -> ASLSign:
 	#sets new_sign is_unlocked to true
 	new_sign.is_unlocked = true
 	
-	print("DB_",database," ","\nnew sign: ",new_sign.meaning)
 	return new_sign
 	

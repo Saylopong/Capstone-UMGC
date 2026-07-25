@@ -42,12 +42,15 @@ func load_farm():
 		clear_scene()
 		var farmscene = FARM.instantiate()
 		scene_container.add_child.call_deferred(farmscene)
+		Sounds.play_ogg_sound(Sounds.DOOR_OGG)
 
 #Instantiates a new home scene and adds it to scene container
 func load_home():
 	clear_scene()
 	var homescene = HOME.instantiate()
 	scene_container.add_child.call_deferred(homescene)
+	if(DataManager.walk_tutorial_shown):
+		Sounds.play_ogg_sound(Sounds.DOOR_OGG)
 
 #Deques whatever scene is currently being displayed
 #in scene container
@@ -101,12 +104,16 @@ func handle_interact(Interactable: String):
 				asl_quiz_ui.hide()
 				asl_learning_ui.show()
 				show_new_signs()
+				Sounds.play_wav_sound(Sounds.PAGE_TURNING_WAV)
 		"BED":
 			#stops player from going to bed if no trees have been interacted with
 			if DataManager.tree_1_interacted || DataManager.tree_2_interacted || DataManager.tree_3_interacted:
 				fade_rect.show()
 				scene_container.process_mode = Node.PROCESS_MODE_DISABLED
 				fade_reset_day.play("Fade")
+				DataManager.bed_tutorial_shown = true
+				SignalHub.emit_tutorial_completed(7)
+				Sounds.play_mp3_sound(Sounds.COMFORTER_SOUND_MP3)
 				
 
 

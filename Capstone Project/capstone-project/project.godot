@@ -21,6 +21,7 @@ SignalHub="*uid://cg86gtlnnq0e6"
 SceneTransitioner="*uid://ca0giuxfhrogl"
 DataManager="*uid://d1fyq4vtia442"
 TestScript="*uid://2j3qblaloux"
+Sounds="*uid://oa7ocopxehlc"
 
 [display]
 

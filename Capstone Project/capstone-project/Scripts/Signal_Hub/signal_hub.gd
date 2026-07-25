@@ -44,7 +44,6 @@ func emit_player_left_home():
 	player_left_home.emit()
 
 func emit_tutorial_completed(step:int):
-	print("Step: ",step)
 	tutorial_completed.emit(step)
 
 	

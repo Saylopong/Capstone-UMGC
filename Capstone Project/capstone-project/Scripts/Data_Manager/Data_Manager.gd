@@ -47,5 +47,3 @@ func reset_day():
 	tree_2_interacted = false
 	tree_3_interacted = false
 	newspaper_interacted = false
-	bed_tutorial_shown = true
-	SignalHub.emit_tutorial_completed(7)

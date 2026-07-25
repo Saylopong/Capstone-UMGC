@@ -42,12 +42,6 @@ func set_tree_data():
 	tree_3.answered_correctly = DataManager.tree_3_total_correct
 	tree_3.total_questions = DataManager.tree_3_total_questions
 	tree_3.grow()
-	print(tree_1.total_questions)
-	print(tree_1.answered_correctly)
-	print(tree_2.total_questions)
-	print(tree_2.answered_correctly)
-	print(tree_3.total_questions)
-	print(tree_3.answered_correctly)
 
 func show_tutorials(step: int):
 	if(!DataManager.tree_tutorial_shown && !DataManager.to_farm_tutorial_shown && step == 4):
