@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://c5g8ymxdt2tl0"]
+
+[ext_resource type="Script" uid="uid://ks4naebwkjhy" path="res://Scenes/Game_Manager/Game_Manager.gd" id="1_sbmqd"]
+[ext_resource type="PackedScene" uid="uid://3g834qn6yl8l" path="res://Scenes/Music_Display/music_display.tscn" id="2_eqiw4"]
+[ext_resource type="PackedScene" uid="uid://1rf4n5ajaipo" path="res://Scenes/ASL_UI/ASL_Learning/asl_learning_ui.tscn" id="3_kfri6"]
+[ext_resource type="PackedScene" uid="uid://cxkpsebnd05at" path="res://Scenes/ASL_UI/ASL_Quiz/ASL_Quiz_UI.tscn" id="4_2eqbm"]
+[ext_resource type="PackedScene" uid="uid://uj05kj8dd14x" path="res://Scenes/Pause_UI/Pause_UI.tscn" id="5_eqiw4"]
+
+[sub_resource type="Animation" id="Animation_y87pn"]
+resource_name = "Fade"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_jt2a1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_447cj"]
+_data = {
+&"Fade": SubResource("Animation_y87pn"),
+&"RESET": SubResource("Animation_jt2a1")
+}
+
+[node name="Game_Manager" type="Node" unique_id=1638152063]
+process_mode = 3
+script = ExtResource("1_sbmqd")
+
+[node name="Music_Display" parent="." unique_id=1506241360 instance=ExtResource("2_eqiw4")]
+anchor_left = 0.85800004
+anchor_top = 0.020000001
+anchor_right = 0.98800004
+anchor_bottom = 0.113000005
+offset_left = -27.416016
+offset_top = 11.039999
+offset_right = -27.176025
+offset_bottom = 10.775993
+pivot_offset = Vector2(75, 30)
+
+[node name="Fade_reset_day" type="AnimationPlayer" parent="." unique_id=619621363]
+libraries/ = SubResource("AnimationLibrary_447cj")
+
+[node name="ASL_Learning_UI" parent="." unique_id=603574902 instance=ExtResource("3_kfri6")]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="ASL_Quiz_UI" parent="." unique_id=676744762 instance=ExtResource("4_2eqbm")]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Pause_UI" parent="." unique_id=888389429 instance=ExtResource("5_eqiw4")]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Scene_Container" type="MarginContainer" parent="." unique_id=1858135715]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="fade_rect" type="ColorRect" parent="." unique_id=138853296]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.019607844, 0.019607844, 0.019607844, 0.99607843)
+metadata/_edit_lock_ = true
+
+[connection signal="animation_finished" from="Fade_reset_day" to="." method="_on_fade_reset_day_animation_finished"]

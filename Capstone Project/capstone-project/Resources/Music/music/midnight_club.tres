@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Music" format=3 uid="uid://qvsar6gk3kk7"]
+
+[ext_resource type="AudioStream" uid="uid://b50gsmo6ksgfa" path="res://Resources/Music/MP3's/turning_pages-midnight-pillow-drift-569841.mp3" id="1_g2yt8"]
+[ext_resource type="Script" uid="uid://6r82ia1g3syq" path="res://Scripts/Data Classes/Music/music.gd" id="1_ycwk1"]
+
+[resource]
+script = ExtResource("1_ycwk1")
+mp3 = ExtResource("1_g2yt8")
+name = "Midnight Club"
+artist = "Turning Pages"
+metadata/_custom_type_script = "uid://6r82ia1g3syq"

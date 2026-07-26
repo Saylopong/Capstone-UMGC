@@ -4,4 +4,5 @@
 
 [resource]
 font = ExtResource("1_imnem")
-font_size = 40
+font_size = 20
+font_color = Color(0.5647059, 1, 1, 1)

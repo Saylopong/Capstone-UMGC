@@ -1,16 +1,5 @@
 extends Node
 
-#Music
-const _8_BIT_MORNING = preload("uid://d38fjvcs5064b")
-const MIDNIGHT_PILLOW_DRIFT = preload("uid://b1hhrejhoykcv")
-const SUMMER_GARDEN = preload("uid://behrqnfbs5oh6")
-
-#Sound Effects
-const DOOR_OGG = preload("uid://36a3d48j3huh")
-const PAGE_TURNING_WAV = preload("uid://jo4232vfyyk8")
-const COMFORTER_SOUND_MP3 = preload("uid://d0ukkbpq7e2dg")
-
-
 var music_player: AudioStreamPlayer
 var sound_player: AudioStreamPlayer
 var background_player: AudioStreamPlayer
@@ -25,11 +14,15 @@ func _ready() -> void:
 	add_child(sound_player)
 	add_child(background_player)
 	SignalHub.volume.connect(set_volume)
+	SignalHub.current_song.connect(play_music)
 	SignalHub.emit_volume()
+	music_player.finished.connect(get_next_song)
+	play_music(DataManager.MUSIC.list.get(0))
+	
 
 #used to play mp3 formated music
-func play_music(song:AudioStreamMP3):
-	music_player.stream = song
+func play_music(song:Music):
+	music_player.stream = song.mp3
 	music_player.play()
 
 #used to play ogg formated sound effects
@@ -58,4 +51,15 @@ func set_volume(vol: float):
 		music_player.volume_db = -200
 		background_player.volume_db = -200
 		sound_player.volume_db = -200
-		
+
+
+
+func get_next_song():
+	if (DataManager.MUSIC.list.find(DataManager.current_song) >= DataManager.MUSIC.list.size()):
+		DataManager.current_song = DataManager.MUSIC.list.get(0)
+	DataManager.current_song = (
+	 		DataManager.MUSIC.list.get(
+			DataManager.MUSIC.list.find(
+			DataManager.current_song)+1))
+	SignalHub.emit_current_song(DataManager.current_song)
+	

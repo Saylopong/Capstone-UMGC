@@ -1,17 +1,7 @@
 extends Node
 
-const FARM: PackedScene = preload("uid://cs667hsowc61p")
-const MAIN_MENU: PackedScene = preload("res://Scenes/MainMenu/MainMenu.tscn")
-const GAME_MANAGER: PackedScene = preload("res://Scenes/Game_Manager/Game_Manager.tscn")
-#const HOME: PackedScene = preload("uid://dcjicbbaddqtb")
-
-#func home_transition() -> void:
-	#transition current scen to HOME
-#	get_tree().change_scene_to_packed(HOME)
-
-func farm_transition() -> void:
-	#transition current scen to FARM
-	get_tree().change_scene_to_packed(FARM)
+const MAIN_MENU = preload("uid://db6osn8joy50e")
+const GAME_MANAGER = preload("uid://c5g8ymxdt2tl0")
 
 func main_menu_transition() -> void:
 	#make sure the game isn't left paused when we leave it

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://3g834qn6yl8l"]
+
+[ext_resource type="Script" uid="uid://3xvpfj25bjjc" path="res://Scenes/Music_Display/music_display.gd" id="1_40uoe"]
+[ext_resource type="FontFile" uid="uid://c6ppxandotwfk" path="res://Resources/Fonts/PasseroOne-Regular.ttf" id="2_deubx"]
+[ext_resource type="LabelSettings" uid="uid://nyxji1grtddo" path="res://Resources/Fonts/general_label.tres" id="2_w8qrq"]
+[ext_resource type="LabelSettings" uid="uid://c0pgwy7hb4ocv" path="res://Resources/Fonts/music_labels.tres" id="3_w8qrq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vgepx"]
+font = ExtResource("2_deubx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7q4hf"]
+font = ExtResource("2_deubx")
+
+[node name="Music_Display" type="MarginContainer" unique_id=1506241360]
+custom_minimum_size = Vector2(150, 60)
+anchors_preset = -1
+anchor_right = 0.13000001
+anchor_bottom = 0.093
+offset_right = -109.76001
+offset_bottom = -20.264
+script = ExtResource("1_40uoe")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1714063094]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+color = Color(0.06666667, 0.1764706, 0.2509804, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=905495752]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1522423322]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Currently Playing"
+label_settings = ExtResource("2_w8qrq")
+vertical_alignment = 1
+
+[node name="Artist" type="HBoxContainer" parent="VBoxContainer" unique_id=2003222270]
+layout_mode = 2
+
+[node name="Artist_Name_Label" type="Label" parent="VBoxContainer/Artist" unique_id=1473913337]
+layout_mode = 2
+text = "Artist: "
+label_settings = SubResource("LabelSettings_vgepx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Artist_Name" type="Label" parent="VBoxContainer/Artist" unique_id=1430811550]
+layout_mode = 2
+text = "TEST TEST"
+label_settings = ExtResource("3_w8qrq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Song" type="HBoxContainer" parent="VBoxContainer" unique_id=1655320176]
+layout_mode = 2
+
+[node name="Song_Name_Label" type="Label" parent="VBoxContainer/Song" unique_id=171171287]
+layout_mode = 2
+text = "Name: "
+label_settings = SubResource("LabelSettings_7q4hf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Song_Name" type="Label" parent="VBoxContainer/Song" unique_id=1268213264]
+layout_mode = 2
+text = "TEST TEST"
+label_settings = ExtResource("3_w8qrq")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Music" format=3 uid="uid://mloo1av80r70"]
+
+[ext_resource type="AudioStream" uid="uid://b50gsmo6ksgfa" path="res://Resources/Music/MP3's/turning_pages-midnight-pillow-drift-569841.mp3" id="1_sw4bt"]
+[ext_resource type="Script" uid="uid://6r82ia1g3syq" path="res://Scripts/Data Classes/Music/music.gd" id="1_tr3w1"]
+
+[resource]
+script = ExtResource("1_tr3w1")
+mp3 = ExtResource("1_sw4bt")
+name = "Midnight Pillow Drift"
+artist = "Turning Pages"
+metadata/_custom_type_script = "uid://6r82ia1g3syq"

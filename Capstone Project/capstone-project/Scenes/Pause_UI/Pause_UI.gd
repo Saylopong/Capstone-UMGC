@@ -35,6 +35,7 @@ func _on_unpause_game() -> void:
 	
 
 func _on_quit_button_pressed() -> void:
+	get_tree().paused = false
 	SignalHub.emit_quit_game()
 
 func _on_main_menu_button_pressed() -> void:

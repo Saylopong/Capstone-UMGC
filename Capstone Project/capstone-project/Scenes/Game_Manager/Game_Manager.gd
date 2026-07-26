@@ -10,10 +10,6 @@ extends Node
 @onready var fade_reset_day: AnimationPlayer = $Fade_reset_day
 @onready var fade_rect: ColorRect = $fade_rect
 
-
-
-
-
 #preloads of farm and home scene for quick instantiation
 const FARM: PackedScene = preload("uid://cs667hsowc61p")
 const HOME: PackedScene = preload("uid://uxjg36nseyn0")
@@ -42,7 +38,7 @@ func load_farm():
 		clear_scene()
 		var farmscene = FARM.instantiate()
 		scene_container.add_child.call_deferred(farmscene)
-		Sounds.play_ogg_sound(Sounds.DOOR_OGG)
+		Sounds.play_wav_sound(DataManager.DOOR_WAV)
 
 #Instantiates a new home scene and adds it to scene container
 func load_home():
@@ -50,7 +46,7 @@ func load_home():
 	var homescene = HOME.instantiate()
 	scene_container.add_child.call_deferred(homescene)
 	if(DataManager.walk_tutorial_shown):
-		Sounds.play_ogg_sound(Sounds.DOOR_OGG)
+		Sounds.play_wav_sound(DataManager.DOOR_WAV)
 
 #Deques whatever scene is currently being displayed
 #in scene container
@@ -104,7 +100,7 @@ func handle_interact(Interactable: String):
 				asl_quiz_ui.hide()
 				asl_learning_ui.show()
 				show_new_signs()
-				Sounds.play_wav_sound(Sounds.PAGE_TURNING_WAV)
+				Sounds.play_wav_sound(DataManager.PAGE_TURNING_WAV)
 		"BED":
 			#stops player from going to bed if no trees have been interacted with
 			if DataManager.tree_1_interacted || DataManager.tree_2_interacted || DataManager.tree_3_interacted:
@@ -113,7 +109,7 @@ func handle_interact(Interactable: String):
 				fade_reset_day.play("Fade")
 				DataManager.bed_tutorial_shown = true
 				SignalHub.emit_tutorial_completed(7)
-				Sounds.play_mp3_sound(Sounds.COMFORTER_SOUND_MP3)
+				Sounds.play_mp3_sound(DataManager.COMFORTER_SOUND_MP3)
 				
 
 

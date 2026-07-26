@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Music" format=3 uid="uid://chnmj0esmprb6"]
+
+[ext_resource type="Script" uid="uid://6r82ia1g3syq" path="res://Scripts/Data Classes/Music/music.gd" id="1_3gk7u"]
+[ext_resource type="AudioStream" uid="uid://dknwchj5w4hnr" path="res://Resources/Music/MP3's/turning_pages-amber-light-pensive-567070.mp3" id="1_pbd3u"]
+
+[resource]
+script = ExtResource("1_3gk7u")
+mp3 = ExtResource("1_pbd3u")
+name = "Amber Light Pensive"
+artist = "Turning Pages"
+metadata/_custom_type_script = "uid://6r82ia1g3syq"

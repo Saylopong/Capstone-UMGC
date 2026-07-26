@@ -3,6 +3,9 @@ extends Node2D
 @onready var bed_tutorial: DialogueBox = $Bed_Tutorial
 @onready var to_farm_tutorial: DialogueBox = $To_Farm_Tutorial
 @onready var walk_tutorial: DialogueBox = $Walk_Tutorial
+@onready var continue_game: DialogueBox = $Continue_game
+@onready var show_continue: Timer = $show_continue
+@onready var hide_continue: Timer = $hide_continue
 
 func _ready() -> void:
 	hide_tutorials()
@@ -29,6 +32,11 @@ func show_tutorials(step:int):
 	elif(DataManager.to_home_tutorial_shown && !DataManager.bed_tutorial_shown):
 		bed_tutorial.show()
 		bed_tutorial.set_text("T_BED")
+	elif(DataManager.quiz_tutorial_shown && !DataManager.continue_game1):
+		show_continue.start()
+		bed_tutorial.hide()
+		continue_game.set_text("C1")
+		
 	else:
 		hide_tutorials()
 		
@@ -37,7 +45,19 @@ func hide_tutorials():
 	to_farm_tutorial.hide()
 	bed_tutorial.hide()
 	walk_tutorial.hide()
+	continue_game.hide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 		if body is CharacterBody2D:
 			SignalHub.emit_player_left_home()
+
+func _on_timer_timeout() -> void:
+	continue_game.show()
+	hide_continue.start()
+	DataManager.continue_game1 = true
+
+
+func _on_hide_continue_timeout() -> void:
+	continue_game.hide()
+	
+	

@@ -4,9 +4,7 @@ extends Control
 @onready var quit_button: Button = $MarginContainer/VBoxContainer/VBoxContainer/Quit_Button
 
 func _ready() -> void:
-	play_button.pressed.connect(_on_play_button_pressed)
-	quit_button.pressed.connect(_on_quit_button_pressed)
-	Sounds.play_music(Sounds.MIDNIGHT_PILLOW_DRIFT)
+	pass
 	
 	
 	

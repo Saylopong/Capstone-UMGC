@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ibib7r3oypb" path="res://Scenes/News_Paper/news_paper.tscn" id="4_yvjqa"]
 [ext_resource type="PackedScene" uid="uid://sthe1ltiwoyx" path="res://Scenes/Tutorial_Scenes/Dialogue_box.tscn" id="7_21d83"]
 [ext_resource type="PackedScene" uid="uid://b6djm547b0ir6" path="res://Scenes/Arrow/Arrow.tscn" id="8_vh8ty"]
+[ext_resource type="PackedScene" uid="uid://3g834qn6yl8l" path="res://Scenes/Music_Display/music_display.tscn" id="9_6di0c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_og5f0"]
 texture = ExtResource("2_og5f0")
@@ -68,7 +69,7 @@ size = Vector2(101.5, 75.125)
 script = ExtResource("1_o3e1b")
 
 [node name="Tilemap" type="Node2D" parent="." unique_id=754761448]
-position = Vector2(246.00003, 658)
+position = Vector2(226, 658)
 scale = Vector2(3.75, 3.75)
 
 [node name="Floor" type="TileMapLayer" parent="Tilemap" unique_id=1184601865]
@@ -99,18 +100,18 @@ scale = Vector2(1, 1)
 [node name="Area2D" type="Area2D" parent="." unique_id=1525701100]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1236914322]
-position = Vector2(576, 621.5625)
+position = Vector2(556, 621.563)
 shape = SubResource("RectangleShape2D_ejmsa")
 
 [node name="News_Paper_Tutorial" parent="." unique_id=792757390 instance=ExtResource("7_21d83")]
-position = Vector2(748, 320)
+position = Vector2(728, 320)
 metadata/_edit_lock_ = true
 
 [node name="Arrow" parent="News_Paper_Tutorial" unique_id=1602621629 instance=ExtResource("8_vh8ty")]
 position = Vector2(-89, -114)
 
 [node name="To_Farm_Tutorial" parent="." unique_id=2093918141 instance=ExtResource("7_21d83")]
-position = Vector2(576, 383)
+position = Vector2(556, 383)
 metadata/_edit_lock_ = true
 
 [node name="Arrow" parent="To_Farm_Tutorial" unique_id=1308988840 instance=ExtResource("8_vh8ty")]
@@ -118,7 +119,7 @@ position = Vector2(-2, 139)
 rotation = 1.5707964
 
 [node name="Bed_Tutorial" parent="." unique_id=1204824279 instance=ExtResource("7_21d83")]
-position = Vector2(423, 279)
+position = Vector2(403, 279)
 metadata/_edit_lock_ = true
 
 [node name="Arrow" parent="Bed_Tutorial" unique_id=849224794 instance=ExtResource("8_vh8ty")]
@@ -126,7 +127,26 @@ position = Vector2(9, -123)
 rotation = 3.1415927
 
 [node name="Walk_Tutorial" parent="." unique_id=2069372687 instance=ExtResource("7_21d83")]
-position = Vector2(572, 357)
+position = Vector2(552, 357)
 metadata/_edit_lock_ = true
 
+[node name="Music_Display" parent="." unique_id=1506241360 instance=ExtResource("9_6di0c")]
+offset_left = 915.0
+offset_top = 30.0
+offset_right = 1115.0
+offset_bottom = 113.0
+
+[node name="Continue_game" parent="." unique_id=708262650 instance=ExtResource("7_21d83")]
+position = Vector2(556, 380)
+
+[node name="show_continue" type="Timer" parent="." unique_id=1074865908]
+wait_time = 0.25
+one_shot = true
+
+[node name="hide_continue" type="Timer" parent="." unique_id=309558509]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="show_continue" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="hide_continue" to="." method="_on_hide_continue_timeout"]

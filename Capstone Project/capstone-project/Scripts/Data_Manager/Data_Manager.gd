@@ -5,6 +5,7 @@ var DB_1:ASLDataBase = preload("uid://drtj5oug2qd1u")
 var DB_2:ASLDataBase = preload("uid://bca7q66w0hmaj")
 var DB_3:ASLDataBase = preload("uid://05t2ycw2ur2m")
 
+const MUSIC = preload("uid://cenepntoffybw")
 
 #Game_Data
 var tree_1_total_questions: int = 0
@@ -15,10 +16,6 @@ var tree_2_total_correct: int = 0
 var tree_2_interacted: bool = false
 var tree_3_total_questions: int = 0
 var tree_3_total_correct: int = 0
-#used to determine volume of sounds in game
-#is max volume at -10
-#is lowest volume at -50
-var volume: float = -25.0
 var tree_3_interacted: bool = false
 var newspaper_interacted: bool = false
 var walk_tutorial_shown: bool = false
@@ -28,9 +25,32 @@ var to_farm_tutorial_shown: bool = false
 var tree_tutorial_shown: bool = false
 var to_home_tutorial_shown: bool = false
 var quiz_tutorial_shown: bool = false
+var continue_game1: bool = false
+
+
+#used to determine volume of sounds in game
+#is max volume at -10
+#is lowest volume at -50
+var volume: float = -25.0
+
+#stores current index in Music of the song currently playing
+var current_song: Music 
+
+#WAV sound effects
+const PAGE_TURNING_WAV = preload("uid://jo4232vfyyk8")
+const DOOR_WAV = preload("uid://bvbjynxcukx43")
+#OGG sound effects
+#MP3 sound effects
+const COMFORTER_SOUND_MP3 = preload("uid://d0ukkbpq7e2dg")
+
+
+
 
 func _ready() -> void:
 	SignalHub.quiz_finished.connect(quiz_finished)
+	#shuffles all music
+	MUSIC.list.shuffle()
+	current_song = MUSIC.list.get(0)
 	
 func quiz_finished(total_questions:int, total_correct:int,tree:int):
 	if(tree == 1):

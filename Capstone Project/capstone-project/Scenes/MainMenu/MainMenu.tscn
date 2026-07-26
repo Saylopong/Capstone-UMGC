@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bkwog7n0xd16v" path="res://Scenes/MainMenu/MainMenu.gd" id="1_menu"]
 [ext_resource type="FontFile" uid="uid://c6ppxandotwfk" path="res://Resources/Fonts/PasseroOne-Regular.ttf" id="2_font"]
+[ext_resource type="PackedScene" uid="uid://3g834qn6yl8l" path="res://Scenes/Music_Display/music_display.tscn" id="2_kpx3y"]
 [ext_resource type="PackedScene" uid="uid://cbfkh2sp0yif1" path="res://Scenes/Volume_Slider/volume_slider.tscn" id="3_sg7ab"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_title"]
+[sub_resource type="LabelSettings" id="LabelSettings_kpx3y"]
 font = ExtResource("2_font")
-font_size = 90
+font_size = 60
+font_color = Color(0.3909995, 0.8031253, 0.45550847, 1)
 
 [node name="MainMenu" type="Control" unique_id=819686048]
 layout_mode = 3
@@ -25,6 +27,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.2509804, 0.40392157, 1)
+
+[node name="Music_Display" parent="." unique_id=1506241360 instance=ExtResource("2_kpx3y")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 915.0
+offset_top = 30.0
+offset_right = 1115.0
+offset_bottom = 113.0
+pivot_offset = Vector2(75, 30)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1430209041]
 layout_mode = 1
@@ -46,7 +59,7 @@ theme_override_constants/separation = 30
 layout_mode = 2
 size_flags_horizontal = 4
 text = "ASL Farm"
-label_settings = SubResource("LabelSettings_title")
+label_settings = SubResource("LabelSettings_kpx3y")
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2033518538]
@@ -67,3 +80,6 @@ text = "Quit"
 
 [node name="Volume_Slider" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=221181572 instance=ExtResource("3_sg7ab")]
 layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Play_Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]

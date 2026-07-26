@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="MusicList" format=3 uid="uid://cenepntoffybw"]
+
+[ext_resource type="Script" uid="uid://6r82ia1g3syq" path="res://Scripts/Data Classes/Music/music.gd" id="1_rtrpf"]
+[ext_resource type="Script" uid="uid://bjyhhcydy55en" path="res://Scripts/Data Classes/Music Database/Music List.gd" id="2_1cwwe"]
+[ext_resource type="Resource" uid="uid://b22whsibm5uhx" path="res://Resources/Music/music/8_bit_morning.tres" id="2_4pgo3"]
+[ext_resource type="Resource" uid="uid://cxui5p73w8tw1" path="res://Resources/Music/music/afternoon_mist.tres" id="3_684qu"]
+[ext_resource type="Resource" uid="uid://chnmj0esmprb6" path="res://Resources/Music/music/amber_light_pensive.tres" id="4_v6w6x"]
+[ext_resource type="Resource" uid="uid://cfy377fba3xt5" path="res://Resources/Music/music/faded_porcelain.tres" id="5_ig5v0"]
+[ext_resource type="Resource" uid="uid://be2rhag57t2to" path="res://Resources/Music/music/lofi_beats.tres" id="6_4cfe0"]
+[ext_resource type="Resource" uid="uid://7mgch3wjaka" path="res://Resources/Music/music/lofi_study_session.tres" id="7_j02lk"]
+[ext_resource type="Resource" uid="uid://qvsar6gk3kk7" path="res://Resources/Music/music/midnight_club.tres" id="8_e5iuf"]
+[ext_resource type="Resource" uid="uid://mloo1av80r70" path="res://Resources/Music/music/midnight_pillow.tres" id="9_0fvnn"]
+[ext_resource type="Resource" uid="uid://6nnw21aagwyx" path="res://Resources/Music/music/piano_documentary.tres" id="10_2h4b4"]
+[ext_resource type="Resource" uid="uid://bdgjyung247ue" path="res://Resources/Music/music/relaxing_music.tres" id="11_av8cl"]
+[ext_resource type="Resource" uid="uid://m8emfvtagf4g" path="res://Resources/Music/music/soft_background_music.tres" id="12_yxnyx"]
+[ext_resource type="Resource" uid="uid://ck2dt7bto5qoj" path="res://Resources/Music/music/Summer_Garden.tres" id="13_v1uet"]
+[ext_resource type="Resource" uid="uid://cdvlb6b6pxpt0" path="res://Resources/Music/music/Upbeat_music.tres" id="14_bak0t"]
+
+[resource]
+script = ExtResource("2_1cwwe")
+list = Array[ExtResource("1_rtrpf")]([ExtResource("2_4pgo3"), ExtResource("3_684qu"), ExtResource("4_v6w6x"), ExtResource("5_ig5v0"), ExtResource("6_4cfe0"), ExtResource("7_j02lk"), ExtResource("8_e5iuf"), ExtResource("9_0fvnn"), ExtResource("10_2h4b4"), ExtResource("11_av8cl"), ExtResource("12_yxnyx"), ExtResource("13_v1uet"), ExtResource("14_bak0t")])
+metadata/_custom_type_script = "uid://bjyhhcydy55en"

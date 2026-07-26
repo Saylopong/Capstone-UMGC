@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Music" format=3 uid="uid://be2rhag57t2to"]
+
+[ext_resource type="AudioStream" uid="uid://ravvrrwfgwxn" path="res://Resources/Music/MP3's/mirostar-lofi-beats-531504.mp3" id="1_bflpv"]
+[ext_resource type="Script" uid="uid://6r82ia1g3syq" path="res://Scripts/Data Classes/Music/music.gd" id="1_jtmmx"]
+
+[resource]
+script = ExtResource("1_jtmmx")
+mp3 = ExtResource("1_bflpv")
+name = "Lofi Beats"
+artist = "Mirostar"
+metadata/_custom_type_script = "uid://6r82ia1g3syq"

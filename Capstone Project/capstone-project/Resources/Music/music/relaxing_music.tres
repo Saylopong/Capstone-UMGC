@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Music" format=3 uid="uid://bdgjyung247ue"]
+
+[ext_resource type="AudioStream" uid="uid://0poxdx1tf42o" path="res://Resources/Music/MP3's/arpmedia-relaxing-music-569451.mp3" id="1_dcqcs"]
+[ext_resource type="Script" uid="uid://6r82ia1g3syq" path="res://Scripts/Data Classes/Music/music.gd" id="1_qeqow"]
+
+[resource]
+script = ExtResource("1_qeqow")
+mp3 = ExtResource("1_dcqcs")
+name = "Relaxing Music"
+artist = "ARP Media"
+metadata/_custom_type_script = "uid://6r82ia1g3syq"

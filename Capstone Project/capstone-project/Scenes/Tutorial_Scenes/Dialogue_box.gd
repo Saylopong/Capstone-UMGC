@@ -9,7 +9,9 @@ const np_tutorial_text: String = "You can interact by pressing\n\"E\"\nTry openi
 const to_farm_tutorial_text: String = "Go outside\n and check on your farm"
 const to_home_tutorial_text: String = "Time to head back\n inside"
 const bed_tutorial_text: String = "Great job today!\n Its time for bed"
-const tree_tutorial_text: String = "Interact with the tree\n to text your knowledge"
+const tree_tutorial_text: String = "Interact with the tree\n to test your knowledge"
+const continue_game1_text: String = "Continue to learn new signs\n and test your knowledge\n by growing your trees."
+const continue_game2_text: String = "When you your tree is fully grown\n You will be able to grow othe trees."
 
 func set_text(tutorial: String):
 	match tutorial:
@@ -25,6 +27,9 @@ func set_text(tutorial: String):
 			tutorial_text.text = bed_tutorial_text
 		"T_TREE":
 			tutorial_text.text = tree_tutorial_text
+		"C1":
+			tutorial_text.text = continue_game1_text
+
 
 func set_background_color(b_color:Color):
 	color_rect.color = b_color

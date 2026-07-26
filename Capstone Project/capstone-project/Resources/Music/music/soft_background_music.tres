@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Music" format=3 uid="uid://m8emfvtagf4g"]
+
+[ext_resource type="AudioStream" uid="uid://ctfcx833ikk5k" path="res://Resources/Music/MP3's/arpmedia-soft-background-music-569450.mp3" id="1_khpi8"]
+[ext_resource type="Script" uid="uid://6r82ia1g3syq" path="res://Scripts/Data Classes/Music/music.gd" id="1_tfsxc"]
+
+[resource]
+script = ExtResource("1_tfsxc")
+mp3 = ExtResource("1_khpi8")
+name = "Soft Background Music"
+artist = "ARP Media"
+metadata/_custom_type_script = "uid://6r82ia1g3syq"

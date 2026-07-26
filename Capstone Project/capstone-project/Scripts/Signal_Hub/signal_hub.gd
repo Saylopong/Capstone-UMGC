@@ -12,6 +12,7 @@ signal player_entered_home
 signal player_left_home
 signal tutorial_completed(step:int)
 signal volume(vol:float)
+signal current_song(song:Music)
 
 func emit_player_entered_zone(zone: String):
 	player_entered_zone.emit(zone)
@@ -49,4 +50,6 @@ func emit_tutorial_completed(step:int):
 func emit_volume():
 	volume.emit(DataManager.volume)
 
+func emit_current_song(song: Music):
+	current_song.emit(song)
 	

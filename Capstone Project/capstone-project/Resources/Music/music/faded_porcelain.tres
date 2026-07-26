@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Music" format=3 uid="uid://cfy377fba3xt5"]
+
+[ext_resource type="AudioStream" uid="uid://blgr8rf4b42td" path="res://Resources/Music/MP3's/turning_pages-faded-porcelain-562504.mp3" id="1_oka5n"]
+[ext_resource type="Script" uid="uid://6r82ia1g3syq" path="res://Scripts/Data Classes/Music/music.gd" id="1_sk17w"]
+
+[resource]
+script = ExtResource("1_sk17w")
+mp3 = ExtResource("1_oka5n")
+name = "Faded Porcelain"
+artist = "Turning Pages"
+metadata/_custom_type_script = "uid://6r82ia1g3syq"
