@@ -26,7 +26,6 @@ Sounds="*uid://oa7ocopxehlc"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [file_customization]
 

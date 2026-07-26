@@ -44,8 +44,6 @@ const DOOR_WAV = preload("uid://bvbjynxcukx43")
 const COMFORTER_SOUND_MP3 = preload("uid://d0ukkbpq7e2dg")
 
 
-
-
 func _ready() -> void:
 	SignalHub.quiz_finished.connect(quiz_finished)
 	#shuffles all music

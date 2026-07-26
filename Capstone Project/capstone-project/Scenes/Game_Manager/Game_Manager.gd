@@ -11,8 +11,8 @@ extends Node
 @onready var fade_rect: ColorRect = $fade_rect
 
 #preloads of farm and home scene for quick instantiation
-const FARM: PackedScene = preload("uid://cs667hsowc61p")
 const HOME: PackedScene = preload("uid://uxjg36nseyn0")
+const FARM: PackedScene = preload("uid://cs667hsowc61p")
 
 #stores what zones the character is currently in
 var in_zone: Array[String]

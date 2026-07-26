@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://xw2juhh588s2" path="res://Scenes/Farm/Tilesets/game_tile_set.tres" id="1_0f0qd"]
 [ext_resource type="Script" uid="uid://b0ih1ec4ektud" path="res://Scenes/Farm/farm.gd" id="1_p01lv"]
 [ext_resource type="TileSet" uid="uid://c5mt5jiqyllof" path="res://Scenes/Farm/Tilesets/house_tile_set.tres" id="3_141lg"]
-[ext_resource type="PackedScene" uid="uid://7hudawxston6" path="res://Scenes/Character/Character.tscn" id="3_p01lv"]
+[ext_resource type="PackedScene" uid="uid://7hudawxston6" path="res://Scenes/Character/character.tscn" id="3_p01lv"]
 [ext_resource type="PackedScene" uid="uid://sthe1ltiwoyx" path="res://Scenes/Tutorial_Scenes/Dialogue_box.tscn" id="4_xvaxp"]
 [ext_resource type="PackedScene" uid="uid://b6djm547b0ir6" path="res://Scenes/Arrow/Arrow.tscn" id="5_xvaxp"]
 [ext_resource type="PackedScene" uid="uid://3g834qn6yl8l" path="res://Scenes/Music_Display/music_display.tscn" id="6_w1mcr"]

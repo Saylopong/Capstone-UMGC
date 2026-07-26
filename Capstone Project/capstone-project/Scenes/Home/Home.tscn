@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://c5mt5jiqyllof" path="res://Scenes/Farm/Tilesets/house_tile_set.tres" id="1_eopfp"]
 [ext_resource type="Script" uid="uid://davs0275e01sw" path="res://Scenes/Home/home.gd" id="1_o3e1b"]
 [ext_resource type="Texture2D" uid="uid://trroilqbx6uu" path="res://Resources/mp_house_interiors_tileset_pack/mp_house_interiors_tileset_pack/Basic_Furniture.png" id="2_og5f0"]
-[ext_resource type="PackedScene" uid="uid://7hudawxston6" path="res://Scenes/Character/Character.tscn" id="2_yvjqa"]
+[ext_resource type="PackedScene" uid="uid://7hudawxston6" path="res://Scenes/Character/character.tscn" id="2_yvjqa"]
 [ext_resource type="PackedScene" uid="uid://ctdao1oqqfl7s" path="res://Scenes/Bed/Bed.tscn" id="3_og5f0"]
 [ext_resource type="PackedScene" uid="uid://d1ibib7r3oypb" path="res://Scenes/News_Paper/news_paper.tscn" id="4_yvjqa"]
 [ext_resource type="PackedScene" uid="uid://sthe1ltiwoyx" path="res://Scenes/Tutorial_Scenes/Dialogue_box.tscn" id="7_21d83"]
