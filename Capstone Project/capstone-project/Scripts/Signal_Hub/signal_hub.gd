@@ -10,8 +10,8 @@ signal unpause_game
 signal quit_game
 signal player_entered_home
 signal player_left_home
-signal tree_data(data: Array[int])
 signal tutorial_completed(step:int)
+signal volume(vol:float)
 
 func emit_player_entered_zone(zone: String):
 	player_entered_zone.emit(zone)
@@ -45,5 +45,8 @@ func emit_player_left_home():
 
 func emit_tutorial_completed(step:int):
 	tutorial_completed.emit(step)
+
+func emit_volume():
+	volume.emit(DataManager.volume)
 
 	

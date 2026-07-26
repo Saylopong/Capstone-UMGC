@@ -30,14 +30,14 @@ func unlock_all_but_3(db: ASLDataBase):
 func unlock_all(db: int):
 	match db:
 		1:
-			for sign:ASLSign in DataManager.DB_1.all_questions:
-				sign.is_unlocked = true
+			for i:ASLSign in DataManager.DB_1.all_questions:
+				i.is_unlocked = true
 		2:
-			for sign:ASLSign in DataManager.DB_2.all_questions:
-				sign.is_unlocked = true
+			for i:ASLSign in DataManager.DB_2.all_questions:
+				i.is_unlocked = true
 		3:
-			for sign:ASLSign in DataManager.DB_3.all_questions:
-				sign.is_unlocked = true
+			for i:ASLSign in DataManager.DB_3.all_questions:
+				i.is_unlocked = true
 
 
 #sets all signs for tree 1 to unlocked

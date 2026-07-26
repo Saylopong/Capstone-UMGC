@@ -3,7 +3,7 @@ extends Control
 
 @onready var quit_button: Button = $MarginContainer/VBoxContainer/Quit_Button
 @onready var main_menu_button: Button = $MarginContainer/VBoxContainer/Main_Menu_Button
-@onready var h_slider: HSlider = $MarginContainer/VBoxContainer/Volume/HSlider
+
 
 func _ready() -> void:
 	#hidden until the player presses the pause key
@@ -12,7 +12,7 @@ func _ready() -> void:
 	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 	SignalHub.pause_game.connect(_on_pause_game)
 	SignalHub.unpause_game.connect(_on_unpause_game)
-	adjust_slider()
+
 	
 
 #checks unhandled input for the pause button and emits pause/unpause via SignalHub
@@ -23,8 +23,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			SignalHub.emit_pause_game()
 
-func adjust_slider():
-	h_slider.value = Sounds.volume + 100
 
 func _on_pause_game() -> void:
 	get_tree().paused = true
@@ -46,4 +44,4 @@ func _on_main_menu_button_pressed() -> void:
 
 
 func _on_h_slider_value_changed(value: float) -> void:
-	Sounds.change_volume(h_slider.value)
+	DataManager.set_volume_from_slider(value)

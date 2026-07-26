@@ -11,8 +11,8 @@ var is_learned: bool = false
 
 func signs_unlocked() -> int:
 	var total_unlocked:int = 0
-	for ASLSign in all_questions:
-		if ASLSign.is_unlocked == true:
+	for x:ASLSign in all_questions:
+		if x.is_unlocked == true:
 			total_unlocked += 1
 	return total_unlocked
 			

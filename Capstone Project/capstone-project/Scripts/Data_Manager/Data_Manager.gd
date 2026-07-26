@@ -15,6 +15,10 @@ var tree_2_total_correct: int = 0
 var tree_2_interacted: bool = false
 var tree_3_total_questions: int = 0
 var tree_3_total_correct: int = 0
+#used to determine volume of sounds in game
+#is max volume at -10
+#is lowest volume at -50
+var volume: float = -25.0
 var tree_3_interacted: bool = false
 var newspaper_interacted: bool = false
 var walk_tutorial_shown: bool = false
@@ -47,3 +51,13 @@ func reset_day():
 	tree_2_interacted = false
 	tree_3_interacted = false
 	newspaper_interacted = false
+
+#used to determine the value of the slider bar for volume
+func get_volume_slider_value() -> float:
+	var slider_value: float
+	slider_value =(volume+50.0) * 2.5
+	return slider_value
+
+func set_volume_from_slider(slider_value: float):
+	volume = (slider_value/2.5) -50.0
+	SignalHub.emit_volume()

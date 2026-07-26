@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cbfkh2sp0yif1"]
+
+[ext_resource type="Script" uid="uid://d3cifch5j04k1" path="res://Scenes/Volume_Slider/volume_slider.gd" id="1_6f03p"]
+[ext_resource type="FontFile" uid="uid://c6ppxandotwfk" path="res://Resources/Fonts/PasseroOne-Regular.ttf" id="2_equea"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7amjg"]
+font = ExtResource("2_equea")
+font_size = 30
+
+[node name="Volume_Slider" type="MarginContainer" unique_id=1806666681]
+script = ExtResource("1_6f03p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1768712334]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Volume_label" type="Label" parent="VBoxContainer" unique_id=107611852]
+layout_mode = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_7amjg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=17845560]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer" unique_id=1154395990]
+custom_minimum_size = Vector2(325, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.06861706, 0.17832753, 0.24908352, 1)
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/MarginContainer" unique_id=1553959356]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 5.0
+value = 70.0
+tick_count = 20
+ticks_on_borders = true
+ticks_position = 3
+
+[connection signal="value_changed" from="VBoxContainer/MarginContainer/HSlider" to="." method="_on_h_slider_value_changed"]
