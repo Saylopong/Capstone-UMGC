@@ -27,6 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_pause_game() -> void:
 	get_tree().paused = true
 	show()
+
 	
 
 func _on_unpause_game() -> void:

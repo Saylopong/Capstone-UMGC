@@ -88,6 +88,7 @@ func _physics_process(_delta: float) -> void:
 		move_direction.x += 1
 	velocity = move_direction*MOVE_SPEED
 	play_animation()
+	
 	if(move_direction == Vector2(0,0)):
 		stop_animation()
 	elif !DataManager.walk_tutorial_shown:

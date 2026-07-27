@@ -62,7 +62,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			handle_interact(in_zone.get(0))
 	#TEST_ACTION is Shift+T
 	elif event.is_action_pressed("TEST_ACTION"):
-		print("TEST_ACTION PRESSED")
+		print("TEST_ACTION - Scene Disabled")
+		scene_container.process_mode = Node.PROCESS_MODE_DISABLED
 		#Handle_Interact("TREE1")
 		#load_home()
 
@@ -79,21 +80,21 @@ func handle_interact(Interactable: String):
 				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(DataManager.DB_1.all_questions),1)
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
-				pause_scene()
+				scene_container.process_mode = Node.PROCESS_MODE_DISABLED
 		"TREE2":
 			if (DataManager.tree_2_interacted == false) && (DataManager.DB_1.is_learned == true):
 				DataManager.tree_2_interacted = true
 				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(DataManager.DB_2.all_questions),2)
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
-				pause_scene()
+				scene_container.process_mode = Node.PROCESS_MODE_DISABLED
 		"TREE3":
 			if (DataManager.tree_3_interacted == false) && (DataManager.DB_1.is_learned == true) && (DataManager.DB_2.is_learned == true):
 				DataManager.tree_3_interacted = true
 				asl_quiz_ui.start_quiz(CreateASLQuiz.new().createQuiz(DataManager.DB_3.all_questions),3)
 				asl_learning_ui.hide()
 				asl_quiz_ui.show()
-				pause_scene()
+				scene_container.process_mode = Node.PROCESS_MODE_DISABLED
 		"NEWSPAPER":
 			if (DataManager.newspaper_interacted == false):
 				DataManager.newspaper_interacted = true
@@ -106,6 +107,7 @@ func handle_interact(Interactable: String):
 			if DataManager.tree_1_interacted || DataManager.tree_2_interacted || DataManager.tree_3_interacted:
 				fade_rect.show()
 				scene_container.process_mode = Node.PROCESS_MODE_DISABLED
+				print("Scene-Disabled - BED")
 				fade_reset_day.play("Fade")
 				DataManager.bed_tutorial_shown = true
 				SignalHub.emit_tutorial_completed(7)
@@ -117,7 +119,7 @@ func handle_interact(Interactable: String):
 #should only show questions that the player has not unlocked from only 1 data base.
 func show_new_signs():
 	var one_db_used = false
-	pause_scene()
+	scene_container.process_mode = Node.PROCESS_MODE_DISABLED
 	if(DataManager.DB_1.is_learned == false && one_db_used == false):
 		asl_learning_ui.start_learning(CreateASLLearning.createLearning(1))
 		asl_learning_ui.show()
@@ -139,11 +141,11 @@ func show_new_signs():
 
 func end_quiz(_total_q:int, _correclty_answered: int, _tree:int):
 	asl_quiz_ui.hide()
-	unpause_scene()
+	scene_container.process_mode = Node.PROCESS_MODE_INHERIT
 
 func end_learning():
 	asl_learning_ui.hide()
-	unpause_scene()
+	scene_container.process_mode = Node.PROCESS_MODE_INHERIT
 
 func quit_game():
 	get_tree().quit()
@@ -160,11 +162,12 @@ func player_left_interactable_zone(object: String):
 
 #pauses the scene container when pause_scene is called
 func pause_scene():
-	if asl_learning_ui.visible == true || asl_quiz_ui.visible == true:
-		scene_container.process_mode = Node.PROCESS_MODE_DISABLED
-#unpauses the cene container when unause_scene is called
+	scene_container.process_mode = Node.PROCESS_MODE_DISABLED
+	
 func unpause_scene():
-	if asl_learning_ui.visible == false && asl_quiz_ui.visible == false:
+	if asl_learning_ui.visible || asl_quiz_ui.visible:
+		scene_container.process_mode = Node.PROCESS_MODE_DISABLED
+	else:
 		scene_container.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_fade_reset_day_animation_finished(_anim_name: StringName) -> void:

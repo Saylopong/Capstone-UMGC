@@ -79,3 +79,35 @@ func get_volume_slider_value() -> float:
 func set_volume_from_slider(slider_value: float):
 	volume = (slider_value/2.5) -50.0
 	SignalHub.emit_volume()
+
+func reset_game():
+	tree_1_total_questions = 0
+	tree_1_total_correct = 0
+	tree_1_interacted = false
+	tree_2_total_questions = 0 
+	tree_2_total_correct = 0 
+	tree_2_interacted = false
+	tree_3_total_questions = 0
+	tree_3_total_correct = 0
+	tree_3_interacted = false
+	newspaper_interacted = false
+	walk_tutorial_shown = false
+	np_tutorial_shown = false
+	bed_tutorial_shown = false
+	to_farm_tutorial_shown = false
+	tree_tutorial_shown = false
+	to_home_tutorial_shown = false
+	quiz_tutorial_shown = false
+	continue_game1 = false
+	reset_data_bases()
+
+func reset_data_bases():
+	DB_1.is_learned = false
+	DB_2.is_learned = false
+	DB_3.is_learned = false
+	for x:ASLSign in DB_1:
+		x.is_unlocked = false
+	for x:ASLSign in DB_2:
+		x.is_unlocked = false
+	for x:ASLSign in DB_3:
+		x.is_unlocked = false
