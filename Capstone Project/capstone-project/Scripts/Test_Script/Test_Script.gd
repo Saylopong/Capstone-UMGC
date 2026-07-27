@@ -100,3 +100,6 @@ func print_db_status():
 	print("DB_2 learned?: ",DataManager.DB_2.is_learned)
 	DataManager.DB_3.is_learned_test()
 	print("DB_3 learned?: ",DataManager.DB_3.is_learned)
+
+func next_song():
+	Sounds.music_player.seek(Sounds.music_player.stream.get_length()-.01)

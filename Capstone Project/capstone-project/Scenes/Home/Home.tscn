@@ -65,6 +65,12 @@ sources/0 = SubResource("TileSetAtlasSource_og5f0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejmsa"]
 size = Vector2(101.5, 75.125)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6cob"]
+size = Vector2(13.33333, 13.333339)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5rh2"]
+size = Vector2(9.299992, 7.9333363)
+
 [node name="HomeA" type="Node2D" unique_id=1214311017]
 script = ExtResource("1_o3e1b")
 
@@ -83,6 +89,7 @@ tile_set = ExtResource("1_eopfp")
 [node name="Furniture" type="TileMapLayer" parent="Tilemap" unique_id=652165564]
 tile_map_data = PackedByteArray("AAAIAPX/AAABAAAAAAABAPX/AAABAAAAAAAIAPj/AAADAAMAAAAJAPj/AAAFAAIAAAAHAPj/AAAEAAIAAAADAPb/AAADAAIAAAACAPf/AAACAAUAAAA=")
 tile_set = SubResource("TileSet_dqqjj")
+occlusion_enabled = false
 
 [node name="Bed" parent="Tilemap" unique_id=1206283599 instance=ExtResource("3_og5f0")]
 position = Vector2(21.333324, -138.4)
@@ -146,6 +153,22 @@ one_shot = true
 [node name="hide_continue" type="Timer" parent="." unique_id=309558509]
 wait_time = 5.0
 one_shot = true
+
+[node name="Furniture collision shapes" type="Area2D" parent="." unique_id=1494717034]
+position = Vector2(610, 169)
+scale = Vector2(3.75, 3.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture collision shapes" unique_id=256851286]
+position = Vector2(-46.4, -22.933338)
+shape = SubResource("RectangleShape2D_y6cob")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Furniture collision shapes" unique_id=86160786]
+position = Vector2(17.866673, 10.933335)
+shape = SubResource("RectangleShape2D_p5rh2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Furniture collision shapes" unique_id=1915817838]
+position = Vector2(49.33333, 10.666665)
+shape = SubResource("RectangleShape2D_p5rh2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="show_continue" to="." method="_on_timer_timeout"]

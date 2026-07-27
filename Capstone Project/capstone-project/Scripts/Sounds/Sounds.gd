@@ -52,12 +52,10 @@ func set_volume(vol: float):
 		background_player.volume_db = -200
 		sound_player.volume_db = -200
 
-
-
 func get_next_song():
-	if (DataManager.MUSIC.list.find(DataManager.current_song) >= DataManager.MUSIC.list.size()):
+	if (DataManager.MUSIC.list.find(DataManager.current_song) >= DataManager.MUSIC.list.size()-1):
 		DataManager.current_song = DataManager.MUSIC.list.get(0)
-	DataManager.current_song = (
+	else:DataManager.current_song = (
 	 		DataManager.MUSIC.list.get(
 			DataManager.MUSIC.list.find(
 			DataManager.current_song)+1))
