@@ -62,7 +62,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			handle_interact(in_zone.get(0))
 	#TEST_ACTION is Shift+T
 	elif event.is_action_pressed("TEST_ACTION"):
-		TestScript.test_tree2()
+		TestScript.unlock_all_but_2(DataManager.DB_1)
+		#TestScript.test_tree2()
 		#Handle_Interact("TREE1")
 		#load_home()
 
@@ -122,17 +123,14 @@ func show_new_signs():
 	if(DataManager.DB_1.is_learned == false && one_db_used == false):
 		asl_learning_ui.start_learning(CreateASLLearning.createLearning(1))
 		asl_learning_ui.show()
-		DataManager.DB_1.is_learned_test()
 		one_db_used = true
 	if(DataManager.DB_1.is_learned && DataManager.DB_2.is_learned == false && one_db_used == false):
 		asl_learning_ui.start_learning(CreateASLLearning.createLearning(2))
 		asl_learning_ui.show()
-		DataManager.DB_2.is_learned_test()
 		one_db_used = true
 	if(DataManager.DB_1.is_learned && DataManager.DB_2.is_learned && DataManager.DB_3.is_learned == false && one_db_used == false):
 		asl_learning_ui.start_learning(CreateASLLearning.createLearning(3))
 		asl_learning_ui.show()
-		DataManager.DB_3.is_learned_test()
 		one_db_used = true
 	if(DataManager.DB_1.is_learned && DataManager.DB_2.is_learned && DataManager.DB_3.is_learned):
 		#Could show text showing all currently implimented ASL signs have been learned
@@ -169,6 +167,10 @@ func unpause_scene():
 	else:
 		scene_container.process_mode = Node.PROCESS_MODE_INHERIT
 
+#runs test to see if the DB has been learned yet.
 func _on_fade_reset_day_animation_finished(_anim_name: StringName) -> void:
 	DataManager.reset_day()
+	DataManager.DB_1.is_learned_test()
+	DataManager.DB_2.is_learned_test()
+	DataManager.DB_3.is_learned_test()
 	unpause_scene()

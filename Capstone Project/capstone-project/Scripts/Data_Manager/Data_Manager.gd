@@ -107,9 +107,9 @@ func reset_data_bases():
 	DB_1.is_learned = false
 	DB_2.is_learned = false
 	DB_3.is_learned = false
-	for x:ASLSign in DB_1:
+	for x:ASLSign in DB_1.all_questions:
 		x.is_unlocked = false
-	for x:ASLSign in DB_2:
+	for x:ASLSign in DB_2.all_questions:
 		x.is_unlocked = false
-	for x:ASLSign in DB_3:
+	for x:ASLSign in DB_3.all_questions:
 		x.is_unlocked = false
