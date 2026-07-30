@@ -1,5 +1,6 @@
 extends Node
 
+var index: int = 1
 #used to unlock every sign but 1 in the data base
 #keeps the last 1 unlocked.
 func unlock_all_but_1(db: ASLDataBase):
@@ -43,19 +44,16 @@ func unlock_all(db: int):
 #sets all signs for tree 1 to unlocked
 #sets tree growth for tree 1 to max
 func test_tree2():
-	DataManager.tree_1_total_correct = 20
-	DataManager.tree_1_total_questions = 20
 	unlock_all(1)
+	DataManager.DB_1.is_learned = true
 
 #sets all signs for tree 1 and 2 to unlocked
 #sets tree growth for tree 1 and 2 to max
 func test_tree3():
-	DataManager.tree_1_total_correct = 20
-	DataManager.tree_1_total_questions = 20
 	unlock_all(1)
-	DataManager.tree_2_total_correct = 20
-	DataManager.tree_2_total_questions = 20
 	unlock_all(2)
+	DataManager.DB_1.is_learned = true
+	DataManager.DB_2.is_learned = true
 
 #sets trees to starting growth
 func set_trees_starting_growth():
@@ -83,6 +81,20 @@ func set_trees_full_grown():
 	DataManager.tree_2_total_questions = 20
 	DataManager.tree_3_total_correct = 20
 	DataManager.tree_3_total_questions = 20
+
+#used to cycle through tree growth
+func cycle_growth():
+	index += 1
+	if index == 4:
+		index = 0
+		cycle_growth()
+	if(index == 1):
+		set_trees_starting_growth()
+	if(index == 2):
+		set_trees_mid_growth()
+	if(index == 3):
+		set_trees_full_grown()
+	
 
 #prints sign meaning and whether the sign is unlocked
 #for every ASLSign in the data base given to it.

@@ -1,6 +1,5 @@
 extends Control
 
-
 @onready var quit_button: Button = $MarginContainer/VBoxContainer/Quit_Button
 @onready var main_menu_button: Button = $MarginContainer/VBoxContainer/Main_Menu_Button
 

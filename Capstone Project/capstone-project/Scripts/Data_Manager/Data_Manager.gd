@@ -4,6 +4,8 @@ extends Node
 var DB_1:ASLDataBase = preload("uid://drtj5oug2qd1u")
 var DB_2:ASLDataBase = preload("uid://bca7q66w0hmaj")
 var DB_3:ASLDataBase = preload("uid://05t2ycw2ur2m")
+#USED FOR TESTING ONLY
+#var DB_1:ASLDataBase = preload("uid://srxmjs05hjoh")
 
 const MUSIC = preload("uid://cenepntoffybw")
 

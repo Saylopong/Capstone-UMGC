@@ -62,7 +62,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			handle_interact(in_zone.get(0))
 	#TEST_ACTION is Shift+T
 	elif event.is_action_pressed("TEST_ACTION"):
-		TestScript.next_song()
+		TestScript.test_tree2()
 		#Handle_Interact("TREE1")
 		#load_home()
 

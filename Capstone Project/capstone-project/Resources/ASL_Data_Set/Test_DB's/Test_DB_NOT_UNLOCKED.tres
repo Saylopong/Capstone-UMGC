@@ -4,10 +4,16 @@
 [ext_resource type="Script" uid="uid://fsgmrsjdqu8d" path="res://Scripts/Data Classes/ASLDataBase/ASLDataBase.gd" id="2_61txm"]
 [ext_resource type="Resource" uid="uid://cyywd4r7ke2wk" path="res://Resources/ASL_Data_Set/Test_DB's/Test_ASL/LOCKED/TEST_ASL_A.tres" id="2_im11m"]
 [ext_resource type="Resource" uid="uid://cm3i32u4udhfg" path="res://Resources/ASL_Data_Set/Test_DB's/Test_ASL/LOCKED/TEST_ASL_B.tres" id="3_dmeah"]
-[ext_resource type="Resource" uid="uid://duinrncapughq" path="res://Resources/ASL_Data_Set/Test_DB's/Test_ASL/LOCKED/TEST_ASL_C.tres" id="4_h6piy"]
+[ext_resource type="Texture2D" uid="uid://dih7r10l5ihmg" path="res://Resources/ASL_Data_Set/Test_DB's/Test_ASL/TEST_ASL_Signs/C.jpg" id="4_im11m"]
 [ext_resource type="Resource" uid="uid://csvchfuivsiu0" path="res://Resources/ASL_Data_Set/Test_DB's/Test_ASL/LOCKED/TEST_ASL_D.tres" id="5_6owxn"]
+
+[sub_resource type="Resource" id="Resource_dmeah"]
+script = ExtResource("1_prtuy")
+meaning = "C"
+image = ExtResource("4_im11m")
+metadata/_custom_type_script = "uid://4qu5sso38pu"
 
 [resource]
 script = ExtResource("2_61txm")
-all_qestions = Array[ExtResource("1_prtuy")]([ExtResource("2_im11m"), ExtResource("3_dmeah"), ExtResource("4_h6piy"), ExtResource("5_6owxn")])
+all_questions = Array[ExtResource("1_prtuy")]([ExtResource("2_im11m"), ExtResource("3_dmeah"), SubResource("Resource_dmeah"), ExtResource("5_6owxn")])
 metadata/_custom_type_script = "uid://fsgmrsjdqu8d"

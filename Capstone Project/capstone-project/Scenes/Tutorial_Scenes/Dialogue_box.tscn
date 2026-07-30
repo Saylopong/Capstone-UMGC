@@ -12,6 +12,7 @@ offset_top = -75.0
 offset_right = 150.0
 offset_bottom = 75.0
 pivot_offset = Vector2(150, 75)
+mouse_filter = 2
 color = Color(0, 0.2509804, 0.40392157, 0.5019608)
 metadata/_edit_use_anchors_ = true
 
